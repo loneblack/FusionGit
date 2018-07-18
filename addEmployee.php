@@ -82,11 +82,11 @@
 					<form method="POST" action="addEmployeeDB.php">
 						<h2 color="#332929">Add Employee</h2>
 						
-						<div style="padding-left:10px">
+						<div style="padding-left:17px">
 							<div>
 								<b><font size="1" color="#332929">Department *</font></b>
 								<br>
-								<select style="border-radius:5px" name="department">
+								<select style="border-radius:5px; width:150px" name="department">
 								<option value=''>Select a Department</option>
 									<?php
 										$query="select * from building ORDER BY name;";
