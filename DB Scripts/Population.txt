@@ -1,0 +1,151 @@
+-- -----------------------------------------------------
+-- POPUPLATION
+-- -----------------------------------------------------
+
+-- ref_usertype
+INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('1', 'Administrator');
+INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('2', 'Asset Manager');
+INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('3', 'Helpdesk');
+
+-- building
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('1', 'Angelo King International Center');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('2', 'BGC-Rufino Campus');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('3', 'Br. Andrew B. Gonzalez FSC Hall (AGH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('4', 'Br. Celba John FSC Hall (JH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('5', 'Br. Gabriel Connon FSC Hall (CH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('6', 'DLSU Laguna Campus');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('7', 'Don Enrique T. Yuchengco Hall (YH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('8', 'Enrique M. Razon Sports Center (ERSC)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('9', 'Faculty Center (FC)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('10', 'Henry S. Sy Sr. Hall (HSSH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('11', 'John Gokongwei Sr. Hall (GH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('12', 'Lasallian Study Center');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('13', 'Makati Extension Campus');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('14', 'Milagros Hall');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('15', 'Science and Technology Campus');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('16', 'Science and Technology Research Center (STRC)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('17', 'St. Joseph Hall (SJ)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('18', 'St. La Salle Hall (LS)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('19', 'St. Miguel Febres Cordero Hall (MH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('20', 'Tuluyan Center');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('21', 'Urbano J. Velasco Hall (VH)');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('22', 'Warehouse');
+INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('23', 'William J. Shaw Hall (WH)');
+
+-- ref_assetclass
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Access Point');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Accessories');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Adaptor');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Automatic Voltage Regulator (AVR)');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Barcode Reader/Scanner');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Battery');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Cables');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Camera');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Connectors');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Consumables');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Contactless Reader');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('DELSAN Printer');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Desktop');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Earphone / Headset');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Flash Drive');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Hard Disk Drive (External)');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Hard Disk Drive (Internal)');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Keyboard');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('LAN Card');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Laptop');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Media Player');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Memory');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Monitor');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Motherboard');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Mouse');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Nettop');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Network Switch');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Non- IT Equipment');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Optical Drive (External)');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Optical Drive (Internal)');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Pocket Wifi');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Power Supply');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Printer');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Processor');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Projector');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Projector Bulbs');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Projector Screen');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Router');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Scanner (Document)');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Server');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Smart Card Reader');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Software');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Speaker');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Tablet');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Tape Drive');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Thin Client');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Turnstile');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('UPS');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Video Card');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Voice Recorder (Digital)');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Webcam');
+INSERT INTO `thesis`.`ref_assetclass` (`name`) VALUES ('Wireless Presenter');
+
+-- ref_status
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('1', 'Stocked');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('2', 'Deployed');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('3', 'Moving');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('4', 'in Testing');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('5', 'In Repair');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('6', 'For Disposal');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('7', 'Donated');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('8', 'Disposed');
+
+-- department
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('1', 'Accountancy');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('2', 'Behavioral Sciences');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('3', 'Biology');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('4', 'Chemical Engineering');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('5', 'Chemistry');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('6', 'Civil Engineering');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('7', 'Commercial Law');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('8', 'Communication');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('9', 'Computer Technology');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('10', 'Counseling and Educational Psychology');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('11', 'Decision Sciences and Innovation');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('12', 'Economics');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('13', 'Educational Leadership and Management');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('14', 'Electronics and Communications Engineering');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('15', 'English and Applied Linguistics');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('16', 'Filipino');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('17', 'Financial Management');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('18', 'History');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('19', 'Industrial Engineering');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('20', 'Information Technology');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('21', 'International Studies');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('22', 'Law');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('23', 'Literature');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('24', 'Management and Organization');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('25', 'Manufacturing Engineering and Management');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('26', 'Marketing Management');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('27', 'Mathematics');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('28', 'Mechanical Engineering');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('29', 'Philosophy');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('30', 'Physical Education');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('31', 'Physics');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('32', 'Political Science');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('33', 'Psychology');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('34', 'Science Education');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('35', 'Software Technology');
+INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('36', 'Theology and Religious Studies');
+
+-- brand
+INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('1', 'Acer');
+INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('2', 'Samsung');
+INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('3', 'Logitech');
+
+-- assettype
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('1', '20', '1', '4gb Ram 500gb storage');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('2', '8', '2', '12 mega pixels');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('3', '18', '3', 'Wireless ');
+
+-- asset
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('3', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
+
