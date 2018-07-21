@@ -4,8 +4,10 @@
 
 -- ref_usertype
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('1', 'Administrator');
-INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('2', 'Asset Manager');
+INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('2', 'Asset Manager');	
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('3', 'Helpdesk');
+INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('4', 'Engineer');
+INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('3', 'Requestor');
 
 -- building
 INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('1', 'Angelo King International Center');
@@ -149,3 +151,5 @@ INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAdd
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('3', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
 
+-- Employee
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
