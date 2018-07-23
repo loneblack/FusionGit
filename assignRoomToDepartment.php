@@ -1,6 +1,6 @@
 <?php require_once("mysqlconnect.php");
 session_start();
-$_SESSION['previousPage']="assignRoomtoDepartment (1).php";?>
+$_SESSION['previousPage']="assignRoomtoDepartment.php";?>
 <html>
 	<head> 
 		<title>Assign Room To Department</title>
@@ -53,11 +53,33 @@ $_SESSION['previousPage']="assignRoomtoDepartment (1).php";?>
 	</head>
 	<?php
 	if (isset($_SESSION['submitMessage'])){
-		echo "<script>alert({$_SESSION['submitMessage']});</script>";
-		unset($_SESSION['submitMessage']);
-	}
+		
+		
+	
 	
 	?>
+		<!-- Modal -->
+	<div id="submitModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      </div>
+	      <div class="modal-body">
+	      		<?php echo $_SESSION['submitMessage']; ?>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div><?php 
+	echo "<script> $('#submitModal').modal('show') </script>";
+		unset($_SESSION['submitMessage']);
+
+		} ?>
 
 	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">	
 		<nav class="navbar navbar-inverse">
@@ -165,7 +187,7 @@ $_SESSION['previousPage']="assignRoomtoDepartment (1).php";?>
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Modal Header</h4>
+	        <h4 class="modal-title">Add New Floor And Room</h4>
 	      </div>
 	      <div class="modal-body">
 	        
@@ -201,9 +223,8 @@ $_SESSION['previousPage']="assignRoomtoDepartment (1).php";?>
 	  </div>
 	</div>
 
-	
-	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+	<script src="layout/jquery.min.js"></script>
 	<script>
 	function getRooms(val){
     $.ajax({

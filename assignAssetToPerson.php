@@ -141,7 +141,7 @@
 															while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 															{
 																echo "<tr>
-																		<td><div style='text-align: center;'><input type='checkbox' class='checkbox' name='medicines[]' value='{$row['assetID']}' style='width: 2rem; height: 2rem;'></div></td>
+																		<td><div style='text-align: center;'><input type='checkbox' class='checkbox' name='assets[]' value='{$row['assetID']}' style='width: 2rem; height: 2rem;'></div></td>
 																		<td>{$row['propertyCode']}</td>
 																		<td>{$row['serialNo']}</td>
 																		<td>{$row['macAddress']}</td>
@@ -187,7 +187,7 @@
 															while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 															{
 																echo "<tr>
-																		<td><div style='text-align: center;'><input type='checkbox' class='checkbox' name='suppliers[]' value='{$row['employeeID']}' style='width: 2rem; height: 2rem;'></div></td>
+																		<td><div style='text-align: center;'><input type='radio' class='radio' name='persons[]' value='{$row['employeeID']}' style='width: 2rem; height: 2rem;'></div></td>
 																		<td>{$row['name']}</td>
 																		<td>{$row['position']}</td>
 																		<td>{$row['department']}</td>
@@ -204,7 +204,7 @@
 											</div>
 											<!-- /.col -->
 											<div class="col-sm-12">
-											  <button type="submit" name ="submit" class="btn btn-outline-secondary">Submit</button>
+											  <button type="submit" name ="submit" onClick="submitAssetAssignment" class="btn btn-outline-secondary">Submit</button>
 											</div>
 											</form>
 										  </div>
@@ -303,7 +303,7 @@
 		</div>
 		  <!-- Tables and stuff -->
 
-  
+<script src="layout/jquery.min.js"></script>
 <!-- DataTables -->
 <script src="layout/jquery.dataTables.min.js"></script>
 <script src="layout/dataTables.bootstrap.min.js"></script>
@@ -327,6 +327,36 @@
       checkboxClass: 'icheckbox_minimal-blue'
     })
   })
+var assets = new Array();
+var person;
+
+function getData(ele) {
+
+ $("input[name='assets[]']:checked").map(function(){
+    assets.push( $(this).val());
+})
+       $("input[name='persons[]']:checked").map(function(){
+    person = $(this).val();
+
+})
+   }   
+function alertness(){
+	getData();
+	alert("asseets: "+assets);
+	alert("person: "+person);
+}
+
+function submitAssetAssignment(){
+	getData();
+    $.ajax({
+        type:"POST",
+        url:"submitAssetAssignment.php",
+        data: {person:person, assets:assets},
+        success: function(data){
+            alert("success");
+       				 }
+    		});
+	}
 </script>
 </body>
 </html>
