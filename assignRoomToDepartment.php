@@ -52,7 +52,6 @@ $_SESSION['previousPage']="assignRoomtoDepartment (1).php";?>
 		</style>
 	</head>
 	<?php
-	echo"wtf";
 	if (isset($_SESSION['submitMessage'])){
 		echo "<script>alert({$_SESSION['submitMessage']});</script>";
 		unset($_SESSION['submitMessage']);
