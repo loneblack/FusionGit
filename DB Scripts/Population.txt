@@ -7,7 +7,7 @@ INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('1', 'Administ
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('2', 'Asset Manager');	
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('3', 'Helpdesk');
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('4', 'Engineer');
-INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('3', 'Requestor');
+INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('5', 'Requestor');
 
 -- building
 INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('1', 'Angelo King International Center');

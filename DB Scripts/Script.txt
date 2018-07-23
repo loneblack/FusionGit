@@ -48,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `thesis`.`employee` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -333,7 +332,6 @@ CREATE TABLE IF NOT EXISTS `thesis`.`ref_assetclass` (
   `name` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`assetClassID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 53
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -347,7 +345,6 @@ CREATE TABLE IF NOT EXISTS `thesis`.`ref_brand` (
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`brandID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -407,7 +404,6 @@ CREATE TABLE IF NOT EXISTS `thesis`.`asset` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -578,6 +574,7 @@ DROP TABLE IF EXISTS `thesis`.`assetaudit` ;
 CREATE TABLE IF NOT EXISTS `thesis`.`assetaudit` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `status` INT(11) NOT NULL,
+  `UserID` INT(11) NOT NULL,
   `date` DATETIME NULL DEFAULT NULL,
   `assetID` INT(11) NULL,
   `assetAssignmentID` INT(11) NULL,
@@ -589,6 +586,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetaudit` (
   PRIMARY KEY (`id`),
   INDEX `fk_assetaudit_asset1_idx` (`assetID` ASC),
   INDEX `fk_assetaudit_computerassignment1_idx` (`computerAssignmentID` ASC),
+  INDEX `fk_assetaudit_user1_idx` (`UserID` ASC),
   CONSTRAINT `fk_AssetAudit_ref_status1`
     FOREIGN KEY (`status`)
     REFERENCES `thesis`.`ref_status` (`statusID`)
@@ -612,6 +610,11 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetaudit` (
   CONSTRAINT `fk_assetaudit_computerassignment1`
     FOREIGN KEY (`computerAssignmentID`)
     REFERENCES `thesis`.`computerassignment` (`ComputerAssignmentID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_assetaudit_user1`
+    FOREIGN KEY (`UserID`)
+    REFERENCES `thesis`.`user` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
