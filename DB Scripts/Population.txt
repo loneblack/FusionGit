@@ -97,6 +97,10 @@ INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('5', 'In R
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('6', 'For Disposal');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('7', 'Donated');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('8', 'Disposed');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('9', 'Pending');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('10', 'Ongoing');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('11', 'Completed');
+
 
 -- department
 INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('1', 'Accountancy');
@@ -153,3 +157,10 @@ INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAdd
 
 -- Employee
 INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
+
+-- Person Responsible
+INSERT INTO `thesis`.`personresponsible` (`employeeID`) VALUES ('1');
+
+-- Asset Assignment
+INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `personresponsible_id`) VALUES ('1', '2018-07-24', '2018-07-25', '1');
+

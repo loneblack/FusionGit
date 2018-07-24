@@ -1,24 +1,21 @@
 <?php
-//require_once("mysqlconnect.php");
-//$assets = $_POST['assets'];
+session_start();
+require_once("mysqlconnect.php");
+$assets = $_POST['assets'];
 $person = $_POST['person'];
 
+for($i=0; $i<count($assets); $i++){
 
-echo $person;
-//for(i=0; i<count($assets); i++){
-//	echo $assets[i];
-//}
+	$query="SELECT * FROM thesis.assetassignment aa
+			JOIN thesis.personresponsible pr 
+			ON aa.personresponsible_id = pr.id
+			WHERE aa.assetID = {$assets[$i]} AND pr.employeeID = {$person};";
+	$result=mysqli_query($dbc,$query);
 
-/*
-if($buildingID!='')
-{
-	echo "<option value=''>Select a Room</option>";
-$query="SELECT * FROM thesis.floorandroom where BuildingID ='{$buildingID}';";
-$result=mysqli_query($dbc,$query);
+	
+}
 
-	while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-		echo "<option value='{$row['FloorAndRoomID']}'>{$row['floorRoom']}</option>";
-	}
-}*/
+
+
 
 ?>

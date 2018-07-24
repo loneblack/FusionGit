@@ -1,5 +1,6 @@
 <?php
 	require_once("mysqlconnect.php");
+	session_start();
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +55,34 @@
 			
 			</style>
 	</head>
+
+	<?php
+	if (isset($_SESSION['submitMessage'])){
+	
+	?>
+		<!-- Modal -->
+	<div id="submitModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      </div>
+	      <div class="modal-body">
+	      		<?php echo $_SESSION['submitMessage']; ?>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div><?php 
+	echo "<script> $('#submitModal').modal('show') </script>";
+		unset($_SESSION['submitMessage']);
+
+		} ?>
+
 	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div>	<!-- Navbar -->
 			<nav class="navbar navbar-inverse">
@@ -112,6 +141,7 @@
 									  <section class="content">
 										  <div class="row">
 											<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+											<!-- /.col -->
 											<div class="col-sm-6">
 											  <div class="box box-primary">
 												<div class="box-header">
@@ -123,18 +153,19 @@
 													<thead>
 													<tr>
 													  <th></th>
-													  <th>Brand name</th>
-													  <th>Generic name</th>
-													  <th>Dosage</th>
-													  <th>Medicine type</th>
+													  <th>Property Code</th>
+													  <th>Serial Number</th>
+													  <th>MAC Address</th>
+													  <th>Item Specification</th>
 													</tr>
 													</thead>
 													<tbody>
 														<?php
-															$query = "SELECT * FROM thesis.asset a
-															 			join assettype at on a.assetTypeID = at.assetTypeID
+															$query = "	SELECT * FROM thesis.asset a
+																		join assettype at on a.assetTypeID = at.assetTypeID
 																		join ref_brand b on at.brand = b.brandId 
-																		join ref_assetclass ac on at.assetClass = ac.assetClassID;";
+																		join ref_assetclass ac on at.assetClass = ac.assetClassID
+																		where a.status = 1;";
 																						
 															$result = mysqli_query($dbc, $query);
 															
@@ -157,7 +188,6 @@
 											  </div>
 											  <!-- /.box -->
 											</div>
-											<!-- /.col -->
 											<div class="col-sm-6">
 											  <div class="box box-primary">
 												<div class="box-header">
@@ -204,7 +234,7 @@
 											</div>
 											<!-- /.col -->
 											<div class="col-sm-12">
-											  <button type="submit" name ="submit" onClick="submitAssetAssignment" class="btn btn-outline-secondary">Submit</button>
+											  <button type="submit" name ="submit" onClick="submitAssetAssignment()" class="btn btn-outline-secondary">Submit</button>
 											</div>
 											</form>
 										  </div>
@@ -353,7 +383,7 @@ function submitAssetAssignment(){
         url:"submitAssetAssignment.php",
         data: {person:person, assets:assets},
         success: function(data){
-            alert("success");
+            alert(data);
        				 }
     		});
 	}

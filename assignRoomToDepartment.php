@@ -145,7 +145,7 @@ $_SESSION['previousPage']="assignRoomtoDepartment.php";?>
 							<b><font size="1" color="#332929">Floor & Room *</font></b>
 							<br>
 							
-							<select name="FloorAndRoomID" id ="FloorAndRoomID" class="form-control" style="border-radius:5px;">
+							<select name="FloorAndRoomID" id ="FloorAndRoomID" style="border-radius:5px;">
 								<option value=''>Select</option>
 							</select>
 							
