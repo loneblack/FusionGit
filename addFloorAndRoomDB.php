@@ -20,6 +20,7 @@
 		$sql = "INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('{$buildingID}', '{$floorRoom}');";
 		$result = mysqli_query($dbc, $sql);
 
+
 		$message = "Room successfully added!";
 		$_SESSION['submitMessage'] = $message;
 

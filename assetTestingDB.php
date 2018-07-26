@@ -1,24 +1,38 @@
 <?php
+	session_start();
+	$userID = '1';
+	//$userID = $_SESSION['userID'];
 	require_once("mysqlconnect.php");
 	
-	$AssetClass = $_POST['assetclass'];
-	$quantity = $_POST['quantity'];
-	$brand = $_POST['brand'];
-	$ItemSpecification = $_POST['ItemSpecification'];
-	$PropertyCode = $_POST['PropertyCode'];
-	$SerialNumber = $_POST['SerialNumber'];
-	$MACAddress = $_POST['MACAddress'];
-	$status = '2';// for stocked status
-	$ProductKey = $_POST['ProductKey'];
-	$InstallCode = $_POST['InstallCode'];
-	$SInumber = $_POST['SInumber'];
+	$assets = $_POST['assets'];
+	$FloorAndRoomID = $_POST['FloorAndRoomID'];
+	$building = $_POST['building'];
+	$officeID = 
+	$_POST['officeID'];
+	$testingID;
+	$message = "Success ";
 	
-	
-	$sql = "INSERT INTO asset (AssetClass, quantity, brand, ItemSpecification, PropertyCode, SerialNo, MACAddress, status, ProductKey, InstallCode, SIno) VALUES ('{$AssetClass}', '{$quantity}', '{$brand}', '{$ItemSpecification}', '{$PropertyCode}', '{$SerialNumber}', '{$MACAddress}', '{$status}', '{$ProductKey}', '{$InstallCode}', '{$SInumber}')";
+	$sql1 = "INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`) VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}');";
+	echo $sql1;
+	$result1 = mysqli_query($dbc, $sql1);
+/*
+	$sql2 = "SELECT * FROM `thesis`.`assettesting` ORDER BY testingID DESC LIMIT 1;";
+	$result2 = mysqli_query($dbc, $sql2);
+	while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC))
+	{
+		$testingID = $row['testingID'];
 
-	echo $sql;
+	}								
+									
+	echo $sql1;					
+	echo $sql2;
+	for($i = 0; $i<count($assets);$i++)
+	{
+		$sql3 = "INSERT INTO `thesis`.`assettesting_details` (`assettesting_testingID`, `asset_assetID`) VALUES ('{$testingID}', '{$assets[$i]}');";
+		$result3 = mysqli_query($dbc, $sql3);
 
-	$result = mysqli_query($dbc, $sql);
-
-	
+		$sql4 = "UPDATE `thesis`.`asset` SET `status`='9' WHERE `assetID`='{$assets[$i]}';";
+		$result4 = mysqli_query($dbc, $sql4);
+	}
+	$_SESSION['submitMessage']  = $message;*/
 ?>

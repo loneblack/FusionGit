@@ -97,9 +97,20 @@ INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('5', 'In R
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('6', 'For Disposal');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('7', 'Donated');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('8', 'Disposed');
-INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('9', 'Pending');
-INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('10', 'Ongoing');
-INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('11', 'Completed');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('9', 'For Testing');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('10', 'Pending');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('11', 'Ongoing');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('12', 'Completed');
+
+-- ref_ticketstatus
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('1', 'Open');
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('2', 'Assigned');
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('3', 'In Testing');
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('4', 'Transferred');
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('5', 'Escalated');
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('6', 'Waiting for Parts');
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('7', 'Closed');
+
 
 
 -- department
@@ -140,6 +151,14 @@ INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('34', 'Scienc
 INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('35', 'Software Technology');
 INSERT INTO `thesis`.`department` (`DepartmentID`, `name`) VALUES ('36', 'Theology and Religious Studies');
 
+
+-- offices
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('1', 'Academic Support for Instructional Services and Technology (ASIST), Director');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('2', 'Academic Support for Instructional Services and Technology (ASIST), Director');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('3', 'Advanced Research Institute for Informatics, Computing and Networking (AdRIC)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('4', 'Advancement and Alumni Affairs Office (AAAO)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('5', 'Angelo King Institute (AKI)');
+
 -- brand
 INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('1', 'Acer');
 INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('2', 'Samsung');
@@ -151,7 +170,7 @@ INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpe
 INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('3', '18', '3', 'Wireless ');
 
 -- asset
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '2');
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('3', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
 
@@ -163,4 +182,3 @@ INSERT INTO `thesis`.`personresponsible` (`employeeID`) VALUES ('1');
 
 -- Asset Assignment
 INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `personresponsible_id`) VALUES ('1', '2018-07-24', '2018-07-25', '1');
-

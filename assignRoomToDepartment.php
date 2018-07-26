@@ -116,20 +116,20 @@ $_SESSION['previousPage']="assignRoomtoDepartment.php";?>
 						<div class="input-group">	<!-- Start Date -->
 							<b><font size="1" color="#332929">Start Date *</font></b>
 							<br>
-							<input type="date" name="startDate" placeholder="Start Date" style="border-radius:5px" required>
+							<input type="date" name="startDate" class="form-control" placeholder="Start Date" style="border-radius:5px; width: 360px;" required>
 						</div>	<!-- Start Date -->
 						<br>
 						<div class="input-group">	<!-- End Date -->
 							<b><font size="1" color="#332929">End Date *</font></b>
 							<br>
-							<input type="date" name="endDate" placeholder="End Date" style="border-radius:5px" required>
+							<input type="date" name="endDate" class="form-control"  placeholder="End Date" style="border-radius:5px; width: 360px;" required>
 						</div>	<!-- End Date -->
 						<br>
 						<div class="input-group"> <!-- Building -->
 							<b><font size="1" color="#332929">Building *</font></b>
 							<br>
 							<select class="form-control" name="buildingID" id="buildingID" onChange="getRooms(this.value)"style="border-radius:5px">
-								<option value=''>Select Building</option>
+								<option value=''>Select</option>
 								<?php
 									$query="select * from building ORDER BY name;";
 									$result=mysqli_query($dbc,$query);
@@ -140,20 +140,20 @@ $_SESSION['previousPage']="assignRoomtoDepartment.php";?>
 								?>
 							</select>
 						</div>	<!-- Building -->
-						<br>
-						<div class="input-group">	<!-- Floor and Room-->
+						
+						<div class="input-group;" style="white-space: nowrap; padding-top: 10px";>	<!-- Floor and Room-->
 							<b><font size="1" color="#332929">Floor & Room *</font></b>
 							<br>
 							
-							<select name="FloorAndRoomID" id ="FloorAndRoomID" style="border-radius:5px;">
+							<select name="FloorAndRoomID" id ="FloorAndRoomID" class="form-control" style="border-radius:5px; width: 280px;">
 								<option value=''>Select</option>
 							</select>
 							
 							<!-- Modal trigger -->
 							<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add New</font></button>
 						</div><!-- Floor and Room-->
-						
-						<div class="input-group">	<!-- Department -->
+						<br>
+						<div class="input-group" style="width: 360px">	<!-- Department -->
 							<b><font size="1" color="#332929">Department *</font></b>
 							<br>
 							<select name="DepartmentID" class="form-control" style="border-radius:5px;">
