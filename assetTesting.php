@@ -117,7 +117,7 @@
 			<div class="input-group"> <!-- Building -->
 				<b><font size="1" color="#332929">Building *</font></b>
 				<br>
-				<select class="form-control" name="building" id="building" onChange="getRooms(this.value)"style="border-radius:5px">
+				<select class="form-control" name="building" id="building" onChange="getRooms(this.value)"style="border-radius:5px; width: 550px;">
 					<option value=''>Select</option>
 					<?php
 						$query="select * from building ORDER BY name;";
@@ -130,24 +130,24 @@
 				</select>
 			</div>	<!-- Building -->
 			
-			<div class="input-group;" style="white-space: nowrap; padding-top: 10px";>	<!-- Floor and Room-->
+			<div class="input-group;" style="padding-top: 10px";>	<!-- Floor and Room-->
 				<b><font size="1" color="#332929">Floor & Room *</font></b>
 				<br>
 				
-				<select name="FloorAndRoomID" id ="FloorAndRoomID" class="form-control" style="border-radius:5px; width: 280px;">
+				<select name="FloorAndRoomID" id ="FloorAndRoomID" style="border-radius:5px; width: 480px; height: 35px;">
 					<option value=''>Select</option>
 				</select>
 				
 				<!-- Modal trigger -->
 				<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#addFloorRoomModal"><font size="1">Add New</font></button>
 			</div><!-- Floor and Room-->
-			<button onClick="submitAssetTesting()" type="submit">Submit</button>
+			<br>
 		</form>
 
 
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<button onClick="submitAssetTesting()" class="btn btn-secondary" type="submit">Submit</button>
 	      </div>
 	    </div>
 
@@ -286,9 +286,8 @@
 					
 					<!-- /.col -->
 					<div class="col-sm-12">
-					  <button type="submit" name ="submit"  class="btn btn-outline-secondary">Submit</button>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Select</button>
 					  <!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Modal</font></button>
 
 					</div>
 					</form>
