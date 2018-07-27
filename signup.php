@@ -1,4 +1,8 @@
-<?php session_start();  //unset($_SESSION["message"]);?>
+<?php 
+session_start();
+require_once("mysqlconnect.php");
+//unset($_SESSION["message"]);
+?>
 <html>
 	<head>
 		<title>Registration</title>
@@ -119,12 +123,16 @@
 					<div>
 						<b><font size="1" color="#332929">User type:</font></b>
 						<br>
-						<select name="userType">
-							<option value="0">Select User Type</option>
-							<option value="1">Administrator</option>
-							<option value="2">Asset Manager</option>
-							<option value="3">Helpdesk</option>
-						</select>
+							<select name="userType">
+								<?php
+									$query="select * from ref_userType;";
+									$result=mysqli_query($dbc,$query);
+									
+									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+									echo "<option value='{$row['id']}'>{$row['description']}</option>";
+									}
+								?>
+							</select>
 					</div>
 					<br>
 					<button style="padding-bottom: 7px" type="submit" name ="submit" class="btn btn-outline-secondary">Submit</button>
@@ -156,8 +164,6 @@
 </div>
 
 <?php
-
-  require_once("mysqlconnect.php");
 
   $key = "Fusion";
 

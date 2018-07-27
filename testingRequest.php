@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Test Stocked Assets</title>
+		<title>Testing Request</title>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
@@ -57,151 +57,6 @@
 			</style>
 	</head>
 
-		<?php
-	if (isset($_SESSION['submitMessage'])){
-		
-	?>
-		<!-- Modal -->
-	<div id="submitModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	      </div>
-	      <div class="modal-body">
-	      		<?php echo $_SESSION['submitMessage']; ?>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div><?php 
-	echo "<script> $('#submitModal').modal('show') </script>";
-		unset($_SESSION['submitMessage']);
-
-		} ?>
-
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Select Building and Room</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form>
-			<div class="input-group"> <!-- Office -->
-				<b><font size="1" color="#332929">Office *</font></b>
-				<br>
-				<select class="form-control" name="officeID" id="officeID" style="border-radius:5px">
-					<option value=''>Select</option>
-					<?php
-						$query="select * from Offices ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['officeID']}'>{$row['Name']}</option>";
-						}
-					?>
-				</select>
-			</div>	<!-- Office -->
-
-			<div class="input-group"> <!-- Building -->
-				<b><font size="1" color="#332929">Building *</font></b>
-				<br>
-				<select class="form-control" name="building" id="building" onChange="getRooms(this.value)"style="border-radius:5px">
-					<option value=''>Select</option>
-					<?php
-						$query="select * from building ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-						}
-					?>
-				</select>
-			</div>	<!-- Building -->
-			
-			<div class="input-group;" style="white-space: nowrap; padding-top: 10px";>	<!-- Floor and Room-->
-				<b><font size="1" color="#332929">Floor & Room *</font></b>
-				<br>
-				
-				<select name="FloorAndRoomID" id ="FloorAndRoomID" class="form-control" style="border-radius:5px; width: 280px;">
-					<option value=''>Select</option>
-				</select>
-				
-				<!-- Modal trigger -->
-				<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#addFloorRoomModal"><font size="1">Add New</font></button>
-			</div><!-- Floor and Room-->
-			<button onClick="submitAssetTesting()" type="submit">Submit</button>
-		</form>
-
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-	<!-- /.Modal -->
-
-	<!-- Modal -->
-	<div id="addFloorRoomModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Add New Floor And Room</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form method="POST" action="addFloorAndRoomDB.php">
-			<div>
-				<label>Building</label>
-				<select name = buildingID>
-					<?php
-						$query="select * from building ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-						}
-					?>
-				</select>
-			</div>
-			<div>
-				<label>Floor and Room</label>
-				<input type="text"  name = "floorRoom" placeholder="floorRoom" required>
-			</div>
-			<button type="submit">Submit</button>
-		</form>
-
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-
-
-
-
 	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div>	<!-- Navbar -->
 			<nav class="navbar navbar-inverse">
@@ -240,38 +95,41 @@
 					<div class="col-sm-12">
 					  <div class="box box-primary">
 						<div class="box-header">
-						  <h3 class="box-title" style="">Put ITS Stocked Assets to test</h3>
+						  <h3 class="box-title" style="">Testing Request</h3>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
 						  <table id="example2" class="table table-bordered table-striped">
 							<thead>
 							<tr>
+							  <th hidden></th>
+							  <th>Office Name</th>
+							  <th>Building Name</th>
+							  <th>Room and Floor</th>
 							  <th></th>
-							  <th>Property Code</th>
-							  <th>Serial Number</th>
-							  <th>MAC Address</th>
-							  <th>Item Specification</th>
 							</tr>
 							</thead>
 							<tbody>
 								<?php
-									$query = "	SELECT * FROM thesis.asset a
-												join assettype at on a.assetTypeID = at.assetTypeID
-												join ref_brand b on at.brand = b.brandId 
-												join ref_assetclass ac on at.assetClass = ac.assetClassID
-												where a.status = 1 OR a.status = 2;";
+									$query = "SELECT testingID, (o.Name)AS 'OfficeName',(b.name)AS 'BuildiingName', fr.floorRoom FROM `thesis`.`assettesting` ag
+												JOIN floorandroom fr
+												ON fr.FloorAndRoomID = ag.FloorAndRoomID
+												JOIN building b
+												ON fr.BuildingID = b.BuildingID
+												JOIN offices o
+												ON o.officeID = ag.officeID
+												WHERE statusID = 10;";
 																
 									$result = mysqli_query($dbc, $query);
 									
 									while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 									{
 										echo "<tr>
-												<td><div style='text-align: center;'><input type='checkbox' class='checkbox' name='assets[]' value='{$row['assetID']}' style='width: 2rem; height: 2rem;'></div></td>
-												<td>{$row['propertyCode']}</td>
-												<td>{$row['serialNo']}</td>
-												<td>{$row['macAddress']}</td>
-												<td>{$row['itemSpecification']}</td>
+												<td hidden>{$row['testingID']}</td>
+												<td>{$row['OfficeName']}</td>
+												<td>{$row['BuildiingName']}</td>
+												<td>{$row['floorRoom']}</td>
+												<td><button>Button</button></td>
 											  </tr>";
 									}
 								?>
@@ -283,13 +141,9 @@
 					  </div>
 					  <!-- /.box -->
 					</div>
-					
 					<!-- /.col -->
 					<div class="col-sm-12">
 					  <button type="submit" name ="submit"  class="btn btn-outline-secondary">Submit</button>
-					  <!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Modal</font></button>
-
 					</div>
 					</form>
 				 	</div>
