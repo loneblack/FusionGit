@@ -171,7 +171,7 @@
 		<form method="POST" action="addFloorAndRoomDB.php">
 			<div>
 				<label>Building</label>
-				<select name = buildingID>
+				<select name = "buildingID">
 					<?php
 						$query="select * from building ORDER BY name;";
 						$result=mysqli_query($dbc,$query);
@@ -186,21 +186,18 @@
 				<label>Floor and Room</label>
 				<input type="text"  name = "floorRoom" placeholder="floorRoom" required>
 			</div>
-			<button type="submit">Submit</button>
-		</form>
 
 
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-default">Submit</button>
 	      </div>
+		</form>
 	    </div>
 
 	  </div>
 	</div>
-
-
-
+	<!-- /.Modal -->
 
 	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div>	<!-- Navbar -->
