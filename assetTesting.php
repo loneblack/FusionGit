@@ -142,12 +142,17 @@
 				<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#addFloorRoomModal"><font size="1">Add New</font></button>
 			</div><!-- Floor and Room-->
 			<br>
-		</form>
+			<div class="input-group"> <!-- Remarks -->
+				<b><font size="1" color="#332929">Remarks *</font></b>
+				<br>
+				<textarea type ="text" id = "remarks" name ="remarks" style="width: 550px; height: 200px"></textarea>
+			</div>	<!-- Remarks -->
 
 
 	      </div>
 	      <div class="modal-footer">
 			<button onClick="submitAssetTesting()" class="btn btn-secondary" type="submit">Submit</button>
+		</form>
 	      </div>
 	    </div>
 
@@ -323,6 +328,7 @@ var assets = new Array();
 var FloorAndRoomID;
 var building;
 var officeID;
+var remarks;
 
 function getData(ele) {
 
@@ -338,6 +344,9 @@ $('#FloorAndRoomID').map(function(){
 })
   $('#officeID').map(function(){
     officeID = ($(this).val());
+})
+  $('#remarks').map(function(){
+    remarks = ($(this).val());
 })
    }   
 
@@ -357,9 +366,9 @@ function submitAssetTesting(){
     $.ajax({
         type:"POST",
         url:"assetTestingDB.php",
-        data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID},
+        data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks},
         success: function(data){
-            alert(data);
+             
        				 }
     		});
 	}

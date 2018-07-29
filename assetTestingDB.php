@@ -7,11 +7,13 @@ $assets = $_POST['assets'];
 $FloorAndRoomID = $_POST['FloorAndRoomID'];
 $building = $_POST['building'];
 $officeID = $_POST['officeID'];
+$remarks = $_POST['remarks'];
 $testingID;
 
 
-$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`)
-									VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}');";
+$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`)
+									VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}');";
+
 $result1=mysqli_query($dbc,$query1);
 
 $query2 = "SELECT * FROM `thesis`.`assettesting` ORDER BY testingID DESC LIMIT 1;";

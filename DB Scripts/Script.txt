@@ -813,54 +813,55 @@
   ENGINE = InnoDB;
 
 
-  -- -----------------------------------------------------
-  -- Table `thesis`.`assettesting`
-  -- -----------------------------------------------------
-  DROP TABLE IF EXISTS `thesis`.`assettesting` ;
+-- -----------------------------------------------------
+-- Table `thesis`.`assettesting`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `thesis`.`assettesting` ;
 
-  CREATE TABLE IF NOT EXISTS `thesis`.`assettesting` (
-    `testingID` INT(11) NOT NULL AUTO_INCREMENT,
-    `statusID` INT(11) NOT NULL,
-    `startTestDate` DATETIME NULL DEFAULT NULL,
-    `endTestDate` DATETIME NULL DEFAULT NULL,
-    `Result` VARCHAR(45) NULL DEFAULT NULL,
-    `PersonRequestedID` INT(11) NOT NULL,
-    `FloorAndRoomID` INT(11) NOT NULL,
-    `departmentOwnsRoomID` INT(11) NULL DEFAULT NULL,
-    `officeID` INT(11) NULL DEFAULT NULL,
-    PRIMARY KEY (`testingID`),
-    INDEX `fk_AssetTesting_User1_idx` (`PersonRequestedID` ASC),
-    INDEX `fk_AssetTesting_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
-    INDEX `fk_AssetTesting_DepartmentOwnsRoom1_idx` (`departmentOwnsRoomID` ASC),
-    INDEX `fk_assettesting_ref_status1_idx` (`statusID` ASC),
-    INDEX `fk_assettesting_offices1_idx` (`officeID` ASC),
-    CONSTRAINT `fk_AssetTesting_DepartmentOwnsRoom1`
-      FOREIGN KEY (`departmentOwnsRoomID`)
-      REFERENCES `thesis`.`departmentownsroom` (`departmentOwnsRoomID`)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
-    CONSTRAINT `fk_AssetTesting_FloorAndRoom1`
-      FOREIGN KEY (`FloorAndRoomID`)
-      REFERENCES `thesis`.`floorandroom` (`FloorAndRoomID`)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
-    CONSTRAINT `fk_AssetTesting_User1`
-      FOREIGN KEY (`PersonRequestedID`)
-      REFERENCES `thesis`.`user` (`UserID`)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
-    CONSTRAINT `fk_assettesting_offices1`
-      FOREIGN KEY (`officeID`)
-      REFERENCES `thesis`.`offices` (`officeID`)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION,
-    CONSTRAINT `fk_assettesting_ref_status1`
-      FOREIGN KEY (`statusID`)
-      REFERENCES `thesis`.`ref_status` (`statusID`)
-      ON DELETE NO ACTION
-      ON UPDATE NO ACTION)
-  ENGINE = InnoDB
-  DEFAULT CHARACTER SET = utf8;
+CREATE TABLE IF NOT EXISTS `thesis`.`assettesting` (
+  `testingID` INT(11) NOT NULL AUTO_INCREMENT,
+  `statusID` INT(11) NOT NULL,
+  `startTestDate` DATETIME NULL DEFAULT NULL,
+  `endTestDate` DATETIME NULL DEFAULT NULL,
+  `Result` VARCHAR(45) NULL DEFAULT NULL,
+  `PersonRequestedID` INT(11) NOT NULL,
+  `FloorAndRoomID` INT(11) NOT NULL,
+  `departmentOwnsRoomID` INT(11) NULL DEFAULT NULL,
+  `officeID` INT(11) NULL DEFAULT NULL,
+  `remarks` LONGTEXT NULL,
+  PRIMARY KEY (`testingID`),
+  INDEX `fk_AssetTesting_User1_idx` (`PersonRequestedID` ASC),
+  INDEX `fk_AssetTesting_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
+  INDEX `fk_AssetTesting_DepartmentOwnsRoom1_idx` (`departmentOwnsRoomID` ASC),
+  INDEX `fk_assettesting_ref_status1_idx` (`statusID` ASC),
+  INDEX `fk_assettesting_offices1_idx` (`officeID` ASC),
+  CONSTRAINT `fk_AssetTesting_DepartmentOwnsRoom1`
+    FOREIGN KEY (`departmentOwnsRoomID`)
+    REFERENCES `thesis`.`departmentownsroom` (`departmentOwnsRoomID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AssetTesting_FloorAndRoom1`
+    FOREIGN KEY (`FloorAndRoomID`)
+    REFERENCES `thesis`.`floorandroom` (`FloorAndRoomID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AssetTesting_User1`
+    FOREIGN KEY (`PersonRequestedID`)
+    REFERENCES `thesis`.`user` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_assettesting_offices1`
+    FOREIGN KEY (`officeID`)
+    REFERENCES `thesis`.`offices` (`officeID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_assettesting_ref_status1`
+    FOREIGN KEY (`statusID`)
+    REFERENCES `thesis`.`ref_status` (`statusID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
 
 
   -- -----------------------------------------------------
