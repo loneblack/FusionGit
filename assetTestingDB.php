@@ -8,6 +8,8 @@ $FloorAndRoomID = $_POST['FloorAndRoomID'];
 $building = $_POST['building'];
 $officeID = $_POST['officeID'];
 $remarks = $_POST['remarks'];
+date_default_timezone_set("Asia/Singapore");
+$date = date('Y-m-d H:i:s');
 $testingID;
 
 
@@ -32,6 +34,9 @@ for($i = 0; $i<count($assets);$i++)
 		$query4 = "UPDATE `thesis`.`asset` SET `status`='9' WHERE `assetID`='{$assets[$i]}';";
 		$result4 = mysqli_query($dbc, $query4);
 
+		$query5 = "INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('9', '{$userID}', '{$date}', '{$assets[$i]}');";
+		$result5 = mysqli_query($dbc, $query5);
 	}
+
 $_SESSION['submitMessage']  = "Form Submitted";
 ?>
