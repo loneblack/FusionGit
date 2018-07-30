@@ -37,6 +37,5 @@ for($i = 0; $i<count($assets);$i++)
 		$query5 = "INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('9', '{$userID}', '{$date}', '{$assets[$i]}');";
 		$result5 = mysqli_query($dbc, $query5);
 	}
-
 $_SESSION['submitMessage']  = "Form Submitted";
 ?>

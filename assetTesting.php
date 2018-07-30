@@ -357,7 +357,7 @@ function getRooms(val){
         data: 'buildingID='+val,
         success: function(data){
             $("#FloorAndRoomID").html(data);
-         
+
        				 }
     		});
 	}
@@ -369,7 +369,7 @@ function submitAssetTesting(){
         url:"assetTestingDB.php",
         data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks},
         success: function(data){
-              alert(data);
+
        				 }
     		});
 	}

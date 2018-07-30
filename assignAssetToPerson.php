@@ -165,8 +165,8 @@
 																		join assettype at on a.assetTypeID = at.assetTypeID
 																		join ref_brand b on at.brand = b.brandId 
 																		join ref_assetclass ac on at.assetClass = ac.assetClassID
-																		where a.status = 1;";
-																						
+																		where a.status = 1 or a.stauts = 2;";
+																					 	
 															$result = mysqli_query($dbc, $query);
 															
 															while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
@@ -176,8 +176,12 @@
 																		<td>{$row['propertyCode']}</td>
 																		<td>{$row['serialNo']}</td>
 																		<td>{$row['macAddress']}</td>
-																		<td>{$row['itemSpecification']}</td>
-																	  </tr>";
+																		<td>{$row['itemSpecification']}</td>";
+																if ($row['status'] == 1)
+																	echo "<td>Unassigned</td>";
+																else
+																	echo "<td>Assigned</td>";
+																	  echo "</tr>";
 															}
 														?>
 													</tbody>

@@ -15,7 +15,4 @@ for($i=0; $i<count($assets); $i++){
 	
 }
 
-
-
-
 ?>
