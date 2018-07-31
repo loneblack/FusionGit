@@ -410,7 +410,10 @@ CREATE TABLE IF NOT EXISTS `thesis`.`asset` (
   `installCode` VARCHAR(45) NULL DEFAULT NULL,
   `dateDelivered` DATETIME NULL,
   `unitCost` DECIMAL NULL DEFAULT NULL,
-  `assetcol` VARCHAR(45) NULL,
+  `contractStartDate` DATE NULL,
+  `contractEndDate` DATE NULL,
+  `swStartDate` DATE NULL,
+  `swEndDate` DATE NULL,
   PRIMARY KEY (`assetID`),
   INDEX `fk_Asset_ref_status1_idx` (`status` ASC),
   INDEX `fk_asset_AssetType1_idx` (`assetTypeID` ASC),
@@ -706,26 +709,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `thesis`.`order`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `thesis`.`order` ;
-
-CREATE TABLE IF NOT EXISTS `thesis`.`order` (
-  `orderID` INT(11) NOT NULL AUTO_INCREMENT,
-  `orderDate` DATE NULL DEFAULT NULL,
-  `supplierID` INT(11) NOT NULL,
-  PRIMARY KEY (`orderID`),
-  INDEX `fk_Order_Supplier1_idx` (`supplierID` ASC),
-  CONSTRAINT `fk_Order_Supplier1`
-    FOREIGN KEY (`supplierID`)
-    REFERENCES `thesis`.`supplier` (`supplierID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `thesis`.`procurement`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `thesis`.`procurement` ;
@@ -754,25 +737,20 @@ DROP TABLE IF EXISTS `thesis`.`assetdocument` ;
 CREATE TABLE IF NOT EXISTS `thesis`.`assetdocument` (
   `assetID` INT(11) NOT NULL,
   `requestID` INT(11) NOT NULL,
-  `orderID` INT(11) NOT NULL,
   `procurementID` INT(11) NOT NULL,
   `mrf` VARCHAR(45) NULL,
   `salesInvoice` VARCHAR(45) NULL,
   `deliveryReceipt` VARCHAR(45) NULL,
   `receivingReport` VARCHAR(45) NULL,
   `RRtoWH` DATE NULL,
+  `purchaseOrder` VARCHAR(45) NULL,
+  `forwardToPO` DATE NULL,
   INDEX `fk_AssetDocument_Asset1_idx` (`assetID` ASC),
   INDEX `fk_AssetDocument_Request1_idx` (`requestID` ASC),
-  INDEX `fk_AssetDocument_Order1_idx` (`orderID` ASC),
   INDEX `fk_AssetDocument_Procurement1_idx` (`procurementID` ASC),
   CONSTRAINT `fk_AssetDocument_Asset1`
     FOREIGN KEY (`assetID`)
     REFERENCES `thesis`.`asset` (`assetID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_AssetDocument_Order1`
-    FOREIGN KEY (`orderID`)
-    REFERENCES `thesis`.`order` (`orderID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_AssetDocument_Procurement1`
@@ -1080,30 +1058,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `thesis`.`orderdetails`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `thesis`.`orderdetails` ;
-
-CREATE TABLE IF NOT EXISTS `thesis`.`orderdetails` (
-  `assetID` INT(11) NOT NULL,
-  `orderID` INT(11) NOT NULL,
-  INDEX `fk_OrderDetails_Asset1_idx` (`assetID` ASC),
-  INDEX `fk_OrderDetails_Order1_idx` (`orderID` ASC),
-  CONSTRAINT `fk_OrderDetails_Asset1`
-    FOREIGN KEY (`assetID`)
-    REFERENCES `thesis`.`asset` (`assetID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_OrderDetails_Order1`
-    FOREIGN KEY (`orderID`)
-    REFERENCES `thesis`.`order` (`orderID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `thesis`.`procurementdetails`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `thesis`.`procurementdetails` ;
@@ -1165,19 +1119,11 @@ CREATE TABLE IF NOT EXISTS `thesis`.`requestdetails` (
   `unitPrice` DOUBLE NULL DEFAULT NULL,
   `subtotal` DOUBLE NULL DEFAULT NULL,
   `prsNo` VARCHAR(45) NULL DEFAULT NULL,
-  `RequestDetailscol` VARCHAR(45) NULL DEFAULT NULL,
-  `orderID` INT(11) NOT NULL,
   `supplierID` INT(11) NOT NULL,
   PRIMARY KEY (`requestID`),
   INDEX `fk_RequestDetails_Request1_idx` (`requestID` ASC),
   INDEX `fk_RequestDetails_Requestor1_idx` (`RequestorID` ASC),
-  INDEX `fk_RequestDetails_Order1_idx` (`orderID` ASC),
   INDEX `fk_RequestDetails_Supplier1_idx` (`supplierID` ASC),
-  CONSTRAINT `fk_RequestDetails_Order1`
-    FOREIGN KEY (`orderID`)
-    REFERENCES `thesis`.`order` (`orderID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_RequestDetails_Request1`
     FOREIGN KEY (`requestID`)
     REFERENCES `thesis`.`request` (`requestID`)

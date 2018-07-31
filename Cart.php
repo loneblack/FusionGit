@@ -130,31 +130,38 @@
 						  <table id="example2" class="table table-bordered table-striped">
 							<thead>
 							<tr>
-							  <th></th>
+							  <th style="display: none;"></th>
 							  <th>Property Code</th>
 							  <th>Serial Number</th>
 							  <th>MAC Address</th>
 							  <th>Item Specification</th>
+							  <th></th>
 							</tr>
 							</thead>
 							<tbody>
 								<?php
-									$query = "	SELECT * FROM thesis.asset a
-												join assettype at on a.assetTypeID = at.assetTypeID
-												join ref_brand b on at.brand = b.brandId 
-												join ref_assetclass ac on at.assetClass = ac.assetClassID
-												where a.status = 1 OR a.status = 2;";
+									$query = "SELECT A.assetID, AST.assetTypeID, A.propertyCode, A.serialNo, A.macAddress, AST.itemSpecification,
+													(AC.name)AS 'assetClass', (B.name)AS 'brand'
+													FROM thesis.asset A 
+												JOIN assettype AST
+													ON A.assetTypeID = AST.assetTypeID
+												JOIN ref_assetclass AC
+													ON	AST.assetClass = AC.assetClassID
+												JOIN ref_brand B
+													ON B.brandID = AST.brand
+												WHERE A.status = 1;";
 																
 									$result = mysqli_query($dbc, $query);
 									
 									while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 									{
 										echo "<tr>
-												<td><div style='text-align: center;'><input type='checkbox' class='checkbox' name='assets[]' value='{$row['assetID']}' style='width: 2rem; height: 2rem;'></div></td>
+												<td style='display: none;'>{$row['assetID']}</td>
 												<td>{$row['propertyCode']}</td>
 												<td>{$row['serialNo']}</td>
 												<td>{$row['macAddress']}</td>
 												<td>{$row['itemSpecification']}</td>
+												<td><button>Add Asset</button></td>
 											  </tr>";
 									}
 								?>
