@@ -1,8 +1,4 @@
-<?php 
-session_start();
-require_once("mysqlconnect.php");
-//unset($_SESSION["message"]);
-?>
+<?php session_start();  //unset($_SESSION["message"]);?>
 <html>
 	<head>
 		<title>Registration</title>
@@ -74,68 +70,66 @@ require_once("mysqlconnect.php");
 		</nav>
 	
 		<div style="padding-top:20px; padding-bottom: 20px;">
-			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:600px; padding-bottom:5px; border-radius: 25px; border: solid white">
+			<div margin="auto" class="container" style="background-color:#73CD6F; width:270px; padding-bottom:5px; border-radius: 25px; border: solid white">
 			
 				<form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-					<h2 color="#332929">Register</h2>
-					<div>
-						<b><font size="1" color="#332929">First Name</font></b>
+					<h2 color="#332929" align="center">Register</h2>
+					<div style="padding-left:40px">
+							<b><font size="1" color="#332929" align="left">First Name</font></b>
 						<br>
-						<input type="text" name="fname" placeholder="First Name" required>
+						<input type="text" name="fname" placeholder="First Name" style="border-radius:5px" required>
 					</div>
 					<br>
-					<div>
-						<b><font size="1" color="#332929">Last Name</font></b>
+					<div style="padding-left:40px">
+						<b><font size="1" color="#332929" align="left">Last Name</font></b>
 						<br>
-						<input type="text" name="lname" placeholder="Last Name" required>
+						<input type="text" name="lname" placeholder="Last Name" style="border-radius:5px" required>
 					</div>
 					<br>
-					<div>
-						<b><font size="1" color="#332929">Email</font></b>
+					<div style="padding-left:40px">
+						<b><font size="1" color="#332929" align="left">Email</font></b>
 						<br>
-						<input type="email" name="email" placeholder="Email" required>
+						<input type="email" name="email" placeholder="Email" style="border-radius:5px" required>
 					</div>
 					<br>
-					<div>
-						<b><font size="1" color="#332929">Number</font></b>
+					<div style="padding-left:40px">
+						<b><font size="1" color="#332929" align="left">Number</font></b>
 						<br>
-						<input type="number" name="number" placeholder="Contact Number"  min = "0" max="99999999999" step="0"  required>
+						<input type="number" name="number" placeholder="Contact Number"  min = "0" max="99999999999" step="0" style="border-radius:5px" required>
 					</div>
 					<br>
-					<div>
-						<b><font size="1" color="#332929">Username</font></b>
+					<div style="padding-left:40px">
+						<b><font size="1" color="#332929" align="left">Username</font></b>
 						<br>
-						<input type="text" name="username" placeholder="User Name" required>
+						<input type="text" name="username" placeholder="User Name" style="border-radius:5px" required>
 					</div>
 					<br>
-					<div>
-						<b><font size="1" color="#332929">Password</font></b>
+					<div style="padding-left:40px">
+						<b><font size="1" color="#332929" align="left">Password</font></b>
 						<br>
-						<input type="password" name="password" placeholder="Password" required>
+						<input type="password" name="password" placeholder="Password" style="border-radius:5px" required>
 					</div>
 					<br>
-					<div>
-						<b><font size="1" color="#332929">Confirm Password</font></b>
+					<div style="padding-left:40px">
+						<b><font size="1" color="#332929" align="left">Confirm Password</font></b>
 						<br>
-						<input type="password" name="cpassword" placeholder="Confirm Password" required>
+						<input type="password" name="cpassword" placeholder="Confirm Password" style="border-radius:5px" required>
 					</div>
 					<br>
-					<div>
-						<b><font size="1" color="#332929">User type:</font></b>
+					<div style="padding-left:40px">
+						<b><font size="1" color="#332929" align="left">User type:</font></b>
 						<br>
-							<select name="userType">
-								<?php
-									$query="select * from ref_userType;";
-									$result=mysqli_query($dbc,$query);
-									
-									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-									echo "<option value='{$row['id']}'>{$row['description']}</option>";
-									}
-								?>
-							</select>
+						<select name="userType" style="border-radius:5px; width:150px">
+							<option value="0">Select User Type</option>
+							<option value="1">Administrator</option>
+							<option value="2">Asset Manager</option>
+							<option value="3">Helpdesk</option>
+						</select>
 					</div>
 					<br>
-					<button style="padding-bottom: 7px" type="submit" name ="submit" class="btn btn-outline-secondary">Submit</button>
+					<div style="padding-left:75px">
+						<button style="padding-bottom: 7px" type="submit" name ="submit" align="center" class="btn btn-outline-secondary">Submit</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -164,6 +158,8 @@ require_once("mysqlconnect.php");
 </div>
 
 <?php
+
+  require_once("mysqlconnect.php");
 
   $key = "Fusion";
 
