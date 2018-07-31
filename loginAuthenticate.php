@@ -20,7 +20,7 @@
 	  	$result = mysqli_query($dbc, $sql);
 
 	  		while($row = $result->fetch_assoc()){
-			$_SESSION['user_id'] = $row['userID'];
+			$_SESSION['userID'] = $row['userID'];
 			$userType = $row['userType'];
 
 			//echo encrypt($row['userName'], $key);

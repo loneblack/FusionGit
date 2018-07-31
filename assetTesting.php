@@ -84,39 +84,6 @@
 
 		} ?>
 
-	<!-- Add OfficeModal -->
-	<div id="addOfficeModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Add Office</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form>
-			<!-- Office -->
-			<div class="input-group;" style="padding-top: 10px";>	
-				<b><font size="1" color="#332929">Office Name *</font></b>
-				<br>
-				<input type ="text" id = "officeName" name ="officeName" style="width: 550px; height: 200px">
-			</div>
-			<!-- Office -->
-			<br>
-	      </div>
-	      <div class="modal-footer">
-			<button onClick="addOfficeDB()" class="btn btn-secondary" type="submit">Submit</button>
-		</form>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-	<!-- /.Add Office Modal -->
-
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -131,10 +98,12 @@
 	        
 
 		<form>
-			<div class="input-group"> <!-- Office -->
+			<!-- Office -->
+			<div class="input-group;" style="padding-top: 10px";>
 				<b><font size="1" color="#332929">Office *</font></b>
 				<br>
-				<select class="form-control" name="officeID" id="officeID" style="border-radius:5px">
+				
+				<select name="officeID" id ="officeID" style="border-radius:5px; width: 480px; height: 35px;">
 					<option value=''>Select</option>
 					<?php
 						$query="select * from Offices ORDER BY name;";
@@ -145,7 +114,11 @@
 						}
 					?>
 				</select>
-			</div>	<!-- Office -->
+				
+				<!-- Modal trigger -->
+				<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#addOfficeModal"><font size="1">Add New</font></button>
+			</div>
+			<!-- Office -->
 
 			<div class="input-group"> <!-- Building -->
 				<b><font size="1" color="#332929">Building *</font></b>
@@ -161,9 +134,11 @@
 						}
 					?>
 				</select>
-			</div>	<!-- Building -->
-			
-			<div class="input-group;" style="padding-top: 10px";>	<!-- Floor and Room-->
+			</div>
+			<!-- Building -->
+
+			<!-- Floor and Room-->
+			<div class="input-group;" style="padding-top: 10px";>
 				<b><font size="1" color="#332929">Floor & Room *</font></b>
 				<br>
 				
@@ -173,7 +148,8 @@
 				
 				<!-- Modal trigger -->
 				<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#addFloorRoomModal"><font size="1">Add New</font></button>
-			</div><!-- Floor and Room-->
+			</div>
+			<!-- Floor and Room-->
 			<br>
 			<div class="input-group"> <!-- Remarks -->
 				<b><font size="1" color="#332929">Remarks *</font></b>
@@ -192,6 +168,39 @@
 	  </div>
 	</div>
 	<!-- /.Modal -->
+	
+	<!-- Add OfficeModal -->
+	<div id="addOfficeModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Add Office</h4>
+	      </div>
+	      <div class="modal-body">
+	        
+
+		<form>
+			<!-- Office -->
+			<div class="input-group;" style="padding-top: 10px";>	
+				<b><font size="1" color="#332929">Office Name *</font></b>
+				<br>
+				<input class = "input-group" id = "officeName" name ="officeName" required style="border-radius: 5px">
+			</div>
+			<!-- Office -->
+			<br>
+	      </div>
+	      <div class="modal-footer">
+			<button onClick="addOfficeDB()" class="btn btn-secondary" type="submit">Submit</button>
+		</form>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+	<!-- /.Add Office Modal -->
 
 	<!-- Modal -->
 	<div id="addFloorRoomModal" class="modal fade" role="dialog">
@@ -295,7 +304,7 @@
 												join assettype at on a.assetTypeID = at.assetTypeID
 												join ref_brand b on at.brand = b.brandId 
 												join ref_assetclass ac on at.assetClass = ac.assetClassID
-												where a.status = 1 OR a.status = 2;";
+												where a.status = 1;";
 																
 									$result = mysqli_query($dbc, $query);
 									
@@ -362,7 +371,7 @@ var FloorAndRoomID;
 var building;
 var officeID;
 var remarks;
-var officeName
+var officeName;
 
 function getData(ele) {
 
@@ -410,13 +419,17 @@ function submitAssetTesting(){
        				 }
     		});
 	}
+function alertness(){
+	getData();
+	alert(officeName);
+}
 
 function addOfficeDB(){
 	getData();
     $.ajax({
         type:"POST",
         url:"addOfficeDB.php",
-        data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks},
+        data: {officeName:officeName},
         success: function(data){
 
        				 }
