@@ -414,6 +414,8 @@ CREATE TABLE IF NOT EXISTS `thesis`.`asset` (
   `contractEndDate` DATE NULL,
   `swStartDate` DATE NULL,
   `swEndDate` DATE NULL,
+  `yWarranty` INT(11) NULL,
+  `mWarranty` INT(11) NULL,
   PRIMARY KEY (`assetID`),
   INDEX `fk_Asset_ref_status1_idx` (`status` ASC),
   INDEX `fk_asset_AssetType1_idx` (`assetTypeID` ASC),
