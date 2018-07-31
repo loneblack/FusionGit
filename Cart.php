@@ -84,158 +84,6 @@
 
 		} ?>
 
-	<!-- Add OfficeModal -->
-	<div id="addOfficeModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Add Office</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form>
-			<!-- Office -->
-			<div class="input-group;" style="padding-top: 10px";>	
-				<b><font size="1" color="#332929">Office Name *</font></b>
-				<br>
-				<input type ="text" id = "officeName" name ="officeName" style="width: 550px; height: 200px">
-			</div>
-			<!-- Office -->
-			<br>
-	      </div>
-	      <div class="modal-footer">
-			<button onClick="addOfficeDB()" class="btn btn-secondary" type="submit">Submit</button>
-		</form>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-	<!-- /.Add Office Modal -->
-
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Select Building and Room</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form>
-			<div class="input-group"> <!-- Office -->
-				<b><font size="1" color="#332929">Office *</font></b>
-				<br>
-				<select class="form-control" name="officeID" id="officeID" style="border-radius:5px">
-					<option value=''>Select</option>
-					<?php
-						$query="select * from Offices ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['officeID']}'>{$row['Name']}</option>";
-						}
-					?>
-				</select>
-			</div>	<!-- Office -->
-
-			<div class="input-group"> <!-- Building -->
-				<b><font size="1" color="#332929">Building *</font></b>
-				<br>
-				<select class="form-control" name="building" id="building" onChange="getRooms(this.value)"style="border-radius:5px; width: 550px;">
-					<option value=''>Select</option>
-					<?php
-						$query="select * from building ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-						}
-					?>
-				</select>
-			</div>	<!-- Building -->
-			
-			<div class="input-group;" style="padding-top: 10px";>	<!-- Floor and Room-->
-				<b><font size="1" color="#332929">Floor & Room *</font></b>
-				<br>
-				
-				<select name="FloorAndRoomID" id ="FloorAndRoomID" style="border-radius:5px; width: 480px; height: 35px;">
-					<option value=''>Select</option>
-				</select>
-				
-				<!-- Modal trigger -->
-				<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#addFloorRoomModal"><font size="1">Add New</font></button>
-			</div><!-- Floor and Room-->
-			<br>
-			<div class="input-group"> <!-- Remarks -->
-				<b><font size="1" color="#332929">Remarks *</font></b>
-				<br>
-				<textarea type ="text" id = "remarks" name ="remarks" style="width: 550px; height: 200px"></textarea>
-			</div>	<!-- Remarks -->
-
-
-	      </div>
-	      <div class="modal-footer">
-			<button onClick="submitAssetTesting()" class="btn btn-secondary" type="submit">Submit</button>
-		</form>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-	<!-- /.Modal -->
-
-	<!-- Modal -->
-	<div id="addFloorRoomModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Add New Floor And Room</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form method="POST" action="addFloorAndRoomDB.php">
-			<div>
-				<label>Building</label>
-				<select name = "buildingID">
-					<?php
-						$query="select * from building ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-						}
-					?>
-				</select>
-			</div>
-			<div>
-				<label>Floor and Room</label>
-				<input type="text"  name = "floorRoom" placeholder="floorRoom" required>
-			</div>
-
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="submit" class="btn btn-default">Submit</button>
-	      </div>
-		</form>
-	    </div>
-
-	  </div>
-	</div>
-	<!-- /.Modal -->
 
 	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div>	<!-- Navbar -->
@@ -362,7 +210,6 @@ var FloorAndRoomID;
 var building;
 var officeID;
 var remarks;
-var officeName
 
 function getData(ele) {
 
@@ -381,9 +228,6 @@ $('#FloorAndRoomID').map(function(){
 })
   $('#remarks').map(function(){
     remarks = ($(this).val());
-})
-  $('#officeName').map(function(){
-    officeName = ($(this).val());
 })
    }   
 
@@ -404,18 +248,6 @@ function submitAssetTesting(){
     $.ajax({
         type:"POST",
         url:"assetTestingDB.php",
-        data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks},
-        success: function(data){
-
-       				 }
-    		});
-	}
-
-function addOfficeDB(){
-	getData();
-    $.ajax({
-        type:"POST",
-        url:"addOfficeDB.php",
         data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks},
         success: function(data){
 
