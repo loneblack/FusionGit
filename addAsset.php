@@ -1,4 +1,6 @@
-
+<?php require_once("mysqlconnect.php");
+session_start();
+$_SESSION['previousPage'] = "addAsset.php";?>
 <html>
 	<head>
 		<title>Add Asset</title>
@@ -83,14 +85,105 @@
 				<form method="POST" action="addAssetDB.php">
 					<h2 align="center">Add Asset</h2>
 					
+					<!-- MRF -->
+					<div> 
+						<b><font size="1" color="#332929">MRF</font></b>
+						<br>
+						<input type="text" name="mrf" placeholder="MRF" style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- MRF -->
+					
+					<!-- Date Delivered -->
+					<div> 
+						<b><font size="1" color="#332929">Date Delivered *</font></b>
+						<br>
+						<input type="date" name="dateDelivered" placeholder="Date Delivered" required style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- Date Delivered -->
+					
+					<!-- Purchase Order -->
+					<div> 
+						<b><font size="1" color="#332929">Purchase Order</font></b>
+						<br>
+						<input type="text" name="purchaseOrder" placeholder="Purchase Order"  style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- Purchase Order -->
+					
+					<!-- Sales Invoice -->
+					<div> 
+						<b><font size="1" color="#332929">Sales Invoice</font></b>
+						<br>
+						<input type="text" name="salesInvoice" placeholder="Sales Invoice" style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- Sales Invoice -->
+					
+					<!-- Delivery Receipt -->
+					<div> 
+						<b><font size="1" color="#332929">Delivery Receipt</font></b>
+						<br>
+						<input type="text" name="deliveryReceipt" placeholder="Delivery Receipt" style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- Delivery Receipt -->
+					
+					<!-- Receiving Report -->
+					<div> 
+						<b><font size="1" color="#332929">Receiving Report</font></b>
+						<br>
+						<input type="text" name="receivingReport" placeholder="Receiving Report"  style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- Receiving Report -->
+					
+					<!-- RR Date to WH -->
+					<div> 
+						<b><font size="1" color="#332929">RR Date to WH</font></b>
+						<br>
+						<input type="date" name="rrDate" placeholder="RR Date to WH" style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- RR Date to WH -->
+					
+					<!-- Unit Cost -->
+					<div> 
+						<b><font size="1" color="#332929">Unit Cost *</font></b>
+						<br>
+						<input type="number" min="0" step="0.01" name="unitCost" placeholder="0.00" required style="border-radius:5px; width:252px">
+					</div>
+					<br>					
+					<!-- Unit Cost -->
+					
+					<!-- Supplier -->
+					<div> 
+						<b><font size="1" color="#332929">Supplier * f</font></b>
+						<br>
+						<select style="border-radius:5px; width:252px" required>
+							<option value="">Select Supplier</option>
+								<?php
+									$query="select * from supplier ORDER BY name";
+									$result=mysqli_query($dbc,$query);
+									
+									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+									echo "<option value='{$row['supplierID']}'>{$row['name']}</option>";
+									}
+								?>
+						</select>
+					</div>
+					<br>					
+					<!-- Supplier -->
+					
 					<!-- Asset Class -->
 					<div> 
-						<b><font size="1" color="#332929">Asset Class *</font></b>
+						<b><font size="1" color="#332929">Asset Type *</font></b>
 						<br>
-						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
-							<option>Select asset class</option>
+						<select name="assetclass" onchange="getAssetType(this.value)" style="border-radius:5px; height:25px; width:153px">
+							<option value="0">Select asset type</option>
 							<?php
-								$query="select * from ref_assetclass ORDER BY name";
+								$query="select * from ref_assetclass WHERE assetClassID != 13 && assetClassID != 42 ORDER BY name;";
 								$result=mysqli_query($dbc,$query);
 								
 								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -136,7 +229,7 @@
 					<div> <!-- Quantity -->
 						<b><font size="1" color="#332929">Quantity *</font></b>
 						<br>
-						<input type="number" name="quantity" placeholder="Quantity" style="border-radius:5px; width:252px; height:25px">
+						<input type="number" name="quantity" placeholder="0" min="0" style="border-radius:5px; width:252px; height:25px">
 					</div>
 					<br>
 					
@@ -193,11 +286,20 @@
 					
 					<!-- Item Specification -->
 					<div> 
-						<b><font size="1" color="#332929">Item Specification *</font></b>
+						<b><font size="1" color="#332929">Item Specification</font></b>
 						<br>
-						<input type="text" name="ItemSpecification" placeholder="Item Specification" required style="border-radius:5px; width:252px">
+						<textarea class=""name="itemSpecification" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
+					</div>
+					<br>					
+					<!-- Item Specification -->
+					
+					<!-- Warranty -->
+					<div> 
+						<b><font size="1" color="#332929">Warranty (years)</font></b>
+						<br>
+						<input type="number" min="0" name="warranty" placeholder="Warranty" step="0.1" style="border-radius:5px; width:252px">
 					</div> 
-					<!-- Item specification -->
+					<!-- Warranty -->
 					
 					<br>
 					<div> <!-- Property Code -->
@@ -229,12 +331,6 @@
 						<br>
 						<input type="text" name="InstallCode" placeholder="Install Code" style="border-radius:5px; width:252px">
 					</div> <!-- Install Code -->
-					<br>
-					<div> <!-- SI Number -->
-						<b><font size="1" color="#332929">SI Number</font></b>
-						<br>
-						<input type="text" name="SInumber" placeholder="SI Number" style="border-radius:5px; width:252px">
-					</div> <!-- SI Number -->
 					<br>
 				</div>
 					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
@@ -296,4 +392,15 @@ function btnCheck1(){
 function disableBtn1(){
 	document.getElementById('brandSubmit').disabled=true;
 }
+
+function getAssetType(val){
+    $.ajax({
+        type:"POST",
+        url:"getAssetType.php",
+        data: 'assetType='+val,
+        success: function(data){
+            $("#FloorAndRoomID").html(data);
+       				 }
+    		});
+	}
 </script>
