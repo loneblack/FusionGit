@@ -2,12 +2,13 @@
 	require_once("mysqlconnect.php");
 	session_start();
 	$_SESSION['previousPage'] = "assetTesting.php"; 
+	$_
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Test Stocked Assets</title>
+		<title>Cart</title>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
@@ -123,7 +124,34 @@
 					<div class="col-sm-12">
 					  <div class="box box-primary">
 						<div class="box-header">
-						  <h3 class="box-title" style="">Put ITS Stocked Assets to test</h3>
+						  <table class="table" style="background: #ffffff; margin: 0; padding: 0;">
+							<tr>
+							<td style="width: 90%">Asset Components</td>
+							<td><button>Empty List</button></td>
+							</tr>
+						  </table>
+						  <table id="cart" class="table table-bordered table-striped">
+							<thead>
+							<tr>
+							  <th style="display: none;"></th>
+							  <th>Asset Class</th>
+							  <th>Brand</th>
+							  <th>Property Code</th>
+							  <th>Serial Number</th>
+							  <th>MAC Address</th>
+							  <th>Item Specification</th>
+							  <th width="7%"></th>
+							</tr>
+							</thead>
+							<tbody>
+									<?php
+									for ()
+
+
+									?>
+							</tbody>
+						
+						  </table>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
@@ -131,11 +159,13 @@
 							<thead>
 							<tr>
 							  <th style="display: none;"></th>
+							  <th>Asset Class</th>
+							  <th>Brand</th>
 							  <th>Property Code</th>
 							  <th>Serial Number</th>
 							  <th>MAC Address</th>
 							  <th>Item Specification</th>
-							  <th></th>
+							  <th width="7%"></th>
 							</tr>
 							</thead>
 							<tbody>
@@ -154,9 +184,11 @@
 									$result = mysqli_query($dbc, $query);
 									
 									while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-									{
+									{	
 										echo "<tr>
 												<td style='display: none;'>{$row['assetID']}</td>
+												<td>{$row['assetClass']}</td>
+												<td>{$row['brand']}</td>
 												<td>{$row['propertyCode']}</td>
 												<td>{$row['serialNo']}</td>
 												<td>{$row['macAddress']}</td>
@@ -172,13 +204,6 @@
 						<!-- /.box-body -->
 					  </div>
 					  <!-- /.box -->
-					</div>
-					
-					<!-- /.col -->
-					<div class="col-sm-12">
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Select</button>
-					  <!-- Trigger the modal with a button -->
-
 					</div>
 					</form>
 				 	</div>

@@ -353,7 +353,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `thesis`.`assettype` ;
 
 CREATE TABLE IF NOT EXISTS `thesis`.`assettype` (
-  `assetTypeID` INT(11) NOT NULL,
+  `assetTypeID` INT(11) NOT NULL AUTO_INCREMENT,
   `assetClass` INT(11) NULL DEFAULT NULL,
   `brand` INT(11) NULL DEFAULT NULL,
   `itemSpecification` LONGTEXT NULL DEFAULT NULL,
