@@ -49,7 +49,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="logo.png" />
+                    <img src="resource/logo.png" />
                 </a>
 
             </div>
@@ -234,6 +234,8 @@ var hiddenrow = getElementById("invi")
  $(hiddenrow).closest('tr').nextUntil("tr:has(.showhr)").toggle("slow", function() {});
 }
 </script>
+
+
 <script>
 function openTab(tabName) {
   var i, x;

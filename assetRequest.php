@@ -49,7 +49,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="logo.png" />
+                    <img src="resource/logo.png" />
                 </a>
 
             </div>
