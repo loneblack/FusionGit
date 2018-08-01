@@ -174,6 +174,7 @@
 													  <th>Serial Number</th>
 													  <th>MAC Address</th>
 													  <th>Item Specification</th>
+													  <th>Assignment</th>
 													</tr>
 													</thead>
 													<tbody>
@@ -182,7 +183,7 @@
 																		join assettype at on a.assetTypeID = at.assetTypeID
 																		join ref_brand b on at.brand = b.brandId 
 																		join ref_assetclass ac on at.assetClass = ac.assetClassID
-																		where a.status = 1 or a.stauts = 2;";
+																		where a.status = 1 or a.status = 2;";
 																					 	
 															$result = mysqli_query($dbc, $query);
 															
