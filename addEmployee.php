@@ -57,7 +57,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="logo.png" />
+                    <img src="resource/logo.png" />
                 </a>
 
             </div>
@@ -80,19 +80,28 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
-                            <li><a href="#">Add</a>
+                           <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
+                            <li><a href="#">Adding</a>
 								<ul>
 								<li> <a href="addAsset.php">Add Asset</a> </li>
-								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
+								<li> <a href="addDesktop.php">Add Desktop</a> </li>
 								<li> <a href="addEmployee.php">Add Employee</a> </li>
 								<li> <a href="addSoftware.php">Add Software</a> </li>
 								</ul>
 							</li>
-                            <li><a href="table.html">Data Tables</a></li>
-                            <li><a href="forms.html">Forms</a></li>
+							<li><a href="#">Assigning</a>
+								<ul>
+								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
+								<li> <a href="assignAssetToPerson.php">Assign Asset</a> </li>
+								</ul>
+							</li>
+                            <li><a href="DataTables.html">Data Tables</a>
+								<ul>
+								<li> <a href="assetTesting.php">Asset Testing Table</a> </li>
+								</ul>
+							</li>
+                            <li><a href="#">Forms</a></li>
                              <li><a href="login.html">Login Page</a></li>
-                            <li><a href="blank.html">Blank Page</a></li>
 
                         </ul>
                     </div>
