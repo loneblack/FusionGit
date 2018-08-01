@@ -1,8 +1,7 @@
 <?php
+session_start();
 	require_once("mysqlconnect.php");
-	session_start();
-	$_SESSION['previousPage'] = "assetTesting.php"; 
-	$_
+	//unset($_SESSION['cart']);
 ?>
 
 <!DOCTYPE html>
@@ -124,16 +123,18 @@
 					<div class="col-sm-12">
 					  <div class="box box-primary">
 						<div class="box-header">
+
 						  <table class="table" style="background: #ffffff; margin: 0; padding: 0;">
 							<tr>
 							<td style="width: 90%">Asset Components</td>
-							<td><button>Empty List</button></td>
+							<td><button onClick="emptyList()">Empty List</button></td>
 							</tr>
 						  </table>
+
 						  <table id="cart" class="table table-bordered table-striped">
 							<thead>
 							<tr>
-							  <th style="display: none;"></th>
+							  <th style="display: none;">assetID</th>
 							  <th>Asset Class</th>
 							  <th>Brand</th>
 							  <th>Property Code</th>
@@ -143,11 +144,45 @@
 							  <th width="7%"></th>
 							</tr>
 							</thead>
-							<tbody>
+							<tbody id="body" class="body">
 									<?php
-									for ()
+									if (isset($_SESSION['cart'])){
+										for ($i =0; $i<count($_SESSION['cart']); $i++){
 
+											$query = "SELECT A.assetID, AST.assetTypeID, A.propertyCode, A.serialNo, A.macAddress, AST.itemSpecification,
+														(AC.name)AS 'assetClass', (B.name)AS 'brand'
+														FROM thesis.asset A 
+													JOIN assettype AST
+														ON A.assetTypeID = AST.assetTypeID
+													JOIN ref_assetclass AC
+														ON	AST.assetClass = AC.assetClassID
+													JOIN ref_brand B
+														ON B.brandID = AST.brand
+													WHERE A.assetID = '{$_SESSION['cart'][$i]}';";
+																	
+										$result = mysqli_query($dbc, $query);
+										
+											while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+											{	
+												echo "<tr>
+														<td name='assets[]' class = 'nr' style='display: none'>{$row['assetID']}</td>
+														<td>{$row['assetClass']}</td>
+														<td>{$row['brand']}</td>
+														<td>{$row['propertyCode']}</td>
+														<td>{$row['serialNo']}</td>
+														<td>{$row['macAddress']}</td>
+														<td>{$row['itemSpecification']}</td>
+														<td>
+														<div style='text-align: center;'>";
 
+												echo "<button type='submit' class='buttoness' onClick=''>Remove Asset</button>";
+														
+												echo  "</div>
+														</td>
+													  </tr>";
+											}
+										}
+									}
 									?>
 							</tbody>
 						
@@ -158,14 +193,13 @@
 						  <table id="example2" class="table table-bordered table-striped">
 							<thead>
 							<tr>
-							  <th style="display: none;"></th>
 							  <th>Asset Class</th>
 							  <th>Brand</th>
 							  <th>Property Code</th>
 							  <th>Serial Number</th>
 							  <th>MAC Address</th>
 							  <th>Item Specification</th>
-							  <th width="7%"></th>
+							  <th width="1%"></th>
 							</tr>
 							</thead>
 							<tbody>
@@ -186,14 +220,14 @@
 									while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 									{	
 										echo "<tr>
-												<td style='display: none;'>{$row['assetID']}</td>
+												<td class='nr' style='display: none'><input >{$row['assetID']}</td>
 												<td>{$row['assetClass']}</td>
 												<td>{$row['brand']}</td>
 												<td>{$row['propertyCode']}</td>
 												<td>{$row['serialNo']}</td>
 												<td>{$row['macAddress']}</td>
 												<td>{$row['itemSpecification']}</td>
-												<td><button>Add Asset</button></td>
+												<td><button type='submit' class='addness' onClick=''>Add Asset</button></td>
 											  </tr>";
 									}
 								?>
@@ -203,6 +237,9 @@
 						</div>
 						<!-- /.box-body -->
 					  </div>
+					  <!-- /.col -->
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-secondary" onClick="alertness()" type="submit">Submit</button>
 					  <!-- /.box -->
 					</div>
 					</form>
@@ -236,54 +273,54 @@
     $('input[type="checkbox"].minimal').iCheck({
       checkboxClass: 'icheckbox_minimal-blue'
     })
-  })
+  });
+
 var assets = new Array();
-var FloorAndRoomID;
-var building;
-var officeID;
-var remarks;
+
+$(".buttoness").click(function() {
+    var item = $(this).closest('tr').children('td:first').text();         // Retrieves the text within <td>
+
+	$.ajax({
+        type:"POST",
+        url:"cartRemoveItem.php",
+        data: {item:item},
+        success: function(data){
+        	alert(data);
+       				 }
+    		})
+
+});
+$(".addness").click(function() {
+    var item = $(this).closest('tr').children('td:first').text();         // Retrieves the text within <td>
+
+	$.ajax({
+        type:"POST",
+        url:"cartSession.php",
+        data: {item:item},
+        success: function(data){
+        	alert(data);
+       				 }
+    		})
+
+});
 
 function getData(ele) {
 
- $("input[name='assets[]']:checked").map(function(){
-    assets.push( $(this).val());
-})
+$('#body tr').each(function() {
+    assets.push($(this).find("td:first").html());    
 
-$('#FloorAndRoomID').map(function(){
-    FloorAndRoomID = ($(this).val());
-})
-  $('#building').map(function(){
-    building = ($(this).val());
-})
-  $('#officeID').map(function(){
-    officeID = ($(this).val());
-})
-  $('#remarks').map(function(){
-    remarks = ($(this).val());
-})
+});
+
    }   
 
-function getRooms(val){
-    $.ajax({
-        type:"POST",
-        url:"getRooms.php",
-        data: 'buildingID='+val,
-        success: function(data){
-            $("#FloorAndRoomID").html(data);
-
-       				 }
-    		});
-	}
-
-function submitAssetTesting(){
+function alertness(){
+	getData();
+	alert(assets.join("\n"));
+}
+function emptyList(){
 	getData();
     $.ajax({
-        type:"POST",
-        url:"assetTestingDB.php",
-        data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks},
-        success: function(data){
-
-       				 }
+        url:"cartEmptyList.php",
     		});
 	}
 </script>
