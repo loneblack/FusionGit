@@ -1,189 +1,121 @@
-<?php require_once("mysqlconnect.php");
-session_start();
-$_SESSION['previousPage'] = "addAsset.php";?>
+<?php require_once("mysqlconnect.php");?>
 <html>
 	<head>
-		<title>Add Asset</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
-		<script src="layout/jquery.min.js"></script>
-		<link rel="stylesheet" href="layout/bootstrap.min.css">
-		<script src="layout/bootstrap.min.js"></script>
-		
-		<style>
-		/* Remove the navbar's default margin-bottom and rounded borders */ 
-		.navbar {
-		  margin-bottom: 0;
-		  border-radius: 0;
-		}
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Add Asset</title>
+    <!-- BOOTSTRAP CORE STYLE  -->
+    <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
+     <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-		/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-		.row.content {height: 450px}
+<script src="http://www.designbootstrap.com/track/ga.js" ></script>
+<script src="layout/jquery.min.js"></script>
+	<script src="layout/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+	<script type="text/javascript" src="layout/moment.min.js"></script>
+	<script type="text/javascript" src="layout/daterangepicker.min.js"></script>
 
-		/* Set gray background color and 100% height */
-		.sidenav {
-		  padding-top: 20px;
-		  background-color: #f1f1f1;
-		  height: 100%;
-		}
 
-		/* Set black background color, white text and some padding */
-		footer {
-		  background-color: #555;
-		  color: white;
-		  padding: 15px;
-		}
-
-		/* On small screens, set height to 'auto' for sidenav and grid */
-		@media screen and (max-width: 767px) {
-		  .sidenav {
-			height: auto;
-			padding: 15px;
-		  }
-		  .row.content {height:auto;} 
-		}
-		
-		.{
-			font-size: 16px;
-			color:#332929;
-		}
-		
-		</style>
-	</head>
+</head>
 	
 	<body>						
-		<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">	
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-			<div class="navbar-header" style="padding-top:6px">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>                        
-				</button>
-				<a class="img-fluid" href="home.html"><img align="middle" src="resource/logo.png"></a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Projects</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="login.php"><span></span>Login</a></li>
-					<li><a href="signup.php"><span></span>Register</a></li>
-				</ul>
-			</div>
-		  </div>
-		</nav>
-	
+		<header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Email: </strong>info@yourdomain.com
+                    &nbsp;&nbsp;
+                    <strong>Support: </strong>+90-897-678-44
+					&nbsp;&nbsp;
+					<strong>Logout </strong>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+
+                    <img src="logo.png" />
+                </a>
+
+            </div>
+
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- LOGO HEADER END-->
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
+                            <li><a href="#">Add</a>
+								<ul>
+								<li> <a href="addAsset.php">Add Asset</a> </li>
+								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
+								<li> <a href="addEmployee.php">Add Employee</a> </li>
+								<li> <a href="addSoftware.php">Add Software</a> </li>
+								</ul>
+							</li>
+                            <li><a href="table.html">Data Tables</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                             <li><a href="login.html">Login Page</a></li>
+                            <li><a href="blank.html">Blank Page</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- MENU SECTION END-->
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
 				<form method="POST" action="addAssetDB.php">
 					<h2 align="center">Add Asset</h2>
 					
-					<!-- MRF -->
-					<div> 
-						<b><font size="1" color="#332929">MRF</font></b>
+					<div> <!-- Asset class-->
+						<b><font size="1" color="#332929">Asset Class *</font></b>
 						<br>
-						<input type="text" name="mrf" placeholder="MRF" style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- MRF -->
-					
-					<!-- Date Delivered -->
-					<div> 
-						<b><font size="1" color="#332929">Date Delivered *</font></b>
-						<br>
-						<input type="date" name="dateDelivered" placeholder="Date Delivered" required style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- Date Delivered -->
-					
-					<!-- Purchase Order -->
-					<div> 
-						<b><font size="1" color="#332929">Purchase Order</font></b>
-						<br>
-						<input type="text" name="purchaseOrder" placeholder="Purchase Order"  style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- Purchase Order -->
-					
-					<!-- Sales Invoice -->
-					<div> 
-						<b><font size="1" color="#332929">Sales Invoice</font></b>
-						<br>
-						<input type="text" name="salesInvoice" placeholder="Sales Invoice" style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- Sales Invoice -->
-					
-					<!-- Delivery Receipt -->
-					<div> 
-						<b><font size="1" color="#332929">Delivery Receipt</font></b>
-						<br>
-						<input type="text" name="deliveryReceipt" placeholder="Delivery Receipt" style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- Delivery Receipt -->
-					
-					<!-- Receiving Report -->
-					<div> 
-						<b><font size="1" color="#332929">Receiving Report</font></b>
-						<br>
-						<input type="text" name="receivingReport" placeholder="Receiving Report"  style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- Receiving Report -->
-					
-					<!-- RR Date to WH -->
-					<div> 
-						<b><font size="1" color="#332929">RR Date to WH</font></b>
-						<br>
-						<input type="date" name="rrDate" placeholder="RR Date to WH" style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- RR Date to WH -->
-					
-					<!-- Unit Cost -->
-					<div> 
-						<b><font size="1" color="#332929">Unit Cost *</font></b>
-						<br>
-						<input type="number" min="0" step="0.01" name="unitCost" placeholder="0.00" required style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- Unit Cost -->
-					
-					<!-- Supplier -->
-					<div> 
-						<b><font size="1" color="#332929">Supplier * f</font></b>
-						<br>
-						<select style="border-radius:5px; width:252px" required>
-							<option value="">Select Supplier</option>
-								<?php
-									$query="select * from supplier ORDER BY name";
-									$result=mysqli_query($dbc,$query);
-									
-									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-									echo "<option value='{$row['supplierID']}'>{$row['name']}</option>";
-									}
-								?>
-						</select>
-					</div>
-					<br>					
-					<!-- Supplier -->
-					
-					<!-- Asset Class -->
-					<div> 
-						<b><font size="1" color="#332929">Asset Type *</font></b>
-						<br>
-						<select name="assetclass" onchange="getAssetType(this.value)" style="border-radius:5px; height:25px; width:153px">
-							<option value="0">Select asset type</option>
+						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
+							<option>Select asset class</option>
 							<?php
-								$query="select * from ref_assetclass WHERE assetClassID != 13 && assetClassID != 42 ORDER BY name;";
+								$query="select * from ref_assetclass ORDER BY name";
 								$result=mysqli_query($dbc,$query);
 								
 								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -223,17 +155,14 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 						</div>
 					  </div>
 						
-					</div>
-					<!--Asset Class-->
+					</div> <!-- Asset class -->
 					
 					<div> <!-- Quantity -->
 						<b><font size="1" color="#332929">Quantity *</font></b>
 						<br>
-						<input type="number" name="quantity" placeholder="0" min="0" style="border-radius:5px; width:252px; height:25px">
+						<input type="number" name="quantity" placeholder="Quantity" style="border-radius:5px; width:252px; height:25px">
 					</div>
 					<br>
-					
-					<!-- Brand -->
 					<div>
 						<b><font size="1" color="#332929">Brand *</font></b>
 						<br>
@@ -279,28 +208,13 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 						</div>
 					  </div>
 					
-					</div> 
-					<!-- Brand -->
-					
+					</div> <!-- Quantity -->
 					<br>
-					
-					<!-- Item Specification -->
-					<div> 
-						<b><font size="1" color="#332929">Item Specification</font></b>
+					<div> <!-- Item Specification -->
+						<b><font size="1" color="#332929">Item Specification *</font></b>
 						<br>
-						<textarea class=""name="itemSpecification" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
-					</div>
-					<br>					
-					<!-- Item Specification -->
-					
-					<!-- Warranty -->
-					<div> 
-						<b><font size="1" color="#332929">Warranty (years)</font></b>
-						<br>
-						<input type="number" min="0" name="warranty" placeholder="Warranty" step="0.1" style="border-radius:5px; width:252px">
-					</div> 
-					<!-- Warranty -->
-					
+						<input type="text" name="ItemSpecification" placeholder="Item Specification" required style="border-radius:5px; width:252px">
+					</div> <!-- Item specification -->
 					<br>
 					<div> <!-- Property Code -->
 						<b><font size="1" color="#332929">Property Code *</font></b>
@@ -331,6 +245,12 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 						<br>
 						<input type="text" name="InstallCode" placeholder="Install Code" style="border-radius:5px; width:252px">
 					</div> <!-- Install Code -->
+					<br>
+					<div> <!-- SI Number -->
+						<b><font size="1" color="#332929">SI Number</font></b>
+						<br>
+						<input type="text" name="SInumber" placeholder="SI Number" style="border-radius:5px; width:252px">
+					</div> <!-- SI Number -->
 					<br>
 				</div>
 					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
@@ -392,15 +312,4 @@ function btnCheck1(){
 function disableBtn1(){
 	document.getElementById('brandSubmit').disabled=true;
 }
-
-function getAssetType(val){
-    $.ajax({
-        type:"POST",
-        url:"getAssetType.php",
-        data: 'assetType='+val,
-        success: function(data){
-            $("#FloorAndRoomID").html(data);
-       				 }
-    		});
-	}
 </script>
