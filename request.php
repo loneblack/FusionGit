@@ -114,64 +114,38 @@
 						<input type="date" name="date">
 						</div>
 							<!--Date-->
-							
-							<div> <!-- Building-->
-						<b><font size="1" color="#332929">Building *</font></b>
-						<br>
-						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
-							<option>Select building</option>
-							<?php
-								$query="select * FROM thesis.building ORDER BY name";
-								$result=mysqli_query($dbc,$query);
-								
-								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-								}
-							?> 
-						</select>
-
-						
-						</div> <!-- Building -->
 					
 							<div> 
 							
-						<div> <!-- Floor and Room-->
-						<b><font size="1" color="#332929">Building *</font></b>
-						<br>
-						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
-							<option>Select Floor and Room</option>
-							<?php
-								$query="select * FROM thesis.building ORDER BY name";
-								$result=mysqli_query($dbc,$query);
-								
-								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-								}
-							?> 
-						</select>
-
+						<div class="input-group"> <!-- Building -->
+							<b><font size="1" color="#332929">Building *</font></b>
+							<br>
+							<select class="form-control" name="buildingID" id="buildingID" onChange="getRooms(this.value)"style="border-radius:5px">
+								<option value=''>Select</option>
+								<?php
+									$query="select * from building ORDER BY name;";
+									$result=mysqli_query($dbc,$query);
+									
+									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+									echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
+									}
+								?>
+							</select>
+						</div>	<!-- Building -->
 						
-						</div> <!-- Floor and Room-->
-					
-					<div> <!-- Asset class-->
-						<b><font size="1" color="#332929">Asset Class *</font></b>
-						<br>
-						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
-							<option>Select asset class</option>
-							<?php
-								$query="select * from ref_assetclass ORDER BY name";
-								$result=mysqli_query($dbc,$query);
-								
-								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['assetClassID']}'>{$row['name']}</option>";
-								}
-							?> 
-						</select>
-						
-						<!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add new Class</font></button>
-
-						<!-- Modal -->
+								<!--Floor and Room-->
+						<div class="input-group;" style="white-space: nowrap; padding-top: 10px";>	<!-- Floor and Room-->
+							<b><font size="1" color="#332929">Floor & Room *</font></b>
+							<br>
+							
+							<select name="FloorAndRoomID" id ="FloorAndRoomID" class="form-control" style="border-radius:5px; width: 200px;">
+								<option value=''>Select</option>
+							</select>
+							
+							<!-- Modal trigger -->
+							<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add New</font></button>
+							
+							<!-- Modal -->
 						<div class="modal fade" id="myModal" role="dialog">
 							<div class="modal-dialog">
 						
@@ -179,15 +153,15 @@
 							<div class="modal-content">
 							<div class="modal-header">
 							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h4 class="modal-title">Add new Asset Class</h4>
+							  <h4 class="modal-title">Add new Floor and Room</h4>
 							</div>
 							<div class="modal-body"> 
 								<meta charset="UTF-8">
 								
-								<form method="POST" action="addAssetClassDB.php">
+								<form method="POST" action="addFloorAndRoomDB.php">
 									<div>
-										<label>New Asset Class</label>
-										<input type="text" onkeydown="btnCheck();" id="newAssetClass" name="newAssetClass" placeholder="New Asset Class" required>
+										<label>New Floor and Room</label>
+										<input type="text" onkeydown="btnCheck();" id="newFloorAndRoom" name="newFloorAndRoom" placeholder="New Floor And Room" required>
 									</div>
 								</form>
 							</div>
@@ -198,8 +172,10 @@
 						  
 						</div>
 					  </div>
-						
-					</div> <!-- Asset class -->
+							
+						</div><!-- Floor and Room-->
+					
+					
 					
 				
 					<br>
@@ -299,30 +275,55 @@
 		</div>
 	</body>
 	
-		<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
+	
+	        
+
+		<form method="POST" action="addFloorAndRoomDB.php">
+			<div>
+				<label>Building</label>
+				<select name="buildingID">
+					<?php
+						$query="select * from building ORDER BY name;";
+						$result=mysqli_query($dbc,$query);
+						
+						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+						echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
+						}
+					?>
+				</select>
+			</div>
+			<div>
+				<label>Floor and Room</label>
+				<input type="text" name="floorRoom" placeholder="floorRoom" required>
+			</div>
+			<button type="submit">Submit</button>
+		</form>
+
+
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
 	
 </html>
 
 <script>
+
+function getRooms(val){
+    $.ajax({
+        type:"POST",
+        url:"getRooms.php",
+        data: 'buildingID='+val,
+        success: function(data){
+            $("#FloorAndRoomID").html(data);
+       				 }
+    		});
+	}
+
 function btnCheck() {
 	var txt = document.getElementById('newAssetClass').value;
 	
