@@ -100,15 +100,15 @@ $_SESSION['previousPage']="request.php";?>
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form method="POST" action="addAssetDB.php">
+				<form method="POST" action="requestDB.php">
 					<h2 align="center">Your Request</h2>
 					
-						<div> <!--Definition-->
-						<b><font size="1" color="#332929">Definition *</font></b>
+						<div> <!--Description-->
+						<b><font size="1" color="#332929">Description *</font></b>
 						<br>
-						<textarea name="message" rows="5" cols="30"></textarea>
+						<textarea name="definiton" rows="5" cols="30"></textarea>
 						</div>
-							<!--Definition-->
+							<!--Description-->
 							
 						<div> <!--Date-->
 						<b><font size="1" color="#332929">Date *</font></b>
@@ -155,7 +155,8 @@ $_SESSION['previousPage']="request.php";?>
 						<input type="date" name="date">
 						</div>
 							<!--Date Needed-->
-
+						<br>
+					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
 					</form>
 			</div>
 		</div>
