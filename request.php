@@ -1,4 +1,6 @@
 <?php require_once("mysqlconnect.php");?>
+session_start();
+$_SESSION['previousPage']="request.php";?>
 <html>
 	<head>
     <meta charset="utf-8" />
@@ -172,7 +174,7 @@
 	      <div class="modal-body">
 	        
 
-		<form method="POST" action="addFloorAndRoomDB.php">
+		<form method="POST" action="addFloorAndRoomDB(users).php">
 			<div>
 				<label>Building</label>
 				<select name="buildingID">
