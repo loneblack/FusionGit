@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>TITLE</title>
+		<title>Assign Asset to Person</title>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
 			<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
@@ -49,7 +49,6 @@
 
 		} ?>
 
-	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<header>
         <div class="container">
             <div class="row">
@@ -63,8 +62,6 @@
 
             </div>
         </div>
-    </header>
-    <!-- HEADER END-->
     <div class="navbar navbar-inverse set-radius-zero">
         <div class="container">
             <div class="navbar-header">
@@ -92,6 +89,9 @@
         </div>
     </div>
 	<!-- LOGO HEADER END-->
+    </header>
+    <!-- HEADER END-->
+	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
     <section class="menu-section">
         <div class="container">
             <div class="row">
@@ -259,7 +259,7 @@
 											</div>
 											<!-- /.col -->
 											<div class="col-sm-12">
-											  <button type="submit" name ="submit" onClick="alertness()" class="btn btn-outline-secondary">Submit</button>
+											  <button type="submit" name ="submit" onClick="submitAssetAssignment()" class="btn btn-outline-secondary">Submit</button>
 											</div>
 											</form>
 										  </div>
@@ -310,7 +310,8 @@
 														            join ref_brand b
 														            on at.brand = b.brandID
 														            join department d
-														            on d.DepartmentID = e.DepartmentID;";
+														            on d.DepartmentID = e.DepartmentID
+														            WHERE statusID = 11;";
 																						 
 														$result = mysqli_query($dbc, $query);
 														
@@ -357,7 +358,7 @@
 			</div>
 		</div>
 		  <!-- Tables and stuff -->
-
+	</body>
 <script src="layout/jquery.min.js"></script>
 <!-- DataTables -->
 <script src="layout/jquery.dataTables.min.js"></script>
@@ -408,10 +409,10 @@ function submitAssetAssignment(){
 	getData();
     $.ajax({
         type:"POST",
-        url:"submitAssetAssignment.php",
+        url:"assignAssetToPersonDB.php",
         data: {person:person, assets:assets},
         success: function(data){
-            alert(data);
+
        				 }
     		});
 	}

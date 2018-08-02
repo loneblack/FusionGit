@@ -12,12 +12,13 @@ date_default_timezone_set("Asia/Singapore");
 $date = date('Y-m-d H:i:s');
 $testingID;
 
-
+//Insert to asset testing
 $query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`)
 									VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}');";
 
 $result1=mysqli_query($dbc,$query1);
 
+//get testing id inserted from above code
 $query2 = "SELECT * FROM `thesis`.`assettesting` ORDER BY testingID DESC LIMIT 1;";
 $result2 = mysqli_query($dbc, $query2);
 	while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC))
@@ -28,12 +29,15 @@ $result2 = mysqli_query($dbc, $query2);
 
 for($i = 0; $i<count($assets);$i++)
 	{
+		//insert assets to asset testing details
 		$query3 = "INSERT INTO `thesis`.`assettesting_details` (`assettesting_testingID`, `asset_assetID`) VALUES ('{$testingID}', '{$assets[$i]}');";
 		$result3 = mysqli_query($dbc, $query3);
 
+		//Change asset status to pending for testing
 		$query4 = "UPDATE `thesis`.`asset` SET `status`='9' WHERE `assetID`='{$assets[$i]}';";
 		$result4 = mysqli_query($dbc, $query4);
 
+		//Insert to Audit table
 		$query5 = "INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('9', '{$userID}', '{$date}', '{$assets[$i]}');";
 		$result5 = mysqli_query($dbc, $query5);
 	}
