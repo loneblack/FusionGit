@@ -8,64 +8,61 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<style>
-		/* Remove the navbar's default margin-bottom and rounded borders */ 
-		.navbar {
-		  margin-bottom: 0;
-		  border-radius: 0;
-		}
-
-		/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-		.row.content {height: 450px}
-
-		/* Set gray background color and 100% height */
-		.sidenav {
-		  padding-top: 20px;
-		  background-color: #f1f1f1;
-		  height: 100%;
-		}
-
-		/* Set black background color, white text and some padding */
-		footer {
-		  background-color: #555;
-		  color: white;
-		  padding: 15px;
-		}
-
-		/* On small screens, set height to 'auto' for sidenav and grid */
-		@media screen and (max-width: 767px) {
-		  .sidenav {
-			height: auto;
-			padding: 15px;
-		  }
-		  .row.content {height:auto;} 
-		}
-		
-		</style>
+			  <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
+    <!-- FONT AWESOME ICONS  -->
+    <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE  -->
+    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
+	</head>
+	
 	</head>
 	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">	
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>                        
-				</button>
-				<a class="img-fluid" href="home.html"><img align="middle" src="resource/logo.png"></a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">Request</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-					<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>Register</a></li>
-				</ul>
-			</div>
-		  </div>
-		</nav>
+		<div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+
+                    <img src="resource/logo.png" />
+                </a>
+
+            </div>
+
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+
+                       
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-left">
+                            <li><a class="menu-top-active" href="notHome.html">Home</a></li>
+							<li><a href="request.php">Request</a></li>
+                        </ul>
+						<ul class="nav navbar-nav navbar-right">
+						<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+						<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+						</ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
 	
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div margin="auto" class="container" style="background-color:#73CD6F; width:270px; padding-bottom:5px; border-radius: 25px; border: solid white">

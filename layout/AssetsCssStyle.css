@@ -4,6 +4,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 30px;
+	height: 100%;
 }
 
 
@@ -387,7 +388,7 @@ footer {
 }
 
 .backimage {
-    background-image: url("images/DLSU.jpg");
+    background-image: url('images/DLSU.jpg');
 	 /* Full height */
     height: 100%; 
 
