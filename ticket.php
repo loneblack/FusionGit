@@ -73,7 +73,12 @@
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top-active" href="helpdesk-home.html">Dashboard</a></li>
                             <li><a href="ticket.php">Tickets</a></li>
-							<li><a href="request.php">Request</a></li>
+							<li><a href="request.php">Request</a>
+								<ul>
+								<li> <a href="assetRequest.php">Asset Request</a> </li>
+								<li> <a href="testingRequest.php">Testing Request</a> </li>
+								</ul>
+							</li>
                             <li><a href="#">Agents</a></li>
 
                         </ul>
@@ -91,10 +96,6 @@
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
 			  <h3 class="box-title">Tickets</h3>
-			  <button class="btn btn-default new-ticket spec-new-ticket" aria-label="Create new ticket" data-ember-action="1355">
-						<span class="glyphicon glyphicon-plus"></span>
-						New Ticket
-			  </button>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">

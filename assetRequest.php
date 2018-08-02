@@ -74,11 +74,11 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top-active" href="helpdesk-home.html">Dashboard</a></li>
-                            <li><a href="ticket.html">Tickets</a></li>
+                            <li><a href="ticket.php">Tickets</a></li>
 							<li><a href="#">Request</a>
 								<ul>
-								<li> <a href="assetRequest.html">Asset Request</a> </li>
-								<li> <a href="testingRequest.html">Testing Request</a> </li>
+								<li> <a href="assetRequest.php">Asset Request</a> </li>
+								<li> <a href="testingRequest.php">Testing Request</a> </li>
 								</ul>
 							</li>
                             <li><a href="#">Agents</a></li>
