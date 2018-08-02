@@ -133,7 +133,6 @@
 							</select>
 						</div>	<!-- Building -->
 						
-								<!--Floor and Room-->
 						<div class="input-group;" style="white-space: nowrap; padding-top: 10px";>	<!-- Floor and Room-->
 							<b><font size="1" color="#332929">Floor & Room *</font></b>
 							<br>
@@ -144,138 +143,33 @@
 							
 							<!-- Modal trigger -->
 							<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add New</font></button>
-							
-							<!-- Modal -->
-						<div class="modal fade" id="myModal" role="dialog">
-							<div class="modal-dialog">
-						
-							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h4 class="modal-title">Add new Floor and Room</h4>
-							</div>
-							<div class="modal-body"> 
-								<meta charset="UTF-8">
-								
-								<form method="POST" action="addFloorAndRoomDB.php">
-									<div>
-										<label>New Floor and Room</label>
-										<input type="text" onkeydown="btnCheck();" id="newFloorAndRoom" name="newFloorAndRoom" placeholder="New Floor And Room" required>
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-							  <button type="button" onShow="disableBtn();" onMouseOver="btnCheck();" id="acModalSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
-							</div>
-						  </div>
-						  
-						</div>
-					  </div>
-							
 						</div><!-- Floor and Room-->
-					
-					
-					
-				
-					<br>
-					<div>
-						<b><font size="1" color="#332929">Brand *</font></b>
 						<br>
-						<select name="brand" style="border-radius:5px; height:25px; width:150px">
-							<option>Select brand</option>
-							<?php
-								$query="select * from ref_brand ORDER BY name";
-								$result=mysqli_query($dbc,$query);
-								
-								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['brandID']}'>{$row['name']}</option>";
-								}
-							?>
-						</select>
-	
-						<!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal1"><font size="1">Add new Brand</font></button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="myModal1" role="dialog">
-							<div class="modal-dialog">
-						
-							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h4 class="modal-title">Add new Brand</h4>
-							</div>
-							<div class="modal-body">
-								<form method="POST" action="addBrandDB.php">
-									<div>
-										<label>Name</label>
-										<input type="text" onkeydown="btnCheck1();" id="newBrand" placeholder="Name" required>
-									</div>
-									
-								</form>
-							</div>
-							<div class="modal-footer">
-							  <button type="submit" onShow="disableBtn1();" onMouseOver="btnCheck1();" id="brandSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
-							</div>
-						  </div>
-						  
+					
+							
+						<div> <!--Date Needed-->
+						<b><font size="1" color="#332929">Date Needed *</font></b>
+						<br>
+						<input type="date" name="date">
 						</div>
-					  </div>
-					
-					</div> <!-- Quantity -->
-					<br>
-					<div> <!-- Item Specification -->
-						<b><font size="1" color="#332929">Item Specification *</font></b>
-						<br>
-						<input type="text" name="ItemSpecification" placeholder="Item Specification" required style="border-radius:5px; width:252px">
-					</div> <!-- Item specification -->
-					<br>
-					<div> <!-- Property Code -->
-						<b><font size="1" color="#332929">Property Code *</font></b>
-						<br>
-						<input type="text" name="PropertyCode" placeholder="Property Code" required style="border-radius:5px; width:252px">
-					</div> <!-- Property Code -->
-					<br>
-					<div> <!-- Serial Number --> 
-						<b><font size="1" color="#332929">Serial Number *</font></b>
-						<br>
-						<input type="text" name="SerialNumber" placeholder="SerialNumber" required style="border-radius:5px; width:252px">
-					</div> <!-- Serial Number -->
-					<br>
-					<div> <!-- MAC Address -->
-						<b><font size="1" color="#332929">MAC Address</font></b>
-						<br>
-						<input type="text" name="MACAddress" placeholder="MAC Address" style="border-radius:5px; width:252px">
-					</div> <!-- MAC Address -->
-					<br>
-					<div> <!-- Product Key -->
-						<b><font size="1" color="#332929">Product Key</font></b>
-						<br>
-						<input type="text" name="ProductKey" placeholder="Product Key" style="border-radius:5px; width:252px">
-					</div> <!-- Product Key -->
-					<br>
-					<div> <!-- Install Code -->
-						<b><font size="1" color="#332929">Install Code</font></b>
-						<br>
-						<input type="text" name="InstallCode" placeholder="Install Code" style="border-radius:5px; width:252px">
-					</div> <!-- Install Code -->
-					<br>
-					<div> <!-- SI Number -->
-						<b><font size="1" color="#332929">SI Number</font></b>
-						<br>
-						<input type="text" name="SInumber" placeholder="SI Number" style="border-radius:5px; width:252px">
-					</div> <!-- SI Number -->
-					<br>
-				</div>
-					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
+							<!--Date Needed-->
+
 					</form>
 			</div>
 		</div>
 	</body>
 	
-	
+	<!-- Modal -->
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Add New Floor And Room</h4>
+	      </div>
+	      <div class="modal-body">
 	        
 
 		<form method="POST" action="addFloorAndRoomDB.php">
