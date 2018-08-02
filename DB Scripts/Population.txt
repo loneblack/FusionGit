@@ -243,6 +243,30 @@ INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('87', 'Science Educa
 INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('88', 'Security Office (SO)');
 INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('89', 'Social Development Research Center (SDRC)');
 INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('90', 'Software Technology Department');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('91', 'STC Academics, Director');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('92', 'Strategic Communications (STRATCOM), Director for Operations');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('93', 'Strategic Communications (STRATCOM), Executive Director');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('94', 'Strategic Management');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('95', 'Student Affairs (DSA), Dean');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('96', 'Student Affairs, Vice Dean');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('97', 'Student Discipline Formation Office (SDFO)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('98', 'Student Leadership Involvement, Formation and Empowerment (SLIFE)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('99', 'Student Media Office');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('100', 'Support Services Office');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('101', 'The Museum');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('102', 'Theology and Religious Studies Department');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('103', 'University Architect');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('104', 'University Controller');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('105', 'University Library');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('106', 'University Registrar (OUR)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('107', 'University Research Coordination Office (URCO)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('108', 'University Safety Office (USO)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('109', 'Vice Chancellor for Academics (VCA)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('110', 'Vice Chancellor for Administration');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('111', 'Vice President for Lasallian Mission (VCLM)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('112', 'Vice Chancellor for Research and Innovation (VCRI)');
+INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('113', 'Vice Chancellor for STC');
+
 
 
 -- brand
