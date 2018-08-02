@@ -49,7 +49,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="logo.png" />
+                    <img src="resource/logo.png" />
                 </a>
 
             </div>
@@ -130,7 +130,9 @@
 						
 						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 						{
+							
 							$testingID = $row['testingID'];
+							
 							echo "<tr>
 									<td <a class='showhr'>+</a></td>
 									<td>number</td>
@@ -140,18 +142,22 @@
 									<td> {$row['floorRoom']}</td>
 								</tr>";
 								
-								$query2 = "SELECT assetID, propertyCode, serialNo, macAddress, itemSpecification, (b.name) as 'brandName', (ac.name)as'assetClass'
-												FROM thesis.asset a
-												join assettype at on a.assetTypeID = at.assetTypeID
-												join ref_brand b on at.brand = b.brandId 
-												join ref_assetclass ac on at.assetClass = ac.assetClassID
-												join assettesting_details ad
-                                                on a.assetID = ad.asset_assetID
-												where a.assetID = {$testingID};";
+								$query2 = "SELECT (assettesting_testingID) as 'testingID',
+											assetID, propertyCode, serialNo, macAddress, itemSpecification,
+											(b.name) as 'brandName', (ac.name)as'assetClass' 
+											FROM thesis.asset a 
+											join assettype at 
+											on a.assetTypeID = at.assetTypeID 
+											join ref_brand b 
+											on at.brand = b.brandId 
+											join ref_assetclass ac 
+											on at.assetClass = ac.assetClassID 
+											join assettesting_details ad 
+											on a.assetID = ad.asset_assetID
+											where ad.assettesting_testingID = {$testingID};";
+
 								$result2 = mysqli_query($dbc, $query2);
 								
-								while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC))
-								{
 									echo "	<tr class = 'invi' id= 'invi' style='display:none' >
 											<tr>
 											  <th style='display: none'></th>
@@ -163,6 +169,9 @@
 											  <th>Item Specification</th>
 											</tr>
 											<tr>";
+											
+								while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC))
+								{
 											
 									echo "	<tr class = 'invi' id= 'invi' style='display:none' >
 											<tr>
