@@ -100,7 +100,7 @@ session_start(); ?>
 								<li> <a href="assignAssetToPerson.php">Assign Asset</a> </li>
 								</ul>
 							</li>
-                            <li><a href="DataTables.html">Data Tables</a>
+                            <li><a href="#">Data Tables</a>
 								<ul>
 								<li> <a href="assetTesting.php">Asset Testing Table</a> </li>
 								</ul>
