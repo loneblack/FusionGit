@@ -175,9 +175,10 @@
 													  <th>MAC Address</th>
 													  <th>Item Specification</th>
 													  <th>Assignment</th>
+													  <th style="display: none;">Status</th>
 													</tr>
 													</thead>
-													<tbody>
+													<tbody id = "body">
 														<?php
 															$query = "	SELECT * FROM thesis.asset a
 																		join assettype at on a.assetTypeID = at.assetTypeID
@@ -199,7 +200,9 @@
 																	echo "<td>Unassigned</td>";
 																else
 																	echo "<td>Assigned</td>";
-																	  echo "</tr>";
+																	  echo "
+																	  <td style='display: none'>{$row['status']}</td>
+																	  </tr>";
 															}
 														?>
 													</tbody>
@@ -256,7 +259,7 @@
 											</div>
 											<!-- /.col -->
 											<div class="col-sm-12">
-											  <button type="submit" name ="submit" onClick="submitAssetAssignment()" class="btn btn-outline-secondary">Submit</button>
+											  <button type="submit" name ="submit" onClick="alertness()" class="btn btn-outline-secondary">Submit</button>
 											</div>
 											</form>
 										  </div>
@@ -381,6 +384,7 @@
   })
 var assets = new Array();
 var person;
+var status = new Array();
 
 function getData(ele) {
 
@@ -391,11 +395,13 @@ function getData(ele) {
     person = $(this).val();
 
 })
+
    }   
 function alertness(){
 	getData();
 	alert("asseets: "+assets);
 	alert("person: "+person);
+	alert("status: "+status);
 }
 
 function submitAssetAssignment(){
