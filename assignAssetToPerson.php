@@ -174,15 +174,17 @@
 													  <th>Serial Number</th>
 													  <th>MAC Address</th>
 													  <th>Item Specification</th>
+													  <th>Assignment</th>
+													  <th style="display: none;">Status</th>
 													</tr>
 													</thead>
-													<tbody>
+													<tbody id = "body">
 														<?php
 															$query = "	SELECT * FROM thesis.asset a
 																		join assettype at on a.assetTypeID = at.assetTypeID
 																		join ref_brand b on at.brand = b.brandId 
 																		join ref_assetclass ac on at.assetClass = ac.assetClassID
-																		where a.status = 1 or a.stauts = 2;";
+																		where a.status = 1 or a.status = 2;";
 																					 	
 															$result = mysqli_query($dbc, $query);
 															
@@ -198,7 +200,9 @@
 																	echo "<td>Unassigned</td>";
 																else
 																	echo "<td>Assigned</td>";
-																	  echo "</tr>";
+																	  echo "
+																	  <td style='display: none'>{$row['status']}</td>
+																	  </tr>";
 															}
 														?>
 													</tbody>
@@ -255,7 +259,7 @@
 											</div>
 											<!-- /.col -->
 											<div class="col-sm-12">
-											  <button type="submit" name ="submit" onClick="submitAssetAssignment()" class="btn btn-outline-secondary">Submit</button>
+											  <button type="submit" name ="submit" onClick="alertness()" class="btn btn-outline-secondary">Submit</button>
 											</div>
 											</form>
 										  </div>
@@ -380,6 +384,7 @@
   })
 var assets = new Array();
 var person;
+var status = new Array();
 
 function getData(ele) {
 
@@ -390,11 +395,13 @@ function getData(ele) {
     person = $(this).val();
 
 })
+
    }   
 function alertness(){
 	getData();
 	alert("asseets: "+assets);
 	alert("person: "+person);
+	alert("status: "+status);
 }
 
 function submitAssetAssignment(){
