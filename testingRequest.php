@@ -49,7 +49,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="resource/logo.png" />
+                    <img src="logo.png" />
                 </a>
 
             </div>
@@ -104,7 +104,7 @@
 			  <table id="example2" class="table table-bordered table-striped"  style="font-size:12px">
 				<thead>
 					<tr>
-					  <th>PO Number</th>
+					  <th></th>
 					  <th>RPSM/SRF Number</th>
 					  <th>User Name</th>
 					  <th>Office</th>
@@ -112,32 +112,74 @@
 					  <th>Room Number</th>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-					  <td <a class="showhr" href="#">17-18M1208</a></td>
-					  <td>James Bond</td>
-					  <td>james_bond</td>
-					  <td>CSO</td>
-					  <td>Yuchengco</td>
-					  <td> Y507</td>
-					 </tr>
-					<tr class = "invi" id= "invi" style="display:none" >
-						<tr>
-						  <th>Item specification</th>
-						  <th>Property Code</th>
-						  <th>Serial Number</th>
-						  <th>MAC Address</th>
-						</tr>
-						<tr>
-						  <td>Solid Computer</td>
-						  <td>AB1234</td>
-						  <td>12768405</td>
-						  <td>10.00.44.55</td>
-						 </tr>
-					</tr>
+				<tbody>				
+					<?php
+					require_once("mysqlconnect.php");
 					
+						$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building'FROM thesis.assettesting AST 
+									join employee E 
+									on AST.PersonRequestedID = E.employeeID
+									join FloorAndRoom f
+									on AST.FloorAndRoomID = f.FloorAndRoomID
+									join offices o
+									on AST.officeID = o.officeID
+									join building b
+									on  f.BuildingID = b.BuildingID;";
+													
+						$result = mysqli_query($dbc, $query);
+						
+						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+						{
+							$testingID = $row['testingID'];
+							echo "<tr>
+									<td <a class='showhr'>+</a></td>
+									<td>number</td>
+									<td>{$row['employeeName']}</td>
+									<td>{$row['Office']}</td>
+									<td>{$row['Building']}</td>
+									<td> {$row['floorRoom']}</td>
+								</tr>";
+								
+								$query2 = "SELECT assetID, propertyCode, serialNo, macAddress, itemSpecification, (b.name) as 'brandName', (ac.name)as'assetClass'
+												FROM thesis.asset a
+												join assettype at on a.assetTypeID = at.assetTypeID
+												join ref_brand b on at.brand = b.brandId 
+												join ref_assetclass ac on at.assetClass = ac.assetClassID
+												join assettesting_details ad
+                                                on a.assetID = ad.asset_assetID
+												where a.assetID = {$testingID};";
+								$result2 = mysqli_query($dbc, $query2);
+								
+								while ($row = mysqli_fetch_array($result2, MYSQLI_ASSOC))
+								{
+									echo "	<tr class = 'invi' id= 'invi' style='display:none' >
+											<tr>
+											  <th style='display: none'></th>
+											  <th>Property Code</th>
+											  <th>Serial Number</th>
+											  <th>MAC Address</th>
+											  <th>Asset Class</th>
+											  <th>Brand Name</th>
+											  <th>Item Specification</th>
+											</tr>
+											<tr>";
+											
+									echo "	<tr class = 'invi' id= 'invi' style='display:none' >
+											<tr>
+											<td style='display: none'>{$row['assetID']}</td>
+											<td> {$row['propertyCode']}</td>
+											<td> {$row['serialNo']}</td>
+											<td> {$row['macAddress']}</td>
+											<td>{$row['assetClass']}</td>
+											<td>{$row['brandName']}</td>
+											<td>{$row['itemSpecification']}</td>
+											</tr>
+											</tr>";
+								}
+						}
+					?>
 					<tr>
-					  <td <a class="showhr" href="#">17-18M1208</a></td>
+					  <td <a class="showhr" href="#">+</a></td>
 					  <td>James Bond</td>
 					  <td>james_bond</td>
 					  <td>CSO</td>
@@ -159,6 +201,7 @@
 						  <td>10.00.44.55</td>
 						 </tr>
 					</tr>
+
 				</tbody>
 			  </table>
 			</div>
@@ -180,7 +223,7 @@
         <table id="example2" class="table table-bordered table-striped"  style="font-size:12px; color:black">
 				<tr>
 				  <th>Item specification</th>
-				  <th>Property Code</th>
+				  <th>ProperSASDASDASDSty Code</th>
 				  <th>Serial Number</th>
 				  <th>MAC Address</th>
 				</tr>
@@ -227,12 +270,10 @@ $(".invi").nextUntil("tr:has(.showhr)").toggle();
 <script>
 $(".showhr").click(function() {
     $(this).closest('tr').nextUntil("tr:has(.showhr)").toggle("slow", function() {});
+    //$(this).getElementByClassName("showhr").toggle("slow", function() {});
 });
 
-function notShow(){
-var hiddenrow = getElementById("invi")
- $(hiddenrow).closest('tr').nextUntil("tr:has(.showhr)").toggle("slow", function() {});
-}
+
 </script>
 
 
