@@ -1,13 +1,13 @@
 <?php
 	require_once("mysqlconnect.php");
 	
-	$AssetClass = $_POST['assetclass'];
+	$assetID = $_POST['assetID'];
 	$dateAcquired = $_POST['dateAcquired'];
 	$dateExpired = $_POST['dateExpired'];
-	$supplier = $_POST['supplier'];
+	$supplierID = $_POST['supplierID'];
 	
 	
-	$sql = "INSERT INTO warranty ( assetID, dateAquired, dateExpired, supplier) VALUES ('{$AssetClass}', '{$dateAcquired}', '{$dateExpired}' , '{$supplier}')";
+	$sql = "INSERT INTO warranty ( assetID, dateAquired, dateExpired, supplier) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}' , '{$supplierID}')";
 
 	echo $sql;
 

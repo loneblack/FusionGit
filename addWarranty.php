@@ -119,7 +119,7 @@ session_start(); ?>
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form method="POST" action="addWarrantyDB.php">
+				<form method="POST" action="<?php $_SERVER["PHP_SELF"]?>">
 					<h2 align="center">Add Warranty</h2>
 					<div class="input-group"> <!-- Asset -->
 							<b><font size="1" color="#332929">Asset Class *</font></b>
@@ -151,8 +151,6 @@ session_start(); ?>
 						<input type="date" name="dateAcquired">
 						</div>
 							<!--Date-->
-					
-					
 							
 						<div> <!--Date Needed-->
 						<b><font size="1" color="#332929">Date Expired *</font></b>
@@ -161,11 +159,21 @@ session_start(); ?>
 						</div>
 							<!--Date Needed-->
 						<br>
-						<div> <!-- Supplier -->
-						<b><font size="1" color="#332929">Supplier *</font></b>
+						<div class="input-group"> <!-- Asset -->
+							<b><font size="1" color="#332929">Select Supplier *</font></b>
 						<br>
-						<input type="text" name="supplier" placeholder="add supplier" required style="border-radius:5px; width:252px">
-					</div> <!-- Supplier -->
+						<select name="supplierID" style="border-radius:5px; height:25px; width:153px">
+							<option>Select Supplier</option>
+							<?php
+								$query="SELECT * FROM thesis.supplier;";
+								$result=mysqli_query($dbc,$query);
+								
+								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								echo "<option value='{$row['supplierID']}'>{$row['name']}</option>";
+								}
+							?> 
+						</select>
+						</div>	<!-- Asset -->
 						<br>
 					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
 					</form>
@@ -174,3 +182,20 @@ session_start(); ?>
 	</body>
 	
 </html>
+<?php
+	require_once("mysqlconnect.php");
+	
+	$assetID = $_POST['assetID'];
+	$dateAcquired = $_POST['dateAcquired'];
+	$dateExpired = $_POST['dateExpired'];
+	$supplierID = $_POST['supplierID'];
+	
+	
+	$sql = "INSERT INTO warranty ( assetID, dateAquired, dateExpired, supplier) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}' , '{$supplierID}')";
+
+	echo $sql;
+
+	$result = mysqli_query($dbc, $sql);
+
+	
+?>

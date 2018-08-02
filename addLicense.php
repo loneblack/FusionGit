@@ -119,7 +119,7 @@ session_start(); ?>
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form method="POST" action="addLicenseDB.php">
+				<form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
 					<h2 align="center">Add License</h2>
 					<div class="input-group"> <!-- Asset -->
 							<b><font size="1" color="#332929">Asset Class *</font></b>
@@ -168,3 +168,19 @@ session_start(); ?>
 	</body>
 	
 </html>
+<?php
+	require_once("mysqlconnect.php");
+	
+	$assetID = $_POST['assetID'];
+	$dateAcquired = $_POST['dateAcquired'];
+	$dateExpired = $_POST['dateExpired'];
+	
+	
+	$sql = "INSERT INTO license (assetID, dateAcquired, dateExpired) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}')";
+
+	echo $sql;
+
+	$result = mysqli_query($dbc, $sql);
+
+	
+?>
