@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="layout/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="layout/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="layout/dataTables.bootstrap.min.css">
   <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
@@ -49,7 +47,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="logo.png" />
+                    <img src="resource/logo.png" />
                 </a>
 
             </div>
@@ -74,8 +72,8 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top-active" href="helpdesk-home.html">Dashboard</a></li>
-                            <li><a href="ticket.html">Tickets</a></li>
-							<li><a href="request.html">Request</a></li>
+                            <li><a href="ticket.php">Tickets</a></li>
+							<li><a href="request.php">Request</a></li>
                             <li><a href="#">Agents</a></li>
 
                         </ul>
@@ -134,13 +132,8 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="layout/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
+<script src="layout/jquery.dataTables.min.js"></script>
+<script src="layout/dataTables.bootstrap.min.js"></script>
 
 <script>
   $(function () {
