@@ -3,6 +3,7 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
 -- -----------------------------------------------------
 -- Schema thesis
 -- -----------------------------------------------------
@@ -353,12 +354,12 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `thesis`.`assettype` ;
 
 CREATE TABLE IF NOT EXISTS `thesis`.`assettype` (
-  `assetTypeID` INT(11) NOT NULL AUTO_INCREMENT,
+  `assetTypeID` INT(11) NOT NULL,
   `assetClass` INT(11) NULL DEFAULT NULL,
   `brand` INT(11) NULL DEFAULT NULL,
   `itemSpecification` LONGTEXT NULL DEFAULT NULL,
-  `softwareName` VARCHAR(45) NULL,
-  `description` LONGTEXT NULL,
+  `softwareName` VARCHAR(45) NULL DEFAULT NULL,
+  `description` LONGTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`assetTypeID`),
   INDEX `fk_AssetType_ref_brand_idx` (`brand` ASC),
   INDEX `fk_AssetType_ref_assetclass1_idx` (`assetClass` ASC),
@@ -401,21 +402,19 @@ DROP TABLE IF EXISTS `thesis`.`asset` ;
 CREATE TABLE IF NOT EXISTS `thesis`.`asset` (
   `assetID` INT(11) NOT NULL AUTO_INCREMENT,
   `assetTypeID` INT(11) NULL DEFAULT NULL,
-  `supplierID` INT(11) NULL,
+  `supplierID` INT(11) NULL DEFAULT NULL,
   `status` INT(11) NULL DEFAULT NULL,
   `propertyCode` VARCHAR(45) NULL DEFAULT NULL,
   `serialNo` VARCHAR(45) NULL DEFAULT NULL,
   `macAddress` VARCHAR(45) NULL DEFAULT NULL,
   `productKey` VARCHAR(45) NULL DEFAULT NULL,
   `installCode` VARCHAR(45) NULL DEFAULT NULL,
-  `dateDelivered` DATETIME NULL,
-  `unitCost` DECIMAL NULL DEFAULT NULL,
-  `contractStartDate` DATE NULL,
-  `contractEndDate` DATE NULL,
-  `swStartDate` DATE NULL,
-  `swEndDate` DATE NULL,
-  `yWarranty` INT(11) NULL,
-  `mWarranty` INT(11) NULL,
+  `dateDelivered` DATETIME NULL DEFAULT NULL,
+  `unitCost` DECIMAL(10,0) NULL DEFAULT NULL,
+  `contractStartDate` DATE NULL DEFAULT NULL,
+  `contractEndDate` DATE NULL DEFAULT NULL,
+  `swStartDate` DATE NULL DEFAULT NULL,
+  `swEndDate` DATE NULL DEFAULT NULL,
   PRIMARY KEY (`assetID`),
   INDEX `fk_Asset_ref_status1_idx` (`status` ASC),
   INDEX `fk_asset_AssetType1_idx` (`assetTypeID` ASC),
@@ -448,7 +447,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`computer` (
   `computerID` INT(11) NOT NULL AUTO_INCREMENT,
   `statusID` INT(11) NOT NULL,
   `dateDelivered` DATE NULL DEFAULT NULL,
-  `unitCost` DECIMAL NULL,
+  `unitCost` DECIMAL(10,0) NULL DEFAULT NULL,
   PRIMARY KEY (`computerID`),
   INDEX `fk_computer_ref_status1_idx` (`statusID` ASC),
   CONSTRAINT `fk_computer_ref_status1`
@@ -496,6 +495,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetassignment` (
   `personresponsible_id` INT(11) NULL DEFAULT NULL,
   `personrepresentativeID` INT(11) NULL DEFAULT NULL,
   `persondirectlyID` INT(11) NULL DEFAULT NULL,
+  `statusID` INT(11) NOT NULL,
   PRIMARY KEY (`AssetAssignmentID`),
   INDEX `fk_AssetAssignment_Asset1_idx` (`assetID` ASC),
   INDEX `fk_AssetAssignment_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
@@ -504,6 +504,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetassignment` (
   INDEX `fk_assetassignment_personresponsible1_idx` (`personresponsible_id` ASC),
   INDEX `fk_assetassignment_personrepresentative1_idx` (`personrepresentativeID` ASC),
   INDEX `fk_assetassignment_persondirectly1_idx` (`persondirectlyID` ASC),
+  INDEX `fk_assetassignment_ref_status1_idx` (`statusID` ASC),
   CONSTRAINT `fk_AssetAssignment_Asset1`
     FOREIGN KEY (`assetID`)
     REFERENCES `thesis`.`asset` (`assetID`)
@@ -537,6 +538,11 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetassignment` (
   CONSTRAINT `fk_assetassignment_personresponsible1`
     FOREIGN KEY (`personresponsible_id`)
     REFERENCES `thesis`.`personresponsible` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_assetassignment_ref_status1`
+    FOREIGN KEY (`statusID`)
+    REFERENCES `thesis`.`ref_status` (`statusID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -740,13 +746,13 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetdocument` (
   `assetID` INT(11) NOT NULL,
   `requestID` INT(11) NOT NULL,
   `procurementID` INT(11) NOT NULL,
-  `mrf` VARCHAR(45) NULL,
-  `salesInvoice` VARCHAR(45) NULL,
-  `deliveryReceipt` VARCHAR(45) NULL,
-  `receivingReport` VARCHAR(45) NULL,
-  `RRtoWH` DATE NULL,
-  `purchaseOrder` VARCHAR(45) NULL,
-  `forwardToPO` DATE NULL,
+  `mrf` VARCHAR(45) NULL DEFAULT NULL,
+  `salesInvoice` VARCHAR(45) NULL DEFAULT NULL,
+  `deliveryReceipt` VARCHAR(45) NULL DEFAULT NULL,
+  `receivingReport` VARCHAR(45) NULL DEFAULT NULL,
+  `RRtoWH` DATE NULL DEFAULT NULL,
+  `purchaseOrder` VARCHAR(45) NULL DEFAULT NULL,
+  `forwardToPO` DATE NULL DEFAULT NULL,
   INDEX `fk_AssetDocument_Asset1_idx` (`assetID` ASC),
   INDEX `fk_AssetDocument_Request1_idx` (`requestID` ASC),
   INDEX `fk_AssetDocument_Procurement1_idx` (`procurementID` ASC),
