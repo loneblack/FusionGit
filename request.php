@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Add Asset</title>
+    <title>Request</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
@@ -99,7 +99,59 @@
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
 				<form method="POST" action="addAssetDB.php">
-					<h2 align="center">Sent Request</h2>
+					<h2 align="center">Your Request</h2>
+					
+						<div> <!--Definition-->
+						<b><font size="1" color="#332929">Definition *</font></b>
+						<br>
+						<textarea name="message" rows="5" cols="30"></textarea>
+						</div>
+							<!--Definition-->
+							
+						<div> <!--Date-->
+						<b><font size="1" color="#332929">Date *</font></b>
+						<br>
+						<input type="date" name="date">
+						</div>
+							<!--Date-->
+							
+							<div> <!-- Building-->
+						<b><font size="1" color="#332929">Building *</font></b>
+						<br>
+						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
+							<option>Select building</option>
+							<?php
+								$query="select * FROM thesis.building ORDER BY name";
+								$result=mysqli_query($dbc,$query);
+								
+								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
+								}
+							?> 
+						</select>
+
+						
+						</div> <!-- Building -->
+					
+							<div> 
+							
+						<div> <!-- Floor and Room-->
+						<b><font size="1" color="#332929">Building *</font></b>
+						<br>
+						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
+							<option>Select Floor and Room</option>
+							<?php
+								$query="select * FROM thesis.building ORDER BY name";
+								$result=mysqli_query($dbc,$query);
+								
+								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
+								}
+							?> 
+						</select>
+
+						
+						</div> <!-- Floor and Room-->
 					
 					<div> <!-- Asset class-->
 						<b><font size="1" color="#332929">Asset Class *</font></b>
@@ -149,11 +201,7 @@
 						
 					</div> <!-- Asset class -->
 					
-					<div> <!-- Quantity -->
-						<b><font size="1" color="#332929">Quantity *</font></b>
-						<br>
-						<input type="number" name="quantity" placeholder="Quantity" style="border-radius:5px; width:252px; height:25px">
-					</div>
+				
 					<br>
 					<div>
 						<b><font size="1" color="#332929">Brand *</font></b>

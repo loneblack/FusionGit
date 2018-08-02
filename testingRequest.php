@@ -98,10 +98,6 @@
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
 			  <h3 class="box-title">Testing Request</h3>
-			   <button class="btn btn-default new-ticket spec-new-ticket" aria-label="Create new ticket" data-ember-action="1355">
-						<span class="glyphicon glyphicon-plus"></span>
-						New Ticket
-			  </button>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -138,6 +134,7 @@
 							$testingID = $row['testingID'];
 							
 							echo "<tr>
+									
 									<td <a class='showhr'>+</a></td>
 									<td>number</td>
 									<td>{$row['employeeName']}</td>
