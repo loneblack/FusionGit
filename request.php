@@ -1,4 +1,4 @@
-<?php require_once("mysqlconnect.php");?>
+<?php require_once("mysqlconnect.php");
 session_start();
 $_SESSION['previousPage']="request.php";?>
 <html>
