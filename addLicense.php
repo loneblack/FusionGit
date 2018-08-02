@@ -124,14 +124,20 @@ session_start(); ?>
 					<div class="input-group"> <!-- Asset -->
 							<b><font size="1" color="#332929">Asset Class *</font></b>
 						<br>
-						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
-							<option>Select asset class</option>
+						<select name="assetID" style="border-radius:5px; height:25px; width:153px">
+							<option>Select Asset</option>
 							<?php
-								$query="select * from ref_assetclass ORDER BY name";
+								$query="SELECT 	assetID, (b.name)AS 'Brand', (ac.name)AS 'AssetClass', at.itemSpecification, propertyCode, serialNo FROM thesis.asset a
+														            join assettype at
+														            on a.assetTypeID = at.assetTypeID
+														            join ref_assetclass ac
+														            on at.assetClass = ac.assetClassID
+														            join ref_brand b
+														            on at.brand = b.brandID;";
 								$result=mysqli_query($dbc,$query);
 								
 								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['assetClassID']}'>{$row['name']}</option>";
+								echo "<option value='{$row['assetID']}'>{$row['Brand']} {$row['AssetClass']} {$row['itemSpecification']} {$row['propertyCode']} {$row['serialNo']}</option>";
 								}
 							?> 
 						</select>
@@ -161,92 +167,4 @@ session_start(); ?>
 		</div>
 	</body>
 	
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Add New Floor And Room</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form method="POST" action="addFloorAndRoomDB(users).php">
-			<div>
-				<label>Building</label>
-				<select name="buildingID">
-					<?php
-						$query="select * from building ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-						}
-					?>
-				</select>
-			</div>
-			<div>
-				<label>Floor and Room</label>
-				<input type="text" name="floorRoom" placeholder="floorRoom" required>
-			</div>
-			<button type="submit">Submit</button>
-		</form>
-
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-	
 </html>
-
-<script>
-
-function getRooms(val){
-    $.ajax({
-        type:"POST",
-        url:"getRooms.php",
-        data: 'buildingID='+val,
-        success: function(data){
-            $("#FloorAndRoomID").html(data);
-       				 }
-    		});
-	}
-
-function btnCheck() {
-	var txt = document.getElementById('newAssetClass').value;
-	
-	if (txt.length == 0) {
-		document.getElementById('acModalSubmit').disabled = true;
-	}
-	else {
-		document.getElementById('acModalSubmit').disabled = false;
-	}
-}
-
-function disableBtn(){
-	document.getElementById('acModalSubmit').disabled=true;
-}
-
-function btnCheck1(){
-	var txt = document.getElementById('newBrand').value;
-	
-	if (txt.length == 0) {
-		document.getElementById('brandSubmit').disabled = true;
-	}
-	else {
-		document.getElementById('brandSubmit').disabled = false;
-	}
-}
-
-function disableBtn1(){
-	document.getElementById('brandSubmit').disabled=true;
-}
-</script>

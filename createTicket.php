@@ -143,12 +143,14 @@ $('#Modal').modal('show');
         </div>
       </div>
 
+      <!-- Due Date  -->
       <div class="control-group">
         <label class="control-label" for="ticket_summary_">Due Time</label>
         <div class="controls">
           <input type="text" id="ticket_due_time_popup" placeholder="5PM, 18:00, etc" value="">
         </div>
       </div>
+      <!-- Due Date  -->
 
       <div class="control-group">
         <label class="control-label" for="ticket_priority_">Priority</label>

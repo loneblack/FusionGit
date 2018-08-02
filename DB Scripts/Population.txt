@@ -9,6 +9,9 @@ INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('3', 'Helpdesk
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('4', 'Engineer');
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('5', 'Requestor');
 
+-- user
+INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`) VALUES ( AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '1', AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('test@test', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+
 -- building
 INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('1', 'Angelo King International Center');
 INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('2', 'BGC-Rufino Campus');
@@ -279,16 +282,27 @@ INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpe
 INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('2', '8', '2', '12 mega pixels');
 INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('3', '18', '3', 'Wireless ');
 
+-- Employee
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Test Emmployee', 'Test Employee', '09999999999', 'test@test');
+
+-- Person Responsible
+INSERT INTO `thesis`.`personresponsible` (`employeeID`) VALUES ('1');
+INSERT INTO `thesis`.`personresponsible` (`employeeID`) VALUES ('2');
+
 -- asset
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '2');
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('3', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
 
--- Employee
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
-
--- Person Responsible
-INSERT INTO `thesis`.`personresponsible` (`employeeID`) VALUES ('1');
+-- asset audit for new items
+INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '1');
+INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '2');
+INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '3');
 
 -- Asset Assignment
-INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `personresponsible_id`) VALUES ('1', '2018-07-24', '2018-07-25', '1');
+INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `personresponsible_id`, `statusID`) VALUES ('1', '2018-07-24', '2018-07-25', '1', '11');
+
+-- asseet audit for asset assignment
+INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`, `assetAssignmentID`) VALUES ('2', '1', '2018-08-02', '1', '1');
+

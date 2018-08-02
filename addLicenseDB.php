@@ -1,12 +1,12 @@
 <?php
 	require_once("mysqlconnect.php");
 	
-	$AssetClass = $_POST['assetclass'];
+	$assetID = $_POST['assetID'];
 	$dateAcquired = $_POST['dateAcquired'];
 	$dateExpired = $_POST['dateExpired'];
 	
 	
-	$sql = "INSERT INTO license ( assetID, dateAquired, dateExpired) VALUES ('{$AssetClass}', '{$dateAcquired}', '{$dateExpired}')";
+	$sql = "INSERT INTO license (assetID, dateAcquired, dateExpired) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}')";
 
 	echo $sql;
 
