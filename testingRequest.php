@@ -115,7 +115,7 @@
 				<tbody>				
 					<?php
 					require_once("mysqlconnect.php");
-					
+						$link_address = 'createTicket.php';
 						$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building'FROM thesis.assettesting AST 
 									join employee E 
 									on AST.PersonRequestedID = E.employeeID
@@ -141,7 +141,8 @@
 									<td>{$row['Office']}</td>
 									<td>{$row['Building']}</td>
 									<td> {$row['floorRoom']}</td>
-								</tr>";
+									<td><button><a href='createTicket.php'> New Ticket </a></button></td>
+									</tr>";
 								
 								$query2 = "SELECT (assettesting_testingID) as 'testingID',
 											assetID, propertyCode, serialNo, macAddress, itemSpecification,
