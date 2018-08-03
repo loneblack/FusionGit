@@ -52,25 +52,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `thesis`.`personresponsible`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `thesis`.`personresponsible` ;
-
-CREATE TABLE IF NOT EXISTS `thesis`.`personresponsible` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `employeeID` INT(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_PersonResponsible_Employee1_idx` (`employeeID` ASC),
-  CONSTRAINT `fk_PersonResponsible_Employee1`
-    FOREIGN KEY (`employeeID`)
-    REFERENCES `thesis`.`employee` (`employeeID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `thesis`.`personrepresentative`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `thesis`.`personrepresentative` ;
@@ -81,15 +62,15 @@ CREATE TABLE IF NOT EXISTS `thesis`.`personrepresentative` (
   `responsibleEmployeeID` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_PersonRepresentative_Employee1` (`representativeEmployeeID` ASC),
-  INDEX `fk_personrepresentative_personresponsible1_idx` (`responsibleEmployeeID` ASC),
+  INDEX `fk_personrepresentative_employee2_idx` (`responsibleEmployeeID` ASC),
   CONSTRAINT `fk_PersonRepresentative_Employee1`
     FOREIGN KEY (`representativeEmployeeID`)
     REFERENCES `thesis`.`employee` (`employeeID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_personrepresentative_personresponsible1`
+  CONSTRAINT `fk_personrepresentative_employee2`
     FOREIGN KEY (`responsibleEmployeeID`)
-    REFERENCES `thesis`.`personresponsible` (`id`)
+    REFERENCES `thesis`.`employee` (`employeeID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -105,13 +86,13 @@ CREATE TABLE IF NOT EXISTS `thesis`.`requestor` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `local` VARCHAR(45) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL,
   `signature` DATE NULL DEFAULT NULL,
-  `employeeID` INT(11) NOT NULL,
-  `PersonResponsibleID` INT(11) NOT NULL,
-  `PersonRepresentativeID` INT(11) NOT NULL,
+  `employeeID` INT(11) NULL,
+  `PersonResponsibleID` INT(11) NULL,
+  `PersonRepresentativeID` INT(11) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Requestor_Employee1_idx` (`employeeID` ASC),
-  INDEX `fk_Requestor_PersonResponsible1_idx` (`PersonResponsibleID` ASC),
   INDEX `fk_Requestor_PersonRepresentative1_idx` (`PersonRepresentativeID` ASC),
+  INDEX `fk_requestor_employee2_idx` (`PersonResponsibleID` ASC),
   CONSTRAINT `fk_Requestor_Employee1`
     FOREIGN KEY (`employeeID`)
     REFERENCES `thesis`.`employee` (`employeeID`)
@@ -122,9 +103,9 @@ CREATE TABLE IF NOT EXISTS `thesis`.`requestor` (
     REFERENCES `thesis`.`personrepresentative` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Requestor_PersonResponsible1`
+  CONSTRAINT `fk_requestor_employee2`
     FOREIGN KEY (`PersonResponsibleID`)
-    REFERENCES `thesis`.`personresponsible` (`id`)
+    REFERENCES `thesis`.`employee` (`employeeID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -492,7 +473,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetassignment` (
   `DepartmentID` INT(11) NULL DEFAULT NULL,
   `startDate` DATE NULL DEFAULT NULL,
   `endDate` DATE NULL DEFAULT NULL,
-  `personresponsible_id` INT(11) NULL DEFAULT NULL,
+  `personresponsibleID` INT(11) NULL,
   `personrepresentativeID` INT(11) NULL DEFAULT NULL,
   `persondirectlyID` INT(11) NULL DEFAULT NULL,
   `statusID` INT(11) NOT NULL,
@@ -501,10 +482,10 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetassignment` (
   INDEX `fk_AssetAssignment_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
   INDEX `fk_AssetAssignment_Department1_idx` (`DepartmentID` ASC),
   INDEX `fk_AssetAssignment_Computer1_idx` (`computerID` ASC),
-  INDEX `fk_assetassignment_personresponsible1_idx` (`personresponsible_id` ASC),
   INDEX `fk_assetassignment_personrepresentative1_idx` (`personrepresentativeID` ASC),
   INDEX `fk_assetassignment_persondirectly1_idx` (`persondirectlyID` ASC),
   INDEX `fk_assetassignment_ref_status1_idx` (`statusID` ASC),
+  INDEX `fk_assetassignment_employee1_idx` (`personresponsibleID` ASC),
   CONSTRAINT `fk_AssetAssignment_Asset1`
     FOREIGN KEY (`assetID`)
     REFERENCES `thesis`.`asset` (`assetID`)
@@ -535,14 +516,14 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assetassignment` (
     REFERENCES `thesis`.`personrepresentative` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_assetassignment_personresponsible1`
-    FOREIGN KEY (`personresponsible_id`)
-    REFERENCES `thesis`.`personresponsible` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_assetassignment_ref_status1`
     FOREIGN KEY (`statusID`)
     REFERENCES `thesis`.`ref_status` (`statusID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_assetassignment_employee1`
+    FOREIGN KEY (`personresponsibleID`)
+    REFERENCES `thesis`.`employee` (`employeeID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -570,9 +551,9 @@ CREATE TABLE IF NOT EXISTS `thesis`.`computerassignment` (
   INDEX `fk_ComputerAssignment_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
   INDEX `fk_ComputerAssignment_Department1_idx` (`DepartmentID` ASC),
   INDEX `fk_ComputerAssignment_Building1_idx` (`BuildingID` ASC),
-  INDEX `fk_computerassignment_personresponsible1_idx` (`personresponsible_id` ASC),
   INDEX `fk_computerassignment_personrepresentative1_idx` (`personrepresentative_id` ASC),
   INDEX `fk_computerassignment_persondirectly1_idx` (`persondirectly_id` ASC),
+  INDEX `fk_computerassignment_employee1_idx` (`personresponsible_id` ASC),
   CONSTRAINT `fk_ComputerAssignment_Building1`
     FOREIGN KEY (`BuildingID`)
     REFERENCES `thesis`.`building` (`BuildingID`)
@@ -603,9 +584,9 @@ CREATE TABLE IF NOT EXISTS `thesis`.`computerassignment` (
     REFERENCES `thesis`.`personrepresentative` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_computerassignment_personresponsible1`
+  CONSTRAINT `fk_computerassignment_employee1`
     FOREIGN KEY (`personresponsible_id`)
-    REFERENCES `thesis`.`personresponsible` (`id`)
+    REFERENCES `thesis`.`employee` (`employeeID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -632,22 +613,33 @@ DROP TABLE IF EXISTS `thesis`.`ticket` ;
 
 CREATE TABLE IF NOT EXISTS `thesis`.`ticket` (
   `ticketID` INT(11) NOT NULL AUTO_INCREMENT,
-  `dateCreated` VARCHAR(45) NULL DEFAULT NULL,
-  `dateClosed` VARCHAR(45) NULL DEFAULT NULL,
-  `Description` VARCHAR(45) NULL DEFAULT NULL,
   `status` INT(11) NOT NULL,
-  `UserID` INT(11) NULL DEFAULT NULL,
+  `assigneeUserID` INT(11) NULL,
+  `creatorUserID` INT(11) NULL DEFAULT NULL,
+  `lastUpdateDate` DATETIME NOT NULL,
+  `dateCreated` DATETIME NOT NULL,
+  `dateClosed` DATETIME NULL DEFAULT NULL,
+  `dueDate` DATETIME NULL,
+  `priority` VARCHAR(45) NOT NULL,
+  `summary` VARCHAR(45) NULL,
+  `description` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`ticketID`),
   INDEX `fk_Ticket_ref_TicketStatus1_idx` (`status` ASC),
-  INDEX `fk_Ticket_User1_idx` (`UserID` ASC),
+  INDEX `fk_Ticket_User1_idx` (`creatorUserID` ASC),
+  INDEX `fk_Ticket_User2_idx` (`assigneeUserID` ASC),
   CONSTRAINT `fk_Ticket_User1`
-    FOREIGN KEY (`UserID`)
+    FOREIGN KEY (`creatorUserID`)
     REFERENCES `thesis`.`user` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Ticket_ref_TicketStatus1`
     FOREIGN KEY (`status`)
     REFERENCES `thesis`.`ref_ticketstatus` (`ticketID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ticket_User2`
+    FOREIGN KEY (`assigneeUserID`)
+    REFERENCES `thesis`.`user` (`UserID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -1039,7 +1031,6 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
-
 -- -----------------------------------------------------
 -- Table `thesis`.`moving`
 -- -----------------------------------------------------
@@ -1209,3 +1200,8 @@ CREATE TABLE IF NOT EXISTS `thesis`.`warranty` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
