@@ -73,7 +73,7 @@
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top-active" href="helpdesk-home.html">Dashboard</a></li>
                             <li><a href="ticket.php">Tickets</a></li>
-							<li><a href="request.php">Request</a>
+							<li><a href="#">Request</a>
 								<ul>
 								<li> <a href="assetRequest.php">Asset Request</a> </li>
 								<li> <a href="testingRequest.php">Testing Request</a> </li>
