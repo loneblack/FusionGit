@@ -1,3 +1,4 @@
+<?php require_once("mysqlconnect.php");?>
 <html>
 <head> 
 		<title>Create Ticket</title>
@@ -7,7 +8,11 @@
 		<script src="layout/jquery.min.js"></script>
 		<link rel="stylesheet" href="layout/bootstrap.min.css">
 		<script src="layout/bootstrap.min.js"></script>
-		
+
+    <!-- Time picker source -->
+		<script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
+    <link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+
 		<style>
 		/* Remove the navbar's default margin-bottom and rounded borders */ 
 		.navbar {
@@ -65,153 +70,101 @@ $('#Modal').modal('show');
 	      </div>
 	      <div class="modal-body">
 
-  <form accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" method="post">
-    <div style="margin:0;padding:0;display:inline">
-    <input name="authenticity_token" type="hidden" value="IQ+IWbuHmx74Hk//QNzA/t146/21JsVmREkG8BEb4HU=">
-    </div>
-
-    <div id="ticket_form_fields_v2">
-
-      <input id="ticket_form_viewing_asset_id" name="viewing_asset_id" type="hidden">
-      <input id="ticket_form_viewing_asset_type" name="viewing_asset_type" type="hidden">
-      <input id="ticket_form_active_tab" name="active_tab" type="hidden">
-      
-        <input id="ticket_form_from" name="from" type="hidden" value="v2">
-      
-      <input id="ticket_form_mode" name="mode" type="hidden">
-      <input id="ticket_form_category" name="category" type="hidden">
-      <input id="ticket_type" name="ticket_type" type="hidden" value="open_tickets">
-      <input id="ticket_form_parent_ticket_id" name="ticket[parent_id]" type="hidden">
-
-      <div class="control-group">
-        <label class="control-label" for="s2id_autogen14">Contact</label>
-        <div class="controls">
-        	<input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen14">
-        		<div class="select2-drop select2-display-none select2-with-searchbox">
-        			<div class="select2-search">       
-        				<input type="text" autocomplete="off" class="select2-input">  
-        			</div>
-        		</div>
-        </div>
-        </div>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="s2id_autogen16">Related to</label>
-        <div class="controls">
-          <div class="select2-container select2-container-multi populate" id="s2id_inventory_item_hash_popup" style="width: 283px;">    <ul class="select2-choices">  <li class="select2-search-field">    <input type="text" autocomplete="off" class="select2-input" id="s2id_autogen16" style="width: 10px;">  </li></ul><div class="select2-drop select2-drop-multi select2-display-none add-related-item">   <ul class="select2-results">   </ul></div></div><input type="hidden" id="inventory_item_hash_popup" name="ticket[inventory_item_hash]" class="populate select2-offscreen" multiple="true" tabindex="-1" value="">
-          <input id="inventory_item_names_popup" name="ticket[asset_name]" type="hidden">
-        </div>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="ticket_summary_">Summary</label>
-        <div class="controls">
-          <input id="ticket_summary_" class="input-xlarge" maxlength="80" name="ticket[summary]" size="80" type="text">
-        </div>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="ticket_description_">Description</label>
-        <div class="controls">
-          <div class="ui-wrapper" style="overflow: hidden; position: relative; width: 282px; height: 46px; top: auto; left: auto; margin: 0px; padding-bottom: 14px;"><textarea cols="40" id="ticket_description_" name="ticket[description]" rows="2" class="ui-resizable" style="margin: 0px; resize: none; position: static; zoom: 1; display: block; height: 40px; width: 270px;"></textarea><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div></div>
-        </div>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="ticket_form_assigned_to">Assigned to</label>
-        <div class="controls">
-          <select id="ticket_form_assigned_to" name="ticket[assigned_to]">
-          	<option value="UNASSIGNED">Unassigned</option>
-          	<option value="2">Lone Black</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="s2id_autogen15">CC Users</label>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="ticket_due_at">Due Date</label>
-        <div class="controls">
-          <div id="duecal_popup" class="input-append date" data-date="" data-date-format="mm/dd/yyyy">
-            <input type="hidden" name="ticket[due_at]" id="ticket_due_datetime_popup" value="">
-            <input type="text" id="ticket_due_date_popup" value="" placeholder="tomorrow, friday, next week">
-            <a href="javascript:void(0);" class="add-on sui-bttn" style=""><i class="icon-calendar"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Due Date  -->
-      <div class="control-group">
-        <label class="control-label" for="ticket_summary_">Due Time</label>
-        <div class="controls">
-          <input type="text" id="ticket_due_time_popup" placeholder="5PM, 18:00, etc" value="">
-        </div>
-      </div>
-      <!-- Due Date  -->
-
-      <div class="control-group">
-        <label class="control-label" for="ticket_priority_">Priority</label>
-        <div class="controls">
-          <select id="ticket_priority_" name="ticket[priority]" value="2">
-            <option value="1">High</option>
-            <option value="2" selected="selected">Medium</option>
-            <option value="3">Low</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="control-group">
-        <label class="control-label" for="ticket_form_category_list">Category</label>
-        <div class="controls">
-          <select id="ticket_form_category_list" name="ticket[category]">
-          	<option value=""></option>
-          	<option value="Hardware">Hardware</option>
-          	<option value="Software">Software</option>
-          	<option value="Network">Network</option>
-          	<option value="User Setup">User Setup</option>
-          	<option value="Email">Email</option>
-          	<option value="Research">Research</option>
-          	<option value="Password Reset">Password Reset</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="control-group" style="display: none;">
-        <label class="control-label" for="ticket_site">Site</label>
-        <div class="controls">
-          <select id="ticket_site" name="ticket[site_id]">
-          </select>
-        </div>
-      </div>
-
-     <div class="custom-attrs"></div>
-
-     <div class="control-group">
-       <label class="control-label" for="ticket_attachment">Attachment</label>
-       <div class="controls">
-          <div class="ticket-attachment">
-            <div class="attachment-container">
-              <div class="attachment-label"><i class="icon-attachment icon-24"></i><span></span></div>
-              <a class="sui-bttn attach-file">Choose File</a>
-              <input type="file" name="attachment" id="ticket_attachment">
+        <form action="" method="post">
+            
+            <!-- Summary  -->
+            <div class="control-group">
+              <label>Summary</label>
+              <div class="controls">
+                <input id="summary"  name="summary" size=75" type="text">
+              </div>
             </div>
-            <a href="javascript:void(0);" class="remove-attachment"><i class="icon-remove icon-light"></i></a>
+            <!-- Summary  -->
+            <br>
+            <!-- Description  -->
+            <div class="control-group">
+              <label>Description</label>
+              <div class="controls">
+                <div class="ui-wrapper" style="overflow: hidden; position: relative; width: 600px; height: 100px; top: auto; left: auto; margin: 0px; padding-bottom: 14px;">
+                  <textarea id="ticket_description_" name="ticket[description]" style="margin: 0px; resize: none; position: static; zoom: 1; display: block; height: 100px; width: 560px;">         
+                  </textarea>
+                </div>
+              </div>
+            </div>
+            <!-- Description  -->
+            <br>
+            <!-- Assigned to  -->
+            <div class="control-group">
+              <label>Assigned to</label>
+              <div class="controls">
+                <select id="assigned_to" name="assigned_to">
+                	<option value="0">Unassigned</option>
+                	<?php
+                    $query="select * from employee ORDER BY name;";
+                    $result=mysqli_query($dbc,$query);
+                    
+                    while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                    echo "<option value='{$row['employeeID']}'>{$row['name']}</option>";
+                    }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <!-- Assigned to  -->
+            <br>
+            <!-- Due Date  -->
+            <div class="control-group">
+              <label >Due Date</label>
+              <div class="controls">
+                  <input type="date" id="due_date" name ="due_date">
+              </div>
+            </div>
+            <!-- Due Date  -->
+            <br>
+            <!-- Due Time  -->
+            <div class="control-group">
+              <label>Due Time</label>
+              <div class="controls">
+                <input type="time" id="time">
+              </div>
+            </div>
+            <!-- Due Time  -->
+            <br>
+            <!-- Priority  -->
+            <div class="control-group">
+              <label>Priority</label>
+                <select id="priority" name="priority" >
+                  <option value="1">High</option>
+                  <option value="2" selected="selected">Medium</option>
+                  <option value="3">Low</option>
+                </select>
+            </div>
+            <!-- Priority  -->
+            <br>
+
+          <div class="modal-footer">
+            <button type="submit" type="submit">Save</button>
+            <button >Cancel</button>
           </div>
-       </div>
-     </div>
-
+        </form>
+      </div>
     </div>
-
-    <div class="modal-footer">
-      <a href="http://community.spiceworks.com/help/Submitting_Help_Desk_Tickets?utm_campaign=app_help&amp;utm_medium=app&amp;utm_source=app_ui" target="_blank"><i class="icon-help icon-24"></i></a>
-      <button class="sui-bttn-primary sui-bttn" data-button-type="submit" data-primary="true" type="submit">Save</button>
-      <button class="sui-bttn cancel">Cancel</button>
-    </div>
-  </form>
+  <!-- Modal content-->
+  </div>
 </div>
-</div>
+<!-- Modal-->
 
 </html>
+<script>
+  var timepicker = new TimePicker('time', {
+  lang: 'en',
+  theme: 'dark'
+});
+timepicker.on('change', function(evt) {
+  
+  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+  evt.element.value = value;
+
+});
+</script>
+<?php $time_in_24_hour_format  = date("H:i", strtotime("1:30 PM"));?>
