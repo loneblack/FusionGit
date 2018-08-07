@@ -24,7 +24,7 @@ for($i=0; $i<count($assets); $i++)
 	if($status == 1)//if asset is stocked
 	{
 		//insert to asset assignment
-		$query2 = "INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `personresponsible_id`, `statusID`) VALUES ('{$assets[$i]}', '{$date}', '{$person}', '11');";
+		$query2 = "INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `personresponsibleID`, `statusID`) VALUES ('{$assets[$i]}', '{$date}', '{$person}', '11');";
 		$result2=mysqli_query($dbc,$query2);
 
 		// get recently inserted asset assignment
@@ -67,7 +67,7 @@ for($i=0; $i<count($assets); $i++)
 
 		// -------------------- Assigning new Asset ------------------------- //
 		//insert to asset assignment
-		$query5 = "INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `personresponsible_id`, `statusID`) VALUES ('{$assets[$i]}', '{$date}', '{$person}', '11');";
+		$query5 = "INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `personresponsibleID`, `statusID`) VALUES ('{$assets[$i]}', '{$date}', '{$person}', '11');";
 		$result5=mysqli_query($dbc,$query5);
 
 		// get recently inserted asset assignment

@@ -6,22 +6,88 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Assign Asset to Person</title>
+		<title>TITLE</title>
 			<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
-			<script src="layout/jquery.min.js"></script>
-			<link rel="stylesheet" href="layout/bootstrap.min.css">
-			<link rel="stylesheet" href="layout/pageformat.css">
-			<script src="layout/bootstrap.min.js"></script>
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 			<link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
-    <!-- FONT AWESOME ICONS  -->
-    <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
-    <!-- CUSTOM STYLE  -->
-    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
+		    <!-- FONT AWESOME ICONS  -->
+		    <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
+		    <!-- CUSTOM STYLE  -->
+		    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
+
+			<script src="layout/jquery.min.js"></script>
+			<script src="layout/bootstrap.min.js"></script>
 			
 	</head>
+<!-- NAVBAR START-->
+	<!-- HEADER START-->
+	<header>
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12">
+	                <strong>Email: </strong>fushion@dlsu.edu.com
+	                &nbsp;&nbsp;
+	                <strong>Support: </strong>+90-897-678-44
+	                &nbsp;&nbsp;
+	                <strong>Logout </strong>
+	            </div>
+	        </div>
+	    </div>
+	</header>     
+	<!-- HEADER END-->
+    <!-- LOGO HEADER START-->
+        <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
 
+                    <img src="resource/logo.png" />
+                </a>
+            </div>
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+    <!-- NAVBAR CONTENT START-->
+     <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
+                            <li><a href="#">Add</a>
+                                <ul>
+                                <li> <a href="addAsset.html">Add Asset</a> </li>
+                                <li> <a href="assignRoomToDepartment.html">Assign Room</a> </li>
+                                <li> <a href="addEmployee.html">Add Employee</a> </li>
+                                <li> <a href="addSoftware.html">Add Software</a> </li>
+                                </ul>
+                            </li>
+                            <li><a href="DataTables.html">Data Tables</a></li>
+                            <li><a href="#">Forms</a></li>
+                             <li><a href="login.html">Login Page</a></li>
+                            <li><a href="#">Blank Page</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- NAVBAR CONTENT END-->
+<!-- NAVBAR END-->
 	<?php
 	if (isset($_SESSION['submitMessage'])){
 	
@@ -49,86 +115,7 @@
 
 		} ?>
 
-		<header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <strong>Email: </strong>info@yourdomain.com
-                    &nbsp;&nbsp;
-                    <strong>Support: </strong>+90-897-678-44
-					&nbsp;&nbsp;
-					<strong>Logout </strong>
-                </div>
-
-            </div>
-        </div>
-    <div class="navbar navbar-inverse set-radius-zero">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">
-
-                    <img src="resource/logo.png" />
-                </a>
-
-            </div>
-
-            <div class="left-div">
-                <div class="user-settings-wrapper">
-                    <ul class="nav">
-
-
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-	<!-- LOGO HEADER END-->
-    </header>
-    <!-- HEADER END-->
 	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
-    <section class="menu-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="navbar-collapse collapse ">
-                        <ul id="menu-top" class="nav navbar-nav navbar-right">
-                          <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
-                            <li><a href="#">Adding</a>
-								<ul>
-								<li> <a href="addAsset.php">Add Asset</a> </li>
-								<li> <a href="addDesktop.php">Add Desktop</a> </li>
-								<li> <a href="addEmployee.php">Add Employee</a> </li>
-								<li> <a href="addLicense.php">Add License</a> </li>
-								<li> <a href="addSoftware.php">Add Software</a> </li>
-								<li> <a href="addWarranty.php">Add Warranty</a> </li>
-								</ul>
-							</li>
-							<li><a href="#">Assigning</a>
-								<ul>
-								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
-								<li> <a href="assignAssetToPerson.php">Assign Asset</a> </li>
-								</ul>
-							</li>
-                            <li><a href="#">Data Tables</a>
-								<ul>
-								<li> <a href="assetTesting.php">Asset Testing Table</a> </li>
-								</ul>
-							</li>
-                            <li><a href="#">Forms</a></li>
-                             <li><a href="login.html">Login Page</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
 		<div style="padding-top:10px"> <!-- Tables and stuff-->
 			<div align="center" margin="auto" style=" background-color:#73CD6F; padding-top:10px; padding-bottom:10px; padding-left:5px; padding-right:5px; border-radius:25px; border: solid white">
@@ -299,10 +286,8 @@
 																(b.name)AS 'Brand', (ac.name)AS 'AssetClass', at.itemSpecification,
 																a.propertyCode, a.serialNo, a.macAddress 
 																	FROM thesis.assetassignment aa
-																	join personresponsible pr
-														            on aa.personresponsible_id = pr.id
-														            join employee e
-														            on pr.employeeID = e.employeeID
+																	join employee e
+														            on aa.personresponsibleID = e.employeeID
 														            join asset a
 														            on a.assetID = aa.assetID
 														            join assettype at
