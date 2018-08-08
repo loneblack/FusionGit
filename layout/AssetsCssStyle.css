@@ -242,8 +242,11 @@ footer {
     background-color: #119c7e;
 }
 
-.bk-clr-three i {
-    font-size: 50px;
+.bk-clr-three a {
+     font-size: 50px;
+	text-decoration: none;
+	color: white;
+	
 	
 }
 

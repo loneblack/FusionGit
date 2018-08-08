@@ -68,19 +68,15 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
-                            <li><a href="#">Add</a>
-                                <ul>
-                                <li> <a href="addAsset.html">Add Asset</a> </li>
-                                <li> <a href="assignRoomToDepartment.html">Assign Room</a> </li>
-                                <li> <a href="addEmployee.html">Add Employee</a> </li>
-                                <li> <a href="addSoftware.html">Add Software</a> </li>
-                                </ul>
-                            </li>
-                            <li><a href="DataTables.html">Data Tables</a></li>
-                            <li><a href="#">Forms</a></li>
-                             <li><a href="login.html">Login Page</a></li>
-                            <li><a href="#">Blank Page</a></li>
+                            <li><a class="menu-top-active" href="helpdesk-home.html">Dashboard</a></li>
+                            <li><a href="ticket.php">Tickets</a></li>
+							<li><a href="#">Request</a>
+								<ul>
+								<li> <a href="assetRequest.php">Asset Request</a> </li>
+								<li> <a href="testingRequest.php">Testing Request</a> </li>
+								</ul>
+							</li>
+                            <li><a href="#">Agents</a></li>
 
                         </ul>
                     </div>

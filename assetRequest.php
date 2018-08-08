@@ -22,7 +22,6 @@
 
 </head>
 
-<body>
 	<body>
     <header>
         <div class="container">
@@ -91,7 +90,7 @@
         </div>
     </section>
     <!-- Main content -->
-		  
+	<body>	  
     <section class="content">
       <div class="row">
 	    <div class="col-sm-5">

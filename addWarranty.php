@@ -32,8 +32,7 @@ session_start(); ?>
 
 
 </head>
-	
-	<body>						
+							
 		<header>
         <div class="container">
             <div class="row">
@@ -115,6 +114,8 @@ session_start(); ?>
             </div>
         </div>
     </section>
+	
+	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
     <!-- MENU SECTION END-->
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">

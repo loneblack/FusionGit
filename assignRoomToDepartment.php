@@ -43,7 +43,6 @@ $_SESSION['previousPage']="assignRoomtoDepartment.php";?>
 
 		} ?>
 
-	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">	
 		<header>
         <div class="container">
             <div class="row">
@@ -124,7 +123,7 @@ $_SESSION['previousPage']="assignRoomtoDepartment.php";?>
             </div>
         </div>
     </section>
-		
+		<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:400px; padding-bottom:10px; padding-top:10px; border-radius: 25px; border: solid white">
 				<h3 align="center">Assign Room to Department</h2>
