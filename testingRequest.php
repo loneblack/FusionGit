@@ -287,9 +287,9 @@
 											<td>{$row['brandName']}</td>
 											<td>{$row['itemSpecification']}</td>
 											<td></td>
-											</tr>
 											</tr>";
 								}
+											echo "</tr>";
 						}
 					?>
 				</tbody>

@@ -298,7 +298,7 @@ INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '3');
 
 -- Asset Assignment
-INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `personresponsible_id`, `statusID`) VALUES ('1', '2018-07-24', '2018-07-25', '1', '11');
+INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `personresponsibleID`, `statusID`) VALUES ('1', '2018-07-24', '2018-07-25', '1', '11');
 
 -- asseet audit for asset assignment
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`, `assetAssignmentID`) VALUES ('2', '1', '2018-08-02', '1', '1');
