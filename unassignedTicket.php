@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="layout/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="layout/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="layout/dataTables.bootstrap.min.css">
   <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
@@ -22,6 +20,7 @@
 
 </head>
 
+<body>
 	<body>
     <header>
         <div class="container">
@@ -90,38 +89,29 @@
         </div>
     </section>
     <!-- Main content -->
-	<body>	  
+		  
     <section class="content">
       <div class="row">
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
-			  <h3 class="box-title">Asset Request</h3>
+			  <h3 class="box-title">Tickets</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-			  <table id="example2" class="table table-bordered table-striped"  style="font-size:12px">
+			  <table id="example2" class="table table-bordered table-striped" style="font-size:12px">
 				<thead>
 				<tr>
-				  <th>Name</th>
-				  <th>Date</th>
-				  <th>Form</th>
-				  <th>Comments</th>
+				  <th>ID</th>
+				  <th>Sumary</th>
+				  <th>Assignee</th>
+				  <th>Creator</th>
+				  <th>Priority</th>
+				  <th>Category</th>
+				  <th>Due</th>
+				  <th>Updated</th>
 				  <th>Status</th>
 				</tr>
-				<tr>
-				  <td>LaptopPropertyCode</td>
-				  <td>SerialNumberLaptop</td>
-				  <td>10.2.3.4.5.6</td>
-				  <td>10.2.3.4.5.6</td>
-				  <td>
-					<select>
-					 <option>Open</option>
-					 <option>Pending</option>
-					 <option>Resolved</option>
-					 <option>Closed</option>
-					</select>
-				  </td>
 				</thead>
 				<tbody>
 			  </table>
@@ -143,13 +133,8 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="layout/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
+<script src="layout/jquery.dataTables.min.js"></script>
+<script src="layout/dataTables.bootstrap.min.js"></script>
 
 <script>
   $(function () {
