@@ -6,12 +6,8 @@
 	<title>Fusion IT Asset Management System</title>
 	<!-- BOOTSTRAP CORE STYLE  -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- Bootstrap 3.3.7 -->
-	<link rel="stylesheet" href="layout/bootstrap.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="layout/font-awesome.min.css">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 	<!-- DataTables -->
 	<link rel="stylesheet" href="layout/dataTables.bootstrap.min.css">
 	<link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
@@ -21,8 +17,8 @@
 	<link href="layout/AssetsCssStyle.css" rel="stylesheet" />
 
 	<!-- Time picker source -->
-	<script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-	<link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+	<script src="layout/timepicker.min.js"></script>
+	<link href="layout/timepicker.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -125,7 +121,7 @@
               <label>Description</label>
               <div class="controls">
                 <div class="ui-wrapper" style="overflow: hidden; position: relative; width: 600px; height: 100px; top: auto; left: auto; margin: 0px; padding-bottom: 14px;">
-                  <textarea id="ticket_description_" name="ticket[description]" style="margin: 0px; resize: none; position: static; zoom: 1; display: block; height: 100px; width: 560px;">         
+                  <textarea id="description" name="description" style="margin: 0px; resize: none; position: static; zoom: 1; display: block; height: 100px; width: 560px;">         
                   </textarea>
                 </div>
               </div>
@@ -240,15 +236,18 @@
 							$testingID = $row['testingID'];
 							
 							echo "<tr>
-									
-									<td <a class='showhr'><button>Expand/Collapses</button></a></td>
+									<td styl='display: none;'></td>
+									<td <a class='showhr'><button class ='btn btn-secondary'><font size='1'>Expand/Collapse</font></button></a></td>
 									<td>number</td>
 									<td>{$row['employeeName']}</td>
 									<td>{$row['Office']}</td>
 									<td>{$row['Building']}</td>
 									<td> {$row['floorRoom']}</td>
-									<td><button onClick='modalness();'>New Ticket</button></td>
+									<!-- Modal trigger -->
+									<td>
+							<button type='button' style='display:inline' class='btn btn-secondary' data-toggle='modal' data-target='#Modal'><font size='1'>Create Ticket</font></button></td>
 									</tr>";
+							$arrayticket;
 								
 								$query2 = "SELECT (assettesting_testingID) as 'testingID',
 											assetID, propertyCode, serialNo, macAddress, itemSpecification,
@@ -311,25 +310,6 @@
 					
 			</div>
 		</section>
-		
-		<div id="b1" class="containerTab" style="display:none;background:white">
-  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-		<h2>Items Testing</h2>
-        <table id="example2" class="table table-bordered table-striped"  style="font-size:12px; color:black">
-				<tr>
-				  <th>Item specification</th>
-				  <th>ProperSASDASDASDSty Code</th>
-				  <th>Serial Number</th>
-				  <th>MAC Address</th>
-				</tr>
-				<tr>
-				  <td>Solid Computer</td>
-				  <td>AB1234</td>
-				  <td>12768405</td>
-				  <td>10.00.44.55</td>
-				 </tr>
-			  </table>
-</div>
 	  
 </body>
 
@@ -339,8 +319,8 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="layout/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="layout/jquery.dataTables.min.js"></script>
+<script src="layout/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -363,7 +343,7 @@ $(".invi").nextUntil("tr:has(.showhr)").toggle();
   })
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="layout/jquery.min.js"></script>
 <script>
 $(".showhr").click(function() {
     $(this).closest('tr').nextUntil("tr:has(.showhr)").toggle("slow", function() {});
@@ -394,10 +374,5 @@ function openTab(tabName) {
   document.getElementById(tabName).style.display = "block";
 }
 
-function modalness(){
-
-$('#Modal').modal('show');
-
-}
 </script>
 </html>
