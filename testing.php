@@ -10,7 +10,7 @@
 					  <td>CSO</td>
 					  <td>Yuchengco</td>
 					  <td> Y507</td>
-					  <td><button onclick="alertData();">button2</button></td>
+					  <td><button >GetData</button></td>
 					 </tr>
 					 
 					 <tr class = "invi" id= "invi" style="display:none" >
@@ -27,16 +27,16 @@
 						  <td>10.00.44.55</td>
 						 </tr>
 					</tr>
+
 					<tr>
 					  <td <a class="showhr" href="#">+</a></td>
-					  <td>James Bond</td>
-					  <td>james_bond</td>
-					  <td>CSO</td>
-					  <td>Yuchengco</td>
-					  <td> Y507</td>
-					  <td><button onclick="alertData();">button2</button></td>
+					  <td>Bond Man</td>
+					  <td>man_bond</td>
+					  <td>CSI</td>
+					  <td>Henry</td>
+					  <td> 12th</td>
+					  <td><button >GetData</button></td>
 					 </tr>
-					 
 					 <tr class = "invi" id= "invi" style="display:none" >
 						<tr>
 						  <th>Item specification</th>
@@ -51,10 +51,45 @@
 						  <td>10.00.44.55</td>
 						 </tr>
 						 <tr class = "data" data-id="3">
-						  <td>Solid Computer</td>
-						  <td>AB1234</td>
-						  <td>12768405</td>
-						  <td>10.00.44.55</td>
+						  <td>liquid Computer</td>
+						  <td>qwerty</td>
+						  <td>65432</td>
+						  <td>10.11.44.55</td>
+						 </tr>
+						 <tr class = "data" data-id="2">
+						  <td>gas Computer</td>
+						  <td>BA4321</td>
+						  <td>111122223</td>
+						  <td>13.15.13.21</td>
+					</tr>
+
+					<td <a class="showhr" href="#">+</a></td>
+					  <td>John Doe</td>
+					  <td>ordinaryguy</td>
+					  <td>CSO</td>
+					  <td>Yuchengco</td>
+					  <td> Y401</td>
+					  <td><button >GetData</button></td>
+					 </tr>
+					 
+					 <tr class = "invi" id= "invi" style="display:none" >
+						<tr>
+						  <th>Item specification</th>
+						  <th>Property Code</th>
+						  <th>Serial Number</th>
+						  <th>MAC Address</th>
+						</tr>
+						<tr>
+						  <td class = "data" data-id="1">Liquid Snake</td>
+						  <td>CSAA1234</td>
+						  <td>7654222111</td>
+						  <td>11.60.44.80</td>
+						 </tr>
+						 <tr>
+						  <td class = "data" data-id="1">Gas Snake</td>
+						  <td>CERA1234</td>
+						  <td>3313212</td>
+						  <td>33.76.55.80</td>
 						 </tr>
 					</tr>
   </tbody>
@@ -62,56 +97,4 @@
 
 </html>
 
-<script type="text/javascript">
-function getFirstCellTextList(tableElement) {
-   if (tableElement instanceof jQuery) {
-      // Create an array
-      var textList = [];
 
-      // Iterate over each table row
-      tableElement.find('.data').each(function() {
-          // Get the first cells's text and push it inside the array
-          var row = $(this);
-          if (row.children('td').length > 0) {
-             textList.push(row.children('td').eq(0).text());
-          }                  
-      });
-      return textList;
-
-		}
-   }
-function alertData(){
-	var myList = getFirstCellTextList($('#your_table'));
-	alert(myList);
-}
-
-$("#b1").on('click',function() {
-                 $('.data').each(function() {
-                 var term = $('.data').attr('data-id');
-                 alert(term);
-                 });
-             });
-
-
-$('#tblNewAttendees tr').each(function() {
-  alert('tr');
-  //Cool jquery magic that lets me iterate over all the td only in this row
-  $(magicSelector).each(function(){
-    alert('hi');
-  });
-
-});
-var count = 0;
-
-$("#b3").on('click',function() {
-    $(this).closest('tr').nextUntil("tr:has(.showhr)").find('td').each (function() {
-  		alert('tr');
-		});                         
-});
-
-
-</script>
-<?php
-
-
-?>
