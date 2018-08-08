@@ -64,20 +64,31 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
-                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
-                            <li><a href="#">Add</a>
-                                <ul>
-                                <li> <a href="addAsset.html">Add Asset</a> </li>
-                                <li> <a href="assignRoomToDepartment.html">Assign Room</a> </li>
-                                <li> <a href="addEmployee.html">Add Employee</a> </li>
-                                <li> <a href="addSoftware.html">Add Software</a> </li>
-                                </ul>
-                            </li>
-                            <li><a href="DataTables.html">Data Tables</a></li>
+                            <li><a href="#">Adding</a>
+								<ul>
+								<li> <a href="addAsset.php">Add Asset</a> </li>
+								<li> <a href="addDesktop.php">Add Desktop</a> </li>
+								<li> <a href="addEmployee.php">Add Employee</a> </li>
+								<li> <a href="addLicense.php">Add License</a> </li>
+								<li> <a href="addSoftware.php">Add Software</a> </li>
+								<li> <a href="addWarranty.php">Add Warranty</a> </li>
+								</ul>
+							</li>
+							<li><a href="#">Assigning</a>
+								<ul>
+								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
+								<li> <a href="assignAssetToPerson.php">Assign Asset</a> </li>
+								</ul>
+							</li>
+                            <li><a href="#">Data Tables</a>
+								<ul>
+								<li> <a href="assetTesting.php">Asset Testing Table</a> </li>
+								</ul>
+							</li>
                             <li><a href="#">Forms</a></li>
                              <li><a href="login.html">Login Page</a></li>
-                            <li><a href="#">Blank Page</a></li>
 
                         </ul>
                     </div>
