@@ -232,7 +232,7 @@
 							$testingID = $row['testingID'];
 							
 							echo "<tr>
-									<td styl='display: none;'></td>
+									<td style='display: none;'></td>
 									<td <a class='showhr'><button class ='btn btn-secondary'><font size='1'>Expand/Collapse</font></button></a></td>
 									<td>number</td>
 									<td>{$row['employeeName']}</td>
