@@ -12,6 +12,8 @@
 	$testingID = $_POST['testingID'];
 	$assigned_to = $_POST['assigned_to'];
 
+	$due_date  = date("H:i", strtotime("$due_date"));
+
 	date_default_timezone_set("Asia/Singapore");
 	$date = date('Y-m-d H:i:s');
 
