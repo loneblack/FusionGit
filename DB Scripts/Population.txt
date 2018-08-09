@@ -285,42 +285,46 @@ INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('7', 'IBM');
 INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('8', 'Samsung');
 INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('9', 'Baidu');
 INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('10', 'Oracle');
+INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('11', 'Kingmax');
+INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('12', 'Intel');
+INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('13', 'Smart');
+
 
 -- assettype
 INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('1', '20', '1', '4gb Ram 500gb storage');
 INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('2', '8', '2', '12 mega pixels');
 INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('3', '18', '3', 'Wireless ');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('4', '15', '11', '32gb USB 3.0');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('5', '18', '12', 'Ocatacore');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('6', '48', '12', 'HD 2000');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('7', '31', '13' '2.4Ghz');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('8', '23', '8' '18 inch Retina Display');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('9', '21', '10' 'Blu-ray');
+INSERT INTO `thesis`.`assettype` (`assetTypeID`, `assetClass`, `brand`, `itemSpecification`) VALUES ('10', '44', '5' '4gb Ram 128gb storage');
 
 -- Employee
 INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Test Emmployee', 'Test Employee', '09999999999', 'test@test');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Test Emmployee', 'Test Employee', '09999999999', 'test@test');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Test Emmployee', 'Test Employee', '09999999999', 'test@test');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Giligan, Crissa', 'Assistan Asset Manager', '0456789299', crissa.giligan@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Giligan, Crissa', 'Assistan Asset Manager', '0456789299', crissa.giligan@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Test Emmployee', 'Test Employee', '09999999999', 'test@test');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Sir Jojo', 'Asset Manager', '09999999999', 'jojo.soliva@dlsu.edu.ph');
-INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Giligan, Crissa', 'Assistan Asset Manager', '0456789299', crissa.giligan@dlsu.edu.ph');
-
-
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Test Employee', 'Test Employee', '09999999999', 'test@test');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Giligan Crissa', 'Assistan Asset Manager', '0456789299', 'crissa.giligan@dlsu.edu.ph');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Helph Dyesk', 'Helpdesk', '09876543210', 'helpless.desk@dlsu.edu.ph');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Mark Question', 'Engineer', '09876543210', 'question.mark@dlsu.edu.ph');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Point Exclamation', 'Head Engineer', '09876543210', 'exclamation.point@dlsu.edu.ph');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Teacher Matt', 'Professor', '09876543210', 'math.teacher@dlsu.edu.ph');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Professor Psy', 'Professor', '09876543210', 'psych.prof@dlsu.edu.ph');
+INSERT INTO `thesis`.`employee` (`DepartmentID`, `name`, `position`, `contactNo`, `email`) VALUES ('20', 'Lecturer Phil', 'Assistant Professor', '09876543210', 'filipino.lecturer@dlsu.edu.ph');
 
 -- asset
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '2');
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
 INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('3', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '2');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('3', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '2');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('3', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'LaptopPropertyCode', 'SerialNumberLaptop', 'MACADDRESSLAPTOP', '2');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('1', 'CameraPropertyCode', 'SerialNumberCamera', 'MACCamera', '1');
-INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('2', 'KeyboardPropertyCode', 'SerialNumberKeyboard', 'MacKeyboard', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('4', 'FlashdrivePropertyCode', 'SerialNumberFlashdrive', 'MacFlashdrive', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('5', 'ProcessorPropertyCode', 'SerialNumberProcessor', 'MacProcessor', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('6', 'VideoCardPropertyCode', 'SerialNumberVideoCard', 'MacVideoCard', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('7', 'PocketWifiPropertyCode', 'SerialNumberPocketWifi', 'MacPocketWifi', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('8', 'MonitorPropertyCode', 'SerialNumberMonitor', 'MacMonitor', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('9', 'MediaPlayerPropertyCode', 'SerialNumberMediaPlayer', 'MacMediaPlayer', '1');
+INSERT INTO `thesis`.`asset` (`assetTypeID`, `propertyCode`, `serialNo`, `macAddress`, `status`) VALUES ('10', 'TabletPropertyCode', 'SerialNumberTablet', 'MacTablet', '1');
+
 
 -- asset audit for new items
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '1');
@@ -332,8 +336,7 @@ INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '7');
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '8');
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '9');
-INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', 10');
-INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', 11');
+INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('1', '1', '2018-08-02', '10');
 
 
 -- Asset Assignment
@@ -341,4 +344,3 @@ INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `pers
 
 -- asseet audit for asset assignment
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`, `assetAssignmentID`) VALUES ('2', '1', '2018-08-02', '1', '1');
-
