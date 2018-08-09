@@ -93,7 +93,7 @@
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
-			  <h3 class="box-title">Tickets</h3>
+			  <h3 class="box-title">Unassigned Tickets</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
