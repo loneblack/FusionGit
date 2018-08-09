@@ -103,7 +103,7 @@ require_once("mysqlconnect.php");
 	      </div>
 	      <div class="modal-body">
 
-        <form action="" method="post">         
+        <form action="testingRequestDB.php" method="post">         
             <!-- Summary  -->
             <div class="control-group">
               <label>Summary</label>
@@ -130,7 +130,7 @@ require_once("mysqlconnect.php");
               <label>Assigned to</label>
               <div class="controls">
                 <select id="assigned_to" name="assigned_to">
-                	<option value="0">Unassigned</option>
+                	<option value=0>Unassigned</option>
                 	<?php
                     $query="select * from employee ORDER BY name;";
                     $result=mysqli_query($dbc,$query);
@@ -176,8 +176,8 @@ require_once("mysqlconnect.php");
            
 			<div class="control-group">
 			<label>Add testing Requests</label>
-			<select name="assetType" style="border-radius:5px; height:25px; width:153px">
-				<option>Select asset type</option>
+			<select name="testingID" style="border-radius:5px; height:25px; width:153px">
+				<option>Select Request</option>
 				<?php
 				$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
 						join employee E 

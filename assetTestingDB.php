@@ -35,7 +35,7 @@ for($i = 0; $i<count($assets);$i++)
 		$query3 = "INSERT INTO `thesis`.`assettesting_details` (`assettesting_testingID`, `asset_assetID`) VALUES ('{$testingID}', '{$assets[$i]}');";
 		$result3 = mysqli_query($dbc, $query3);
 
-		//Change asset status to pending for testing
+		//Change asset status to for testing
 		$query4 = "UPDATE `thesis`.`asset` SET `status`='9' WHERE `assetID`='{$assets[$i]}';";
 		$result4 = mysqli_query($dbc, $query4);
 
