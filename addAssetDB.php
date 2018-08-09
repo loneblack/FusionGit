@@ -1,24 +1,42 @@
 <?php
 	require_once("mysqlconnect.php");
-	
-	$AssetClass = $_POST['assetclass'];
-	$quantity = $_POST['quantity'];
+	$mrf = $_POST['mrf'];
+	$dateDelivered = $_POST['dateDelivered'];
+	$purchaseOrder = $_POST['purchaseOrder'];
+	$salesInvoice = $_POST['salesInvoice'];
+	$deliveryReceipt = $_POST['deliveryReceipt'];
+	$receivingReport = $_POST['receivingReport'];
+	$rrDate = $_POST['rrDateToWH'];
+	$assetType = $_POST['assetType'];
+	$unitCost = $_POST['unitCost'];
+	$supplier = $_POST['supplier'];
+	$request = $_POST['request'];
+	$department = $_POST['department'];
+	$user = $_POST['user'];
+	$description = $_POST['description'];
 	$brand = $_POST['brand'];
-	$ItemSpecification = $_POST['ItemSpecification'];
-	$PropertyCode = $_POST['PropertyCode'];
+	$itemSpeficiation = $_POST['itemSpeficiation'];
+	$warrantyY = $_POST['warrantyY'];
+	$warrantyM = $_POST['warrantyM'];
+	$propertyCode = $_POST['propertyCode'];
 	$SerialNumber = $_POST['SerialNumber'];
 	$MACAddress = $_POST['MACAddress'];
-	$status = '2';// for stocked status
-	$ProductKey = $_POST['ProductKey'];
-	$InstallCode = $_POST['InstallCode'];
-	$SInumber = $_POST['SInumber'];
+	$attachments = $_POST['attachments'];
 	
+	$getAssetTypeID = "SELECT assetTypeID FROM `assettype` WHERE assetClass != 13 AND assetClass != 42 ORDER BY assetTypeID DESC LIMIT 1;";
+	$assetTypeID = mysqli_query($dbc, $getAssetTypeID);
 	
-	$sql = "INSERT INTO asset (AssetClass, quantity, brand, ItemSpecification, PropertyCode, SerialNo, MACAddress, status, ProductKey, InstallCode, SIno) VALUES ('{$AssetClass}', '{$quantity}', '{$brand}', '{$ItemSpecification}', '{$PropertyCode}', '{$SerialNumber}', '{$MACAddress}', '{$status}', '{$ProductKey}', '{$InstallCode}', '{$SInumber}')";
+	//insert into assetType
+	$assetTypeSQL = "INSERT INTO `thesis`.`assettype` (`assetClass`, `brand`, `itemSpecification`, `description`) VALUES ('{$assetType}', '{$brand}', '{$itemSpeficiation}', '{$description}');";
+
+	$result = mysqli_query($dbc, $assetTypeSQL);
+	
+	//insert into asset
+	/*$sql = "INSERT INTO asset (assetTypeID, supplierID, status, propertyCode, serialNo, macAddress, dateDelivered, unitCost) VALUES ('{$assetType}', '{$supplier}', '2',  '{$}', '{$}', '{$}', '{$}', '{$}');";
 
 	echo $sql;
 
 	$result = mysqli_query($dbc, $sql);
-
+	*/
 	
 ?>

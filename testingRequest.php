@@ -1,3 +1,6 @@
+<?php
+require_once("mysqlconnect.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,12 +9,8 @@
 	<title>Fusion IT Asset Management System</title>
 	<!-- BOOTSTRAP CORE STYLE  -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- Bootstrap 3.3.7 -->
-	<link rel="stylesheet" href="layout/bootstrap.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="layout/font-awesome.min.css">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 	<!-- DataTables -->
 	<link rel="stylesheet" href="layout/dataTables.bootstrap.min.css">
 	<link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
@@ -21,8 +20,8 @@
 	<link href="layout/AssetsCssStyle.css" rel="stylesheet" />
 
 	<!-- Time picker source -->
-	<script src="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.js"></script>
-	<link href="http://cdn.jsdelivr.net/timepicker.js/latest/timepicker.min.css" rel="stylesheet"/>
+	<script src="layout/timepicker.min.js"></script>
+	<link href="layout/timepicker.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -92,7 +91,6 @@
     <!-- NAVBAR CONTENT END-->
 <!-- NAVBAR END-->
 
-
 <!-- Modal -->
 	<div id="Modal" name ="Modal"class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -105,8 +103,7 @@
 	      </div>
 	      <div class="modal-body">
 
-        <form action="" method="post">
-            
+        <form action="" method="post">         
             <!-- Summary  -->
             <div class="control-group">
               <label>Summary</label>
@@ -121,7 +118,7 @@
               <label>Description</label>
               <div class="controls">
                 <div class="ui-wrapper" style="overflow: hidden; position: relative; width: 600px; height: 100px; top: auto; left: auto; margin: 0px; padding-bottom: 14px;">
-                  <textarea id="ticket_description_" name="ticket[description]" style="margin: 0px; resize: none; position: static; zoom: 1; display: block; height: 100px; width: 560px;">         
+                  <textarea id="description" name="description" style="margin: 0px; resize: none; position: static; zoom: 1; display: block; height: 100px; width: 560px;">         
                   </textarea>
                 </div>
               </div>
@@ -159,7 +156,7 @@
             <!-- Due Time  -->
             <div class="control-group">
               <label>Due Time</label>
-              <div class="controls">
+              <div class="controls"><!-- galit si greg kay manu -->
                 <input type="time" id="time">
               </div>
             </div>
@@ -176,6 +173,29 @@
             </div>
             <!-- Priority  -->
             <br>
+           
+			<div class="control-group">
+			<label>Add testing Requests</label>
+			<select name="assetType" style="border-radius:5px; height:25px; width:153px">
+				<option>Select asset type</option>
+				<?php
+				$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
+						join employee E 
+						on AST.PersonRequestedID = E.employeeID
+						join FloorAndRoom f
+						on AST.FloorAndRoomID = f.FloorAndRoomID
+						join offices o
+						on AST.officeID = o.officeID
+						join building b
+						on  f.BuildingID = b.BuildingID;";
+					$result=mysqli_query($dbc,$query);
+					
+					while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					echo "<option value='{$row['testingID']}'>{$row['rpsmsrf']} {$row['Building']} {$row['floorRoom']} {$row['remarks']}</option>";
+					}
+				?> 
+			</select>
+			</div>
 
           <div class="modal-footer">
             <button type="submit" type="submit">Save</button>
@@ -189,16 +209,18 @@
 </div>
 <!-- Modal-->
 
-
-
     <!-- Main content -->	  
 	<body>
     <section class="content">
       <div class="row">
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
-			<div class="box-header">
-			  <h3 class="box-title">Testing Request</h3>
+			<div class="box-header" 	>
+			  <h3 class="box-title" >Testing Request</h3>
+				<!-- Modal trigger -->
+				<div align="right" style="padding-bottom: 20px;">
+				<button type='button' style='display:inline;' class='btn btn-secondary' data-toggle='modal' data-target='#Modal'><font size='1'>Create Ticket</font></button>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -210,15 +232,13 @@
 					  <th>User Name</th>
 					  <th>Office</th>
 					  <th>Building</th>
-					  <th>Room Number</th>				  
-					  <th></th>
+					  <th>Room Number</th>
+					  <th>Remarks</th>
 					</tr>
 				</thead>
 				<tbody>				
 					<?php
-					require_once("mysqlconnect.php");
-						$link_address = 'createTicket.php';
-						$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building'FROM thesis.assettesting AST 
+						$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
 									join employee E 
 									on AST.PersonRequestedID = E.employeeID
 									join FloorAndRoom f
@@ -236,15 +256,16 @@
 							$testingID = $row['testingID'];
 							
 							echo "<tr>
-									
-									<td <a class='showhr'><button>Expand/Collapses</button></a></td>
-									<td>number</td>
+									<td style='display: none;'></td>
+									<td <a class='showhr'><button class ='btn btn-secondary'><font size='1'>Expand/Collapse</font></button></a></td>
+									<td>{$row['rpsmsrf']}</td>
 									<td>{$row['employeeName']}</td>
 									<td>{$row['Office']}</td>
 									<td>{$row['Building']}</td>
-									<td> {$row['floorRoom']}</td>
-									<td><button onClick='modalness();'>New Ticket</button></td>
+									<td>{$row['floorRoom']}</td>
+									<td>{$row['remarks']}</td>
 									</tr>";
+							$arrayticket;
 								
 								$query2 = "SELECT (assettesting_testingID) as 'testingID',
 											assetID, propertyCode, serialNo, macAddress, itemSpecification,
@@ -271,7 +292,6 @@
 											  <th>Asset Class</th>
 											  <th>Brand Name</th>
 											  <th>Item Specification</th>
-											  <td></td>
 											</tr>
 											<tr>";
 											
@@ -287,10 +307,9 @@
 											<td>{$row['assetClass']}</td>
 											<td>{$row['brandName']}</td>
 											<td>{$row['itemSpecification']}</td>
-											<td></td>
-											</tr>
 											</tr>";
 								}
+											echo "</tr>";
 						}
 					?>
 				</tbody>
@@ -302,31 +321,10 @@
 			<!-- /.box-body -->
 		  </div>
 		  <!-- /.box -->
-						</div>
-					<!-- /.col -->
-					
 			</div>
-		</section>
-		
-		<div id="b1" class="containerTab" style="display:none;background:white">
-  <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
-		<h2>Items Testing</h2>
-        <table id="example2" class="table table-bordered table-striped"  style="font-size:12px; color:black">
-				<tr>
-				  <th>Item specification</th>
-				  <th>ProperSASDASDASDSty Code</th>
-				  <th>Serial Number</th>
-				  <th>MAC Address</th>
-				</tr>
-				<tr>
-				  <td>Solid Computer</td>
-				  <td>AB1234</td>
-				  <td>12768405</td>
-				  <td>10.00.44.55</td>
-				 </tr>
-			  </table>
-</div>
-	  
+			<!-- /.col -->				
+		</div>
+	</section>	  
 </body>
 
 
@@ -335,8 +333,8 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="layout/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="layout/jquery.dataTables.min.js"></script>
+<script src="layout/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -359,7 +357,7 @@ $(".invi").nextUntil("tr:has(.showhr)").toggle();
   })
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="layout/jquery.min.js"></script>
 <script>
 $(".showhr").click(function() {
     $(this).closest('tr').nextUntil("tr:has(.showhr)").toggle("slow", function() {});
@@ -379,7 +377,6 @@ timepicker.on('change', function(evt) {
 
 </script>
 
-
 <script>
 function openTab(tabName) {
   var i, x;
@@ -390,10 +387,5 @@ function openTab(tabName) {
   document.getElementById(tabName).style.display = "block";
 }
 
-function modalness(){
-
-$('#Modal').modal('show');
-
-}
 </script>
 </html>

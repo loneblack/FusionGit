@@ -335,7 +335,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `thesis`.`assettype` ;
 
 CREATE TABLE IF NOT EXISTS `thesis`.`assettype` (
-  `assetTypeID` INT(11) NOT NULL,
+  `assetTypeID` INT(11) NOT NULL AUTO_INCREMENT,
   `assetClass` INT(11) NULL DEFAULT NULL,
   `brand` INT(11) NULL DEFAULT NULL,
   `itemSpecification` LONGTEXT NULL DEFAULT NULL,
@@ -831,6 +831,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assettesting` (
   `departmentOwnsRoomID` INT(11) NULL DEFAULT NULL,
   `officeID` INT(11) NULL DEFAULT NULL,
   `remarks` LONGTEXT NULL DEFAULT NULL,
+  `rpsmsrf` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`testingID`),
   INDEX `fk_AssetTesting_User1_idx` (`PersonRequestedID` ASC),
   INDEX `fk_AssetTesting_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
@@ -864,6 +865,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assettesting` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+
 
 
 -- -----------------------------------------------------

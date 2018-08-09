@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+	
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
@@ -22,7 +23,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script src="http://www.designbootstrap.com/track/ga.js" ></script>
 <script src="layout/jquery.min.js"></script>
 	<script src="layout/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -31,7 +31,8 @@
 
 
 </head>
-							
+	
+	<body background="resource/green.jpg">						
 		<header>
         <div class="container">
             <div class="row">
@@ -112,20 +113,68 @@
         </div>
     </section>
     <!-- MENU SECTION END-->
-	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
 				<form method="POST" action="addAssetDB.php">
 					<h2 align="center">Add Asset</h2>
 					
-					<div> <!-- Asset class-->
-						<b><font size="1" color="#332929">Asset Class *</font></b>
+					<div> <!-- MRF -->
+						<b><font size="1" color="#332929">MRF</font></b>
 						<br>
-						<select name="assetclass" style="border-radius:5px; height:25px; width:153px">
-							<option>Select asset class</option>
+						<input type="text" name="mrf" placeholder="MRF" style="border-radius:5px; width:252px; height:25px">
+					</div> <!-- MRF -->
+					<br>
+					
+					<div> <!-- Date Delivered -->
+						<b><font size="1" color="#332929">Date Delivered</font></b>
+						<br>
+						<input type="date" name="dateDelivered"  style="border-radius:5px; width:252px; height:25px">
+					</div> <!-- Date Delivered -->
+					<br>
+					
+					<div> <!-- Purchase Order -->
+						<b><font size="1" color="#332929">Purchase Order</font></b>
+						<br>
+						<input type="text" name="purchaseOrder" placeholder="Purchase Order" style="border-radius:5px; width:252px; height:25px">
+					</div> <!-- Purchase Order -->
+					<br>
+					
+					<div> <!-- SI Number -->
+						<b><font size="1" color="#332929">Sales Invoice</font></b>
+						<br>
+						<input type="text" name="salesInvoice" placeholder="Sales Invoice" style="border-radius:5px; width:252px">
+					</div> <!-- SI Number -->
+					<br>
+					
+					<div> <!-- Delivery Receipt -->
+						<b><font size="1" color="#332929">Delivery Receipt</font></b>
+						<br>
+						<input type="text" name="deliveryReceipt" placeholder="Delivery Receipt" style="border-radius:5px; width:252px">
+					</div> <!-- Delivery Receipt -->
+					<br>
+					
+					<div> <!-- Receiving Report -->
+						<b><font size="1" color="#332929">Receiving Report</font></b>
+						<br>
+						<input type="text" name="receivingReport" placeholder="Receiving Report" style="border-radius:5px; width:252px">
+					</div> <!-- Receiving Report -->
+					<br>
+					
+					<div> <!-- RR date to WH -->
+						<b><font size="1" color="#332929">RR date to WH</font></b>
+						<br>
+						<input type="date" name="rrDateToWH" style="border-radius:5px; width:252px; height:25px">
+					</div> <!-- RR date to WH -->
+					<br>
+					
+					<div> <!-- Asset type-->
+						<b><font size="1" color="#332929">Asset Type *</font></b>
+						<br>
+						<select name="assetType" style="border-radius:5px; height:25px; width:153px">
+							<option>Select asset type</option>
 							<?php
-								$query="select * from ref_assetclass ORDER BY name";
+								$query="select * from ref_assetclass WHERE name != 'Desktop' AND name != 'Software' ORDER BY name";
 								$result=mysqli_query($dbc,$query);
 								
 								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -135,45 +184,95 @@
 						</select>
 						
 						<!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add new Class</font></button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="myModal" role="dialog">
-							<div class="modal-dialog">
-						
-							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h4 class="modal-title">Add new Asset Class</h4>
-							</div>
-							<div class="modal-body"> 
-								<meta charset="UTF-8">
-								
-								<form method="POST" action="addAssetClassDB.php">
-									<div>
-										<label>New Asset Class</label>
-										<input type="text" onkeydown="btnCheck();" id="newAssetClass" name="newAssetClass" placeholder="New Asset Class" required>
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-							  <button type="button" onShow="disableBtn();" onMouseOver="btnCheck();" id="acModalSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
-							</div>
-						  </div>
-						  
-						</div>
-					  </div>
-						
-					</div> <!-- Asset class -->
-					
-					<div> <!-- Quantity -->
-						<b><font size="1" color="#332929">Quantity *</font></b>
-						<br>
-						<input type="number" name="quantity" placeholder="Quantity" style="border-radius:5px; width:252px; height:25px">
-					</div>
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add new Type</font></button>
+					</div> <!-- Asset Type -->
 					<br>
-					<div>
+					
+					<div> <!-- Unit Cost-->
+						<b><font size="1" color="#332929">Unit Cost</font></b>
+						<br>
+						<input type="number" min="0.00" name="unitCost" placeholder="0.00" step="0.01" style="border-radius:5px; width:252px; height:25px">
+					</div> <!-- Unit Cost -->
+					<br>
+					
+					<div> <!-- Supplier -->
+						<b><font size="1" color="#332929">Supplier</font></b>
+						<br>
+						<select name="supplier" style="border-radius:5px; width:252px">
+							<option value="">Select supplier</option>
+							<?php
+								$query="select * from supplier ORDER BY name;";
+								$result=mysqli_query($dbc,$query);
+								
+								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								echo "<option value='{$row['supplierID']}'>{$row['name']}</option>";
+								}
+							?>
+						</select>
+					</div> <!-- Supplier -->
+					<br>
+					
+					<div> <!-- Requested -->
+						<b><font size="1" color="#332929">Request</font></b>
+						<br>
+						<select name="request" style="border-radius:5px; width:252px">
+							<option value="">Select request</option>
+							<?php
+								$query="select * from request ORDER BY requestID;";
+								$result=mysqli_query($dbc,$query);
+								
+								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								echo "<option value='{$row['requestID']}'>{$row['description']}</option>";
+								}
+							?>
+						</select>
+					</div> <!-- Requested -->
+					<br>
+					
+					<div> <!-- Department -->
+						<b><font size="1" color="#332929">Department</font></b>
+						<br>
+						<select name="department" style="border-radius:5px; width:252px">
+							<option value="">Select department</option>
+							<?php
+								$query="select * from department ORDER BY name;";
+								$result=mysqli_query($dbc,$query);
+								
+								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								echo "<option value='{$row['departmentID']}'>{$row['name']}</option>";
+								}
+							?>
+						</select>
+					</div> <!-- Department -->
+					<br>
+					
+					<div> <!-- Requested -->
+						<b><font size="1" color="#332929">Received and Verified By</font></b>
+						<br>
+						<select name="user" style="border-radius:5px; width:252px">
+							<option value="">Select user</option>
+							<?php
+								$query="select * from user ORDER BY firstName;";
+								$result=mysqli_query($dbc,$query);
+								
+								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+								echo "<option value='{$row['UserID']}'>{$row['firstName']} - {$row['lastName']}</option>";
+								}
+							?>
+						</select>
+					</div> <!-- Requested -->
+					<br>
+					
+					<!-- Description -->
+					<div> 
+						<b><font size="1" color="#332929">Description</font></b>
+						<br>
+						<textarea name="description" id="description" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
+					</div>
+					<!-- Description -->
+					<br>
+
+					<div> <!-- Brand -->
 						<b><font size="1" color="#332929">Brand *</font></b>
 						<br>
 						<select name="brand" style="border-radius:5px; height:25px; width:150px">
@@ -190,106 +289,123 @@
 	
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal1"><font size="1">Add new Brand</font></button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="myModal1" role="dialog">
-							<div class="modal-dialog">
-						
-							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h4 class="modal-title">Add new Brand</h4>
-							</div>
-							<div class="modal-body">
-								<form method="POST" action="addBrandDB.php">
-									<div>
-										<label>Name</label>
-										<input type="text" onkeydown="btnCheck1();" id="newBrand" placeholder="Name" required>
-									</div>
-									
-								</form>
-							</div>
-							<div class="modal-footer">
-							  <button type="submit" onShow="disableBtn1();" onMouseOver="btnCheck1();" id="brandSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
-							</div>
-						  </div>
-						  
-						</div>
-					  </div>
+					</div>
+					 <!-- Brand -->
+					 <br>
+					  
+					<!-- Item Specification -->
+					<div> 
+						<b><font size="1" color="#332929">Item Specification</font></b>
+						<br>
+						<textarea class=""name="itemSpeficiation" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
+					</div>
+					<!-- Item Specification -->
+					<br>
 					
-					</div> <!-- Quantity -->
-					<br>
-					<div> <!-- Item Specification -->
-						<b><font size="1" color="#332929">Item Specification *</font></b>
+					<!-- Warranty -->
+					<div> 
+						<b><font size="1" color="#332929">Warranty</font></b>
 						<br>
-						<input type="text" name="ItemSpecification" placeholder="Item Specification" required style="border-radius:5px; width:252px">
-					</div> <!-- Item specification -->
-					<br>
-					<div> <!-- Property Code -->
-						<b><font size="1" color="#332929">Property Code *</font></b>
+						<font size="1">Years</font><input type="number" min="0" name="warrantyY" placeholder="0"  style="border-radius:5px; height:25px; width:93px">
+						<font size="1">Months</font><input type="number" min="0" max="11" name="warrantyM" placeholder="0"  style="border-radius:5px; height:25px; width:93px">
+					</div>
+					<!-- Warranty -->
+					<br>					
+					
+					<!-- Property Code -->
+					<div> 
+						<b><font size="1" color="#332929">Property Code</font></b>
 						<br>
-						<input type="text" name="PropertyCode" placeholder="Property Code" required style="border-radius:5px; width:252px">
-					</div> <!-- Property Code -->
-					<br>
+						<input type="text" name="propertyCode" placeholder="Property Code" style="border-radius:5px; width:252px">
+					</div>
+					<!-- Property Code -->
+					<br>					
+					
 					<div> <!-- Serial Number --> 
 						<b><font size="1" color="#332929">Serial Number *</font></b>
 						<br>
 						<input type="text" name="SerialNumber" placeholder="SerialNumber" required style="border-radius:5px; width:252px">
 					</div> <!-- Serial Number -->
 					<br>
+					
 					<div> <!-- MAC Address -->
 						<b><font size="1" color="#332929">MAC Address</font></b>
 						<br>
 						<input type="text" name="MACAddress" placeholder="MAC Address" style="border-radius:5px; width:252px">
 					</div> <!-- MAC Address -->
 					<br>
-					<div> <!-- Product Key -->
-						<b><font size="1" color="#332929">Product Key</font></b>
+					
+					<!-- Attachments -->
+					<div> 
+						<b><font size="1" color="#332929">Attachments</font></b>
 						<br>
-						<input type="text" name="ProductKey" placeholder="Product Key" style="border-radius:5px; width:252px">
-					</div> <!-- Product Key -->
-					<br>
-					<div> <!-- Install Code -->
-						<b><font size="1" color="#332929">Install Code</font></b>
-						<br>
-						<input type="text" name="InstallCode" placeholder="Install Code" style="border-radius:5px; width:252px">
-					</div> <!-- Install Code -->
-					<br>
-					<div> <!-- SI Number -->
-						<b><font size="1" color="#332929">SI Number</font></b>
-						<br>
-						<input type="text" name="SInumber" placeholder="SI Number" style="border-radius:5px; width:252px">
-					</div> <!-- SI Number -->
-					<br>
+							<input type="file" name="attachments" accept="image/*">
+					</div>
+					<br>					
+					<!-- Attachments -->
+					
+						<button align="center" class="btn btn-outline-dark">Submit</button>
+				</form>
 				</div>
-					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
-					</form>
 			</div>
 		</div>
 	</body>
 	
-		<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal1" role="dialog">
+	<div class="modal-dialog">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">Add new Brand</h4>
+	</div>
+	<div class="modal-body">
+		<form method="POST" action="addBrandDB.php">
+			<div>
+				<label>Name</label>
+				<input type="text" onkeydown="btnCheck1();" id="newBrand" placeholder="Name" required>
+			</div>
+			
+		</form>
+	</div>
+	<div class="modal-footer">
+	  <button type="submit" onShow="disableBtn1();" onMouseOver="btnCheck1();" id="brandSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
+	</div>
+	</div>
+	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">Add new Asset Type</h4>
+	</div>
+	<div class="modal-body"> 
+		<meta charset="UTF-8">
+		
+		<form method="POST" action="addAssetClassDB.php">
+			<div>
+				<label>New Asset Type</label>
+				<input type="text" onkeydown="btnCheck();" id="newAssetClass" name="newAssetClass" placeholder="New Asset Class" required>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+	  <button type="button" onShow="disableBtn();" onMouseOver="btnCheck();" id="acModalSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
+	</div>
   </div>
-	
+  
+</div>
+</div>
 </html>
 
 <script>

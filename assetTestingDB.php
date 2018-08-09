@@ -8,13 +8,15 @@ $FloorAndRoomID = $_POST['FloorAndRoomID'];
 $building = $_POST['building'];
 $officeID = $_POST['officeID'];
 $remarks = $_POST['remarks'];
+$rpsmsrf = $_POST['rpsmsrf'];
 date_default_timezone_set("Asia/Singapore");
 $date = date('Y-m-d H:i:s');
 $testingID;
 
 //Insert to asset testing
-$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`)
-									VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}');";
+$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`, `rpsmsrf`)
+									VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}', '{$rpsmsrf}');";
+$_SESSION['submitMessage'] = $query1;
 
 $result1=mysqli_query($dbc,$query1);
 
