@@ -1,3 +1,6 @@
+<?php
+require_once("mysqlconnect.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +91,6 @@
     <!-- NAVBAR CONTENT END-->
 <!-- NAVBAR END-->
 
-
 <!-- Modal -->
 	<div id="Modal" name ="Modal"class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -101,8 +103,7 @@
 	      </div>
 	      <div class="modal-body">
 
-        <form action="" method="post">
-            
+        <form action="" method="post">         
             <!-- Summary  -->
             <div class="control-group">
               <label>Summary</label>
@@ -155,7 +156,7 @@
             <!-- Due Time  -->
             <div class="control-group">
               <label>Due Time</label>
-              <div class="controls">
+              <div class="controls"><!-- galit si greg kay manu -->
                 <input type="time" id="time">
               </div>
             </div>
@@ -172,6 +173,29 @@
             </div>
             <!-- Priority  -->
             <br>
+           
+			<div class="control-group">
+			<label>Add testing Requests</label>
+			<select name="assetType" style="border-radius:5px; height:25px; width:153px">
+				<option>Select asset type</option>
+				<?php
+				$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
+						join employee E 
+						on AST.PersonRequestedID = E.employeeID
+						join FloorAndRoom f
+						on AST.FloorAndRoomID = f.FloorAndRoomID
+						join offices o
+						on AST.officeID = o.officeID
+						join building b
+						on  f.BuildingID = b.BuildingID;";
+					$result=mysqli_query($dbc,$query);
+					
+					while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					echo "<option value='{$row['testingID']}'>{$row['rpsmsrf']} {$row['Building']} {$row['floorRoom']} {$row['remarks']}</option>";
+					}
+				?> 
+			</select>
+			</div>
 
           <div class="modal-footer">
             <button type="submit" type="submit">Save</button>
@@ -185,16 +209,18 @@
 </div>
 <!-- Modal-->
 
-
-
     <!-- Main content -->	  
 	<body>
     <section class="content">
       <div class="row">
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
-			<div class="box-header">
-			  <h3 class="box-title">Testing Request</h3>
+			<div class="box-header" 	>
+			  <h3 class="box-title" >Testing Request</h3>
+				<!-- Modal trigger -->
+				<div align="right" style="padding-bottom: 20px;">
+				<button type='button' style='display:inline;' class='btn btn-secondary' data-toggle='modal' data-target='#Modal'><font size='1'>Create Ticket</font></button>
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -206,15 +232,13 @@
 					  <th>User Name</th>
 					  <th>Office</th>
 					  <th>Building</th>
-					  <th>Room Number</th>				  
-					  <th></th>
+					  <th>Room Number</th>
+					  <th>Remarks</th>
 					</tr>
 				</thead>
 				<tbody>				
 					<?php
-					require_once("mysqlconnect.php");
-						$link_address = 'createTicket.php';
-						$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building'FROM thesis.assettesting AST 
+						$query = "	SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
 									join employee E 
 									on AST.PersonRequestedID = E.employeeID
 									join FloorAndRoom f
@@ -234,14 +258,12 @@
 							echo "<tr>
 									<td style='display: none;'></td>
 									<td <a class='showhr'><button class ='btn btn-secondary'><font size='1'>Expand/Collapse</font></button></a></td>
-									<td>number</td>
+									<td>{$row['rpsmsrf']}</td>
 									<td>{$row['employeeName']}</td>
 									<td>{$row['Office']}</td>
 									<td>{$row['Building']}</td>
-									<td> {$row['floorRoom']}</td>
-									<!-- Modal trigger -->
-									<td>
-							<button type='button' style='display:inline' class='btn btn-secondary' data-toggle='modal' data-target='#Modal'><font size='1'>Create Ticket</font></button></td>
+									<td>{$row['floorRoom']}</td>
+									<td>{$row['remarks']}</td>
 									</tr>";
 							$arrayticket;
 								
@@ -270,7 +292,6 @@
 											  <th>Asset Class</th>
 											  <th>Brand Name</th>
 											  <th>Item Specification</th>
-											  <td></td>
 											</tr>
 											<tr>";
 											
@@ -286,7 +307,6 @@
 											<td>{$row['assetClass']}</td>
 											<td>{$row['brandName']}</td>
 											<td>{$row['itemSpecification']}</td>
-											<td></td>
 											</tr>";
 								}
 											echo "</tr>";
@@ -301,12 +321,10 @@
 			<!-- /.box-body -->
 		  </div>
 		  <!-- /.box -->
-						</div>
-					<!-- /.col -->
-					
 			</div>
-		</section>
-	  
+			<!-- /.col -->				
+		</div>
+	</section>	  
 </body>
 
 
@@ -358,7 +376,6 @@ timepicker.on('change', function(evt) {
 });
 
 </script>
-
 
 <script>
 function openTab(tabName) {

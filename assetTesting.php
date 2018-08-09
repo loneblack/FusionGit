@@ -143,6 +143,12 @@
 	        
 
 		<form>
+			<div class="input-group"><!-- Remarks -->
+				<b><font size="1" color="#332929">RPSM/SRF Number</font></b>
+				<br>
+				<input type ="number" id = "rpsmsrf" name ="rpsmsrf" style="width: 550px;" min=0;></textarea>
+			</div>	<!-- Remarks -->
+
 			<!-- Office -->
 			<div class="input-group;" style="padding-top: 10px";>
 				<b><font size="1" color="#332929">Office *</font></b>
@@ -196,12 +202,11 @@
 			</div>
 			<!-- Floor and Room-->
 			<br>
-			<div class="input-group"> <!-- Remarks -->
+			<div class="input-group"><!-- Remarks -->
 				<b><font size="1" color="#332929">Remarks *</font></b>
 				<br>
 				<textarea type ="text" id = "remarks" name ="remarks" style="width: 550px; height: 200px"></textarea>
 			</div>	<!-- Remarks -->
-
 
 	      </div>
 	      <div class="modal-footer">
@@ -394,6 +399,7 @@ var building;
 var officeID;
 var remarks;
 var officeName;
+var rpsmsrf;
 
 function getData(ele) {
 
@@ -416,6 +422,9 @@ $('#FloorAndRoomID').map(function(){
   $('#officeName').map(function(){
     officeName = ($(this).val());
 })
+   $('#rpsmsrf').map(function(){
+    rpsmsrf = ($(this).val());
+})
    }   
 
 function getRooms(val){
@@ -435,7 +444,7 @@ function submitAssetTesting(){
     $.ajax({
         type:"POST",
         url:"assetTestingDB.php",
-        data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks},
+        data: {assets:assets, FloorAndRoomID:FloorAndRoomID, building:building, officeID:officeID, remarks:remarks, rpsmsrf:rpsmsrf},
         success: function(data){
 
        				 }
