@@ -104,6 +104,8 @@ INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('9', 'For 
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('10', 'Pending');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('11', 'Ongoing');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('12', 'Completed');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('13', 'Ticketed');
+
 
 -- ref_ticketstatus
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('1', 'Open');

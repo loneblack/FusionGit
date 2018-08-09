@@ -65,4 +65,6 @@
 		$result5 = mysqli_query($dbc, $query5);
 	}
 
+	$query6 = "UPDATE `thesis`.`assettesting` SET `statusID`='13' WHERE `testingID`='{$testingID}';";
+	$result6 = mysqli_query($dbc, $query6);
 ?>

@@ -623,10 +623,12 @@ CREATE TABLE IF NOT EXISTS `thesis`.`ticket` (
   `priority` VARCHAR(45) NOT NULL,
   `summary` VARCHAR(45) NULL,
   `description` VARCHAR(45) NULL DEFAULT NULL,
+  `testingID` INT(11) NULL,
   PRIMARY KEY (`ticketID`),
   INDEX `fk_Ticket_ref_TicketStatus1_idx` (`status` ASC),
   INDEX `fk_Ticket_User1_idx` (`creatorUserID` ASC),
   INDEX `fk_Ticket_User2_idx` (`assigneeUserID` ASC),
+  INDEX `fk_ticket_assettesting1_idx` (`testingID` ASC),
   CONSTRAINT `fk_Ticket_User1`
     FOREIGN KEY (`creatorUserID`)
     REFERENCES `thesis`.`user` (`UserID`)
@@ -640,6 +642,11 @@ CREATE TABLE IF NOT EXISTS `thesis`.`ticket` (
   CONSTRAINT `fk_ticket_User2`
     FOREIGN KEY (`assigneeUserID`)
     REFERENCES `thesis`.`user` (`UserID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ticket_assettesting1`
+    FOREIGN KEY (`testingID`)
+    REFERENCES `thesis`.`assettesting` (`testingID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
