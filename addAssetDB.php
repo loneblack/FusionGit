@@ -15,7 +15,7 @@
 	$user = $_POST['user'];
 	$description = $_POST['description'];
 	$brand = $_POST['brand'];
-	$itemSpecification = $_POST['itemSpecification'];
+	$itemSpeficiation = $_POST['itemSpeficiation'];
 	$warrantyY = $_POST['warrantyY'];
 	$warrantyM = $_POST['warrantyM'];
 	$propertyCode = $_POST['propertyCode'];
@@ -27,9 +27,9 @@
 	$assetTypeID = mysqli_query($dbc, $getAssetTypeID);
 	
 	//insert into assetType
-	$assetTypeSQL = "INSERT INTO assetType(assetTypeID, assetClass, brand, itemSpecification, description) VALUES ('{$assetTypeID}', '{$assetType}', '{$brand}', '{$itemSpecification}', '{$description}');";
+	$assetTypeSQL = "INSERT INTO `thesis`.`assettype` (`assetClass`, `brand`, `itemSpecification`, `description`) VALUES ('{$assetType}', '{$brand}', '{$itemSpeficiation}', '{$description}');";
+
 	$result = mysqli_query($dbc, $assetTypeSQL);
-	echo $assetTypeSQL;
 	
 	//insert into asset
 	/*$sql = "INSERT INTO asset (assetTypeID, supplierID, status, propertyCode, serialNo, macAddress, dateDelivered, unitCost) VALUES ('{$assetType}', '{$supplier}', '2',  '{$}', '{$}', '{$}', '{$}', '{$}');";

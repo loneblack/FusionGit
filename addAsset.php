@@ -185,34 +185,6 @@
 						
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add new Type</font></button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="myModal" role="dialog">
-							<div class="modal-dialog">
-						
-							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h4 class="modal-title">Add new Asset Type</h4>
-							</div>
-							<div class="modal-body"> 
-								<meta charset="UTF-8">
-								
-								<form method="POST" action="addAssetClassDB.php">
-									<div>
-										<label>New Asset Type</label>
-										<input type="text" onkeydown="btnCheck();" id="newAssetClass" name="newAssetClass" placeholder="New Asset Class" required>
-									</div>
-								</form>
-							</div>
-							<div class="modal-footer">
-							  <button type="button" onShow="disableBtn();" onMouseOver="btnCheck();" id="acModalSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
-							</div>
-						  </div>
-						  
-						</div>
-					  </div>
 					</div> <!-- Asset Type -->
 					<br>
 					
@@ -295,7 +267,7 @@
 					<div> 
 						<b><font size="1" color="#332929">Description</font></b>
 						<br>
-						<textarea class=""name="description" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
+						<textarea name="description" id="description" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
 					</div>
 					<!-- Description -->
 					<br>
@@ -317,33 +289,7 @@
 	
 						<!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal1"><font size="1">Add new Brand</font></button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="myModal1" role="dialog">
-							<div class="modal-dialog">
-						
-							<!-- Modal content-->
-							<div class="modal-content">
-							<div class="modal-header">
-							  <button type="button" class="close" data-dismiss="modal">&times;</button>
-							  <h4 class="modal-title">Add new Brand</h4>
-							</div>
-							<div class="modal-body">
-								<form method="POST" action="addBrandDB.php">
-									<div>
-										<label>Name</label>
-										<input type="text" onkeydown="btnCheck1();" id="newBrand" placeholder="Name" required>
-									</div>
-									
-								</form>
-							</div>
-							<div class="modal-footer">
-							  <button type="submit" onShow="disableBtn1();" onMouseOver="btnCheck1();" id="brandSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
-							</div>
-							</div>
-							</div>
-						</div>
-					 </div>
+					</div>
 					 <!-- Brand -->
 					 <br>
 					  
@@ -398,34 +344,68 @@
 					<br>					
 					<!-- Attachments -->
 					
-				</div>
-						<button align="center" type="submit" class="btn btn-outline-dark">Submit</button>
+						<button align="center" class="btn btn-outline-dark">Submit</button>
 				</form>
+				</div>
 			</div>
 		</div>
 	</body>
 	
-		<!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal1" role="dialog">
+	<div class="modal-dialog">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">Add new Brand</h4>
+	</div>
+	<div class="modal-body">
+		<form method="POST" action="addBrandDB.php">
+			<div>
+				<label>Name</label>
+				<input type="text" onkeydown="btnCheck1();" id="newBrand" placeholder="Name" required>
+			</div>
+			
+		</form>
+	</div>
+	<div class="modal-footer">
+	  <button type="submit" onShow="disableBtn1();" onMouseOver="btnCheck1();" id="brandSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
+	</div>
+	</div>
+	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+	<!-- Modal content-->
+	<div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">Add new Asset Type</h4>
+	</div>
+	<div class="modal-body"> 
+		<meta charset="UTF-8">
+		
+		<form method="POST" action="addAssetClassDB.php">
+			<div>
+				<label>New Asset Type</label>
+				<input type="text" onkeydown="btnCheck();" id="newAssetClass" name="newAssetClass" placeholder="New Asset Class" required>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+	  <button type="button" onShow="disableBtn();" onMouseOver="btnCheck();" id="acModalSubmit" class="btn btn-default" data-dismiss="modal">Submit</button>
+	</div>
   </div>
-	
+  
+</div>
+</div>
 </html>
 
 <script>
