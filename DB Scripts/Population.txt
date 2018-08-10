@@ -10,7 +10,19 @@ INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('4', 'Engineer
 INSERT INTO `thesis`.`ref_usertype` (`id`, `description`) VALUES ('5', 'Requestor');
 
 -- user
-INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`) VALUES ( AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '1', AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('test@test', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`)
+VALUES ( AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '1', AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('test', 'Fusion'), AES_ENCRYPT('test@test', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`)
+VALUES ( AES_ENCRYPT('Qmark', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '4', AES_ENCRYPT('Mark', 'Fusion'), AES_ENCRYPT('Question', 'Fusion'), AES_ENCRYPT('qustion.mark@dlsu.edu.ph', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`)
+VALUES ( AES_ENCRYPT('Epoint', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '4', AES_ENCRYPT('Point', 'Fusion'), AES_ENCRYPT('Exclamation', 'Fusion'), AES_ENCRYPT('exxclamation.point@tdlsu.edu.ph', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`)
+VALUES ( AES_ENCRYPT('JojoS', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '2', AES_ENCRYPT('Jojo', 'Fusion'), AES_ENCRYPT('Soliva', 'Fusion'), AES_ENCRYPT('jojo.soliva@dlsu.edu.ph', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`)
+VALUES ( AES_ENCRYPT('CrissaG', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '2', AES_ENCRYPT('Crissa', 'Fusion'), AES_ENCRYPT('Giligan', 'Fusion'), AES_ENCRYPT('crissa.giligan@dlsu.edu.ph', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+INSERT INTO `thesis`.`User`(`userName`, `password`, `userType`, `firstName`, `lastName`, `email`, `contactNo`)
+VALUES ( AES_ENCRYPT('Helpdesk', 'Fusion'), AES_ENCRYPT('123123', 'Fusion'), '3', AES_ENCRYPT('Helph', 'Fusion'), AES_ENCRYPT('Dyesk', 'Fusion'), AES_ENCRYPT('help.desk@dlsu.edu.ph', 'Fusion'), AES_ENCRYPT('0987654321', 'Fusion'));
+
 
 -- building
 INSERT INTO `thesis`.`building` (`BuildingID`, `name`) VALUES ('1', 'Angelo King International Center');

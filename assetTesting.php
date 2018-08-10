@@ -322,12 +322,14 @@
 							  <th>Property Code</th>
 							  <th>Serial Number</th>
 							  <th>MAC Address</th>
+							  <th>Brand</th>
+							  <th>Asset Type</th>
 							  <th>Item Specification</th>
 							</tr>
 							</thead>
 							<tbody>
 								<?php
-									$query = "	SELECT * FROM thesis.asset a
+									$query = "SELECT assetID, a.assetTypeID, propertyCode, serialNo, macAddress, itemSpecification, (b.name)as 'brand',(ac.name) as 'assetclass' FROM thesis.asset a
 												join assettype at on a.assetTypeID = at.assetTypeID
 												join ref_brand b on at.brand = b.brandId 
 												join ref_assetclass ac on at.assetClass = ac.assetClassID
@@ -342,6 +344,8 @@
 												<td>{$row['propertyCode']}</td>
 												<td>{$row['serialNo']}</td>
 												<td>{$row['macAddress']}</td>
+												<td>{$row['brand']}</td>
+												<td>{$row['assetclass']}</td>
 												<td>{$row['itemSpecification']}</td>
 											  </tr>";
 									}

@@ -7,12 +7,12 @@
 	$summary = $_POST['summary'];
 	$description = $_POST['description'];
 	$due_date = $_POST['due_date'];
-	$time = $_POST['time'];
+	$duetime = $_POST['duetime'];
 	$priority = $_POST['priority'];
 	$testingID = $_POST['testingID'];
 	$assigned_to = $_POST['assigned_to'];
 
-	$due_date  = date("H:i", strtotime("$due_date"));
+	$duetime  = $duetime.":00";
 
 	date_default_timezone_set("Asia/Singapore");
 	$date = date('Y-m-d H:i:s');
@@ -24,31 +24,39 @@
 	# Insert to ticket table
 	if($assigned_to == 0)//if there is no assigned person
 	{
-		$query = "INSERT INTO `thesis`.`ticket` (`status`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`) VALUES ('1', '{$userID}', '{$date}', '{$date}', '{$due_date}', '{$priority}', '{$summary}', '{$description}');";
-		$result = mysqli_query($dbc, $query);
+		$query = "INSERT INTO `thesis`.`ticket` (`status`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`, `testingID`) VALUES ('1', '{$userID}', '{$date}', '{$date}', '{$due_date} {$duetime}', '{$priority}', '{$summary}', '{$description}', '{$testingID}');";
+
+		if (!mysqli_query($dbc,$query))
+		  {
+		  echo("Error description: " . mysqli_error($dbc));
+		  }
 	}
 	else//there is an assigned person
 	{
-		$query = "INSERT INTO `thesis`.`ticket` (`status`, `assigneeUserID`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`) VALUES ('2', '{$assigned_to}', '{$userID}', '{$date}', '{$date}', '{$due_date}', '{$priority}', '{$summary}', '{$description}');";
-		$result = mysqli_query($dbc, $query);
+		$query = "INSERT INTO `thesis`.`ticket` (`status`, `assigneeUserID`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`, `testingID`) VALUES ('2', '{$assigned_to}', '{$userID}', '{$date}', '{$date}', '{$due_date} {$duetime}', '{$priority}', '{$summary}', '{$description}', '{$testingID}');";
+
+		if (!mysqli_query($dbc,$query))
+		  {
+		  echo("Error description: " . mysqli_error($dbc));
+		  }
 	}
 	
 	// ------------- Insertion to Ticketed Asset --------------------------//
 
 	# get the recently inserted ticket id from the code above 
-	$query1 = "SELECT FROM `thesis`.`ticket` ORDER BY ticketID DESC LIMIT 1;";
+	$query1 = "SELECT * FROM `thesis`.`ticket` ORDER BY ticketID DESC LIMIT 1;";
 	$result1 = mysqli_query($dbc, $query1);
 
-	while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+	while($row=mysqli_fetch_array($result1,MYSQLI_ASSOC)){
 		$ticketID = $row['ticketID'];
 	}
 
 	#store the asset ID from the asset testing details to an array
-	$query2 = "SELECT FROM `thesis`.`assettesting_details` WHERE assettesting_testingID = '{$testingID}';";
+	$query2 = "SELECT * FROM `thesis`.`assettesting_details` WHERE assettesting_testingID = '{$testingID}';";
 	$result2 = mysqli_query($dbc, $query2);
 
-	while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-		$assetArray.push($row['asset_assetID']);
+	while($row=mysqli_fetch_array($result2,MYSQLI_ASSOC)){
+		array_push($assetArray, $row['asset_assetID']);
 	}
 
 	#insert the ids to ticketed asset
