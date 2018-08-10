@@ -1,15 +1,21 @@
 <?php
+	session_start();
 	require_once("mysqlconnect.php");
 	
-	$Description = $_POST['Description'];
-	$date = $_POST['Date'];
-	$building = $_POST['buildingID'];
-	$floorandroom = $_POST['FloorAndRoomID'];
-	$dateneeded = $_POST['dateneeded'];
+	$Description = $_POST["description"];
+	$date = $_POST["date"];
+	$building = $_POST["buildingID"];
+	$floorandroom = $_POST["FloorAndRoomID"];
+	$dateneeded = $_POST["dateneeded"];
 	
-	$sql = "INSERT INTO request () VALUES ('{$AssetClass}', '{$quantity}', '{$brand}', '{$ItemSpecification}', '{$PropertyCode}', '{$SerialNumber}', '{$MACAddress}', '{$status}', '{$ProductKey}', '{$InstallCode}', '{$SInumber}')";
+	$sql = "INSERT INTO `thesis`.`request` (`description`, `date` , `FloorAndRoomID` , `BuildingID` , `dateNeeded`) VALUES ('{$Description}', '{$date}' , '{$building}' , '{$floorandroom}' , '{$dateneeded}');";
+		$result = mysqli_query($dbc, $sql);
 
-	echo $sql;
+
+		$message = "Request successful!";
+		$_SESSION['submitMessage'] = $message;
+		
+		echo $result;
 
 	$result = mysqli_query($dbc, $sql);
 
