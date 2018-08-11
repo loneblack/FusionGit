@@ -85,31 +85,30 @@
     </section>
 
 	<div style="padding-top:20px; padding-bottom: 20px;">
-		<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:300px; padding-bottom:5px; border-radius: 25px; border: solid white">
+		<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:300px; padding-bottom:15px; border-radius: 25px; border: solid white">
    
 			<form method="post" action="loginAuthenticate.php">
 				<h2 color="#332929">Login</h2>
 				<div class="input-group">
 				  <b><font size="1" color="#332929">Username</font></b>
 				  <br>
-				  <input type="text" name="username" >
+				  <input type="text" name="username"  style="width:152px; border-radius:5px">
 				</div>
 				<div class="input-group">
 				  <b><font size="1" color="332929">Password</font></b>
 				  <br>
-				  <input type="password" name="password">
+				  <input type="password" name="password" style="width:152px; border-radius:5px">
 				</div>
-				<br>
-				<div class="input-group">
-				  <button type="submit" class="btn" name="login_user">Login</button>
+				<div class="input-group" style="padding-top:10px">
+				  <button type="submit" class="btn btn-default" style="border-radius:5px" name="login_user">Login</button>
 				</div>
-				 <?php if(isset($_SESSION["Lmessage"])){ 
-
-				   echo "<script>$('#failModal').modal('show')</script>"; // Show modal
-
-				  unset($_SESSION["Lmessage"]);
+				<div class="hiddentext" style="display:none">
+					<?php if(isset($_SESSION["Lmessage"])){
+						echo "<script><$('#failModal').modal('show')</script>"; // Show modal
+						unset($_SESSION["Lmessage"]);
 					}
-				  ?>
+					?>
+				</div>
 			</form>
 		</div>
 	</div>
