@@ -4,6 +4,7 @@ session_start(); ?>
 	<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <!--[if IE]>
@@ -32,7 +33,7 @@ session_start(); ?>
 
 </head>
 	
-	<body>						
+	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<header>
         <div class="container">
             <div class="row">
@@ -123,7 +124,7 @@ session_start(); ?>
 					<div class="input-group"> <!-- Asset -->
 							<b><font size="1" color="#332929">Asset Class *</font></b>
 						<br>
-						<select name="assetID" style="border-radius:5px; height:25px; width:153px">
+						<select name="assetID" style="border-radius:5px; height:25px; width:175px">
 							<option >Select Asset</option>
 							<?php
 								$query="SELECT 	assetID, (b.name)AS 'Brand', (ac.name)AS 'AssetClass', at.itemSpecification, propertyCode, serialNo FROM thesis.asset a
@@ -141,27 +142,29 @@ session_start(); ?>
 							?> 
 						</select>
 						</div>	<!-- Asset -->
-						
+						<br>
 						
 							
 						<div> <!--Date-->
 						<b><font size="1" color="#332929">Date Acquired *</font></b>
 						<br>
-						<input type="date" name="dateAcquired">
+						<input type="date" name="dateAcquired" style="width:173px; border-radius:5px">
 						</div>
-							<!--Date-->
-					
+						<!--Date-->
+						<br>
 					
 							
 						<div> <!--Date Needed-->
 						<b><font size="1" color="#332929">Expiration Date *</font></b>
 						<br>
-						<input type="date" name="dateExpired">
+						<input type="date" name="dateExpired" style="width:173px; border-radius:5px">
 						</div>
 							<!--Date Needed-->
 						<br>
-					
-					<button align="center" type="submit" class="btn btn-outline-secondary">Submit</button>
+						
+						<div style="padding-left:50px">
+							<button align="center" type="submit" class="btn btn-default" style="border-radius:5px;">Submit</button>
+						</div>
 					</form>
 				</div>
 			</div>
