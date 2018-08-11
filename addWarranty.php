@@ -14,6 +14,7 @@ session_start(); ?>
     <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
     <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
+	<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
     <!-- CUSTOM STYLE  -->
     <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
      <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -32,7 +33,7 @@ session_start(); ?>
 
 </head>
 	
-	<body>						
+	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">						
 		<header>
         <div class="container">
             <div class="row">
@@ -116,7 +117,7 @@ session_start(); ?>
     </section>
     <!-- MENU SECTION END-->
 		<div style="padding-top:20px; padding-bottom: 20px;">
-			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
+			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:12px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
 				<form method="POST" action="addWarrantyDB.php">
 					<h2 align="center">Add Warranty</h2>
@@ -174,8 +175,11 @@ session_start(); ?>
 						?> 
 					</select>
 					</div>	<!-- Supplier -->
+					
 				</div>
-					<button align="center" type="submit" style="border-radius:5px">Submit</button>
+					<div style="padding-top:15px">
+					<button align="center" type="submit" class="btn btn-default" style="border-radius:5px">Submit</button>
+					</div>
 					</form>
 			</div>
 		</div>
