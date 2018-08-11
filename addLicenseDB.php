@@ -6,9 +6,7 @@
 	$dateExpired = $_POST['dateExpired'];
 	
 	
-	$sql = "INSERT INTO license (assetID, dateAcquired, dateExpired) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}')";
-
-	echo $sql;
+	$sql = "INSERT INTO license (assetID, dateAcquired, dateExpired) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}');";
 
 	$result = mysqli_query($dbc, $sql);
 

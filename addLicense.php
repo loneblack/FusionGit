@@ -23,7 +23,6 @@ session_start(); ?>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script src="http://www.designbootstrap.com/track/ga.js" ></script>
 <script src="layout/jquery.min.js"></script>
 	<script src="layout/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -33,7 +32,7 @@ session_start(); ?>
 
 </head>
 	
-							
+	<body>						
 		<header>
         <div class="container">
             <div class="row">
@@ -115,19 +114,17 @@ session_start(); ?>
             </div>
         </div>
     </section>
-	
-	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
     <!-- MENU SECTION END-->
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form method="POST" action="<?php echo $_SERVER["PHP_SELF"]?>">
+				<form method="POST" action="addLicenseDB.php">
 					<h2 align="center">Add License</h2>
 					<div class="input-group"> <!-- Asset -->
 							<b><font size="1" color="#332929">Asset Class *</font></b>
 						<br>
 						<select name="assetID" style="border-radius:5px; height:25px; width:153px">
-							<option>Select Asset</option>
+							<option >Select Asset</option>
 							<?php
 								$query="SELECT 	assetID, (b.name)AS 'Brand', (ac.name)AS 'AssetClass', at.itemSpecification, propertyCode, serialNo FROM thesis.asset a
 														            join assettype at
@@ -139,7 +136,7 @@ session_start(); ?>
 								$result=mysqli_query($dbc,$query);
 								
 								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['assetID']}'>{$row['Brand']} {$row['AssetClass']} {$row['itemSpecification']} {$row['propertyCode']} {$row['serialNo']}</option>";
+								echo "<option value='{$row['assetID']}'>{$row['Brand']} {$row['AssetClass']} {$row['itemSpecification']}</option>";
 								}
 							?> 
 						</select>
@@ -157,32 +154,18 @@ session_start(); ?>
 					
 							
 						<div> <!--Date Needed-->
-						<b><font size="1" color="#332929">Date Expired *</font></b>
+						<b><font size="1" color="#332929">Expiration Date *</font></b>
 						<br>
 						<input type="date" name="dateExpired">
 						</div>
 							<!--Date Needed-->
 						<br>
-					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
+					
+					<button align="center" type="submit" class="btn btn-outline-secondary">Submit</button>
 					</form>
+				</div>
 			</div>
 		</div>
 	</body>
 	
 </html>
-<?php
-	require_once("mysqlconnect.php");
-	
-	$assetID = $_POST['assetID'];
-	$dateAcquired = $_POST['dateAcquired'];
-	$dateExpired = $_POST['dateExpired'];
-	
-	
-	$sql = "INSERT INTO license (assetID, dateAcquired, dateExpired) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}')";
-
-	echo $sql;
-
-	$result = mysqli_query($dbc, $sql);
-
-	
-?>
