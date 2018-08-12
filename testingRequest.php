@@ -163,9 +163,9 @@ require_once("mysqlconnect.php");
             <div class="control-group">
               <label>Priority</label>
                 <select id="priority" name="priority" >
-                  <option value="1">High</option>
-                  <option value="2" selected="selected">Medium</option>
-                  <option value="3">Low</option>
+                  <option>High</option>
+                  <option selected="selected">Medium</option>
+                  <option>Low</option>
                 </select>
             </div>
             <!-- Priority  -->
@@ -176,7 +176,7 @@ require_once("mysqlconnect.php");
 			<select name="testingID" style="border-radius:5px; height:25px; width:153px">
 				<option>Select Request</option>
 				<?php
-				$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
+				$query = "SELECT testingID, statusID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
 						join employee E 
 						on AST.PersonRequestedID = E.employeeID
 						join FloorAndRoom f
@@ -184,7 +184,8 @@ require_once("mysqlconnect.php");
 						join offices o
 						on AST.officeID = o.officeID
 						join building b
-						on  f.BuildingID = b.BuildingID;";
+						on  f.BuildingID = b.BuildingID
+						WHERE statusID = 10;";
 					$result=mysqli_query($dbc,$query);
 					
 					while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
