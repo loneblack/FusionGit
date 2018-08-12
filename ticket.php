@@ -116,7 +116,7 @@ require_once("mysqlconnect.php");
                       lastUpdateDate, dateCreated, dateClosed, dueDate, priority,summary, t.description, s.status FROM thesis.ticket t
                       JOIN ref_ticketstatus s
                         ON t.status = s.ticketID
-                      JOIN user au
+                      LEFT JOIN user au
                         ON t.assigneeUserID = au.UserID
                       JOIN user cu
                         ON t.creatorUserID = cu.UserID;";

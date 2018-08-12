@@ -184,8 +184,7 @@ require_once("mysqlconnect.php");
 						join offices o
 						on AST.officeID = o.officeID
 						join building b
-						on  f.BuildingID = b.BuildingID
-						WHERE statusID = 10;";
+						on  f.BuildingID = b.BuildingID;";
 					$result=mysqli_query($dbc,$query);
 					
 					while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
