@@ -8,7 +8,7 @@
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
-    <title>Add Employee</title>
+    <title>Assign Room to Department</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
@@ -21,7 +21,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
+
+	<script src="http://www.designbootstrap.com/track/ga.js" ></script>
 	<script src="layout/jquery.min.js"></script>
 	<script src="layout/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -30,7 +31,7 @@
 
 </head>
 	
-	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">						
+						
 		<header>
         <div class="container">
             <div class="row">
@@ -112,10 +113,10 @@
         </div>
     </section>
     <!-- MENU SECTION END-->
-		
+		<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:300px; padding-bottom:10px; border-radius: 25px; border: solid white">
-				<div class="input-group" style="padding-bottom:15px;">
+				<div class="input-group" style="padding-bottom:15px;>
 					<form method="POST" action="addEmployeeDB.php">
 						<h2 color="#332929">Add Employee</h2>
 						
@@ -126,11 +127,11 @@
 								<select style="border-radius:5px; width:150px" name="department">
 								<option value=''>Select a Department</option>
 									<?php
-										$query="select * from department ORDER BY name;";
+										$query="select * from building ORDER BY name;";
 										$result=mysqli_query($dbc,$query);
 										
 										while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-										echo "<option value='{$row['DepartmentID']}'>{$row['name']}</option>";
+										echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
 										}
 									?>
 								</select>

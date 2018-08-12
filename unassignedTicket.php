@@ -1,6 +1,3 @@
-<?php
-require_once("mysqlconnect.php");
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +93,7 @@ require_once("mysqlconnect.php");
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
-			  <h3 class="box-title">Tickets</h3>
+			  <h3 class="box-title">Unassigned Tickets</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -104,60 +101,30 @@ require_once("mysqlconnect.php");
 				<thead>
 				<tr>
 				  <th>ID</th>
-				  <th>status</th>
+				  <th>Sumary</th>
 				  <th>Assignee</th>
 				  <th>Creator</th>
-				  <th>Updated</th>
-				  <th>Created</th>
-				  <th>Closed</th>
-				  <th>Due</th>
 				  <th>Priority</th>
-				  <th>Summary</th>
-				  <th>Description</th>
+				  <th>Category</th>
+				  <th>Due</th>
+				  <th>Updated</th>
+				  <th>Status</th>
 				</tr>
 				</thead>
-			  
-			  		
-					<!-- /.col -->
-			  <tbody>
-				<?php
-						$query = " SELECT ticketID, status, assigneeUserID, creatorUserID,lastUpdateDate,dateCreated,dateClosed, dueDate, priority, summary, description FROM ticket WHERE status = 1;";
-													
-						$result = mysqli_query($dbc, $query);
-						
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-						{
-							
-							$ticketgID = $row['ticketID'];
-							
-							echo "<tr>
-									<td>{$row['ticketID']}</td>
-									<td>{$row['status']}</td>
-									<td>{$row['assigneeUserID']}</td>
-									<td>{$row['creatorUserID']}</td>
-									<td>{$row['lastUpdateDate']}</td>
-									<td>{$row['dateCreated']}</td>
-									<td>{$row['dateClosed']}</td>
-									<td>{$row['dueDate']}</td>
-									<td>{$row['priority']}</td>
-									<td>{$row['summary']}</td>
-									<td>{$row['description']}</td>
-									</tr>";
-							$arrayticket;
-						}	
-					?>
-			</tbody>
-			</table>
+				<tbody>
+			  </table>
+			</div>
+			<button class="btn btn-default spec-next-state-btn js-next-ticket-state" data-ember-action="1584">
+                  Close
+                </button>
 			<!-- /.box-body -->
-			</div>
-			  <!-- /.box -->
-			</div>
-			
-			</div>
-			
-			 </div>
-			 </section>
-<!-- jQuery 3 -->
+		  </div>
+		  <!-- /.box -->
+						</div>
+					<!-- /.col -->
+					
+      
+	  
 
 <!-- jQuery 3 -->
 <script src="layout/jquery.min.js"></script>
