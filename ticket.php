@@ -1,3 +1,6 @@
+<?php
+require_once("mysqlconnect.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +91,7 @@
         </div>
     </section>
     <!-- Main content -->
-	<body>	  
+	<body>
     <section class="content">
       <div class="row">
 	    <div class="col-sm-5">
@@ -102,31 +105,59 @@
 				<thead>
 				<tr>
 				  <th>ID</th>
-				  <th>Sumary</th>
+				  <th>status</th>
 				  <th>Assignee</th>
 				  <th>Creator</th>
-				  <th>Priority</th>
-				  <th>Category</th>
-				  <th>Due</th>
 				  <th>Updated</th>
-				  <th>Status</th>
+				  <th>Created</th>
+				  <th>Closed</th>
+				  <th>Due</th>
+				  <th>Priority</th>
+				  <th>Summary</th>
+				  <th>Description</th>
 				</tr>
 				</thead>
-				<tbody>
-			  </table>
-			</div>
-			<button class="btn btn-default spec-next-state-btn js-next-ticket-state" data-ember-action="1584">
-                  Close
-                </button>
-			<!-- /.box-body -->
-		  </div>
-		  <!-- /.box -->
-						</div>
+			  
+			  		
 					<!-- /.col -->
-					
-      
-	  
-
+			  <tbody>
+				<?php
+						$query = " SELECT ticketID, status, assigneeUserID, creatorUserID,lastUpdateDate,dateCreated,dateClosed, dueDate, priority, summary, description FROM ticket;";
+													
+						$result = mysqli_query($dbc, $query);
+						
+						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+						{
+							
+							$ticketgID = $row['ticketID'];
+							
+							echo "<tr>
+									<td>{$row['ticketID']}</td>
+									<td>{$row['status']}</td>
+									<td>{$row['assigneeUserID']}</td>
+									<td>{$row['creatorUserID']}</td>
+									<td>{$row['lastUpdateDate']}</td>
+									<td>{$row['dateCreated']}</td>
+									<td>{$row['dateClosed']}</td>
+									<td>{$row['dueDate']}</td>
+									<td>{$row['priority']}</td>
+									<td>{$row['summary']}</td>
+									<td>{$row['description']}</td>
+									</tr>";
+							$arrayticket;
+						}	
+					?>
+			</tbody>
+			</table>
+			<!-- /.box-body -->
+			</div>
+			  <!-- /.box -->
+			</div>
+			
+			</div>
+			
+			 </div>
+			 </section>
 <!-- jQuery 3 -->
 <script src="layout/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
