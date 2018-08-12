@@ -7,9 +7,8 @@
 	$supplierID = $_POST['supplierID'];
 	
 	
-	$sql = "INSERT INTO warranty ( assetID, dateAquired, dateExpired, supplier) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}' , '{$supplierID}')";
+	$sql = "INSERT INTO warranty (assetID, dateAcquired, dateExpired, supplierID) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}' , '{$supplierID}');";
 
-	echo $sql;
 
 	$result = mysqli_query($dbc, $sql);
 

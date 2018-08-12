@@ -30,4 +30,6 @@
 		//header('Location: '.$header);
 	}
 	
+	echo $sql;
+	
 ?>

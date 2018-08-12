@@ -106,7 +106,7 @@ $_SESSION['previousPage']="request.php";?>
 						<div> <!--Description-->
 						<b><font size="1" color="#332929">Description *</font></b>
 						<br>
-						<textarea name="definiton" rows="5" cols="30"></textarea>
+						<textarea name="description" rows="5" cols="30"></textarea>
 						</div>
 							<!--Description-->
 							
@@ -152,7 +152,7 @@ $_SESSION['previousPage']="request.php";?>
 						<div> <!--Date Needed-->
 						<b><font size="1" color="#332929">Date Needed *</font></b>
 						<br>
-						<input type="date" name="date">
+						<input type="date" name="dateneeded">
 						</div>
 							<!--Date Needed-->
 						<br>
@@ -191,7 +191,7 @@ $_SESSION['previousPage']="request.php";?>
 			</div>
 			<div>
 				<label>Floor and Room</label>
-				<input type="text" name="floorRoom" placeholder="floorRoom" required>
+				<input type="text" name="FloorAndRoomID" placeholder="FloorAndRoomID" required>
 			</div>
 			<button type="submit">Submit</button>
 		</form>

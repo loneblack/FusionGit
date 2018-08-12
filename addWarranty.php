@@ -14,6 +14,7 @@ session_start(); ?>
     <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
     <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
+	<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
     <!-- CUSTOM STYLE  -->
     <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
      <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,7 +24,6 @@ session_start(); ?>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script src="http://www.designbootstrap.com/track/ga.js" ></script>
 <script src="layout/jquery.min.js"></script>
 	<script src="layout/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
@@ -32,7 +32,8 @@ session_start(); ?>
 
 
 </head>
-							
+	
+	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">						
 		<header>
         <div class="container">
             <div class="row">
@@ -114,13 +115,11 @@ session_start(); ?>
             </div>
         </div>
     </section>
-	
-	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
     <!-- MENU SECTION END-->
 		<div style="padding-top:20px; padding-bottom: 20px;">
-			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
+			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:12px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form method="POST" action="<?php $_SERVER["PHP_SELF"]?>">
+				<form method="POST" action="addWarrantyDB.php">
 					<h2 align="center">Add Warranty</h2>
 					<div class="input-group"> <!-- Asset -->
 							<b><font size="1" color="#332929">Asset Class *</font></b>
@@ -138,65 +137,52 @@ session_start(); ?>
 								$result=mysqli_query($dbc,$query);
 								
 								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['assetID']}'>{$row['Brand']} {$row['AssetClass']} {$row['itemSpecification']} {$row['propertyCode']} {$row['serialNo']}</option>";
+								echo "<option value='{$row['assetID']}'>{$row['Brand']} {$row['AssetClass']} {$row['itemSpecification']}</option>";
 								}
 							?> 
 						</select>
-						</div>	<!-- Asset -->
-						
-						
+					</div>	<!-- Asset -->
+					<br>
 							
-						<div> <!--Date-->
-						<b><font size="1" color="#332929">Date Acquired *</font></b>
-						<br>
-						<input type="date" name="dateAcquired">
-						</div>
-							<!--Date-->
+					<div> <!--Date-->
+					<b><font size="1" color="#332929">Date Acquired *</font></b>
+					<br>
+					<input type="date" name="dateAcquired">
+					</div>
+					<br>
+						<!--Date-->
 							
-						<div> <!--Date Needed-->
-						<b><font size="1" color="#332929">Date Expired *</font></b>
-						<br>
-						<input type="date" name="dateExpired">
-						</div>
-							<!--Date Needed-->
-						<br>
-						<div class="input-group"> <!-- Asset -->
-							<b><font size="1" color="#332929">Select Supplier *</font></b>
-						<br>
-						<select name="supplierID" style="border-radius:5px; height:25px; width:153px">
-							<option>Select Supplier</option>
-							<?php
-								$query="SELECT * FROM thesis.supplier;";
-								$result=mysqli_query($dbc,$query);
-								
-								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['supplierID']}'>{$row['name']}</option>";
-								}
-							?> 
-						</select>
-						</div>	<!-- Asset -->
-						<br>
-					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
+					<div> <!--Date Needed-->
+					<b><font size="1" color="#332929">Date Expired *</font></b>
+					<br>
+					<input type="date" name="dateExpired">
+					</div>
+						<!--Date Needed-->
+					<br>
+					
+					<div class="input-group"> <!-- Supplier -->
+						<b><font size="1" color="#332929">Select Supplier *</font></b>
+					<br>
+					<select name="supplierID" style="border-radius:5px; height:25px; width:153px">
+						<option>Select Supplier</option>
+						<?php
+							$query="SELECT * FROM thesis.supplier;";
+							$result=mysqli_query($dbc,$query);
+							
+							while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+							echo "<option value='{$row['supplierID']}'>{$row['name']}</option>";
+							}
+						?> 
+					</select>
+					</div>	<!-- Supplier -->
+					
+				</div>
+					<div style="padding-top:15px">
+					<button align="center" type="submit" class="btn btn-default" style="border-radius:5px">Submit</button>
+					</div>
 					</form>
 			</div>
 		</div>
 	</body>
 	
 </html>
-<?php
-	require_once("mysqlconnect.php");
-	
-	$assetID = $_POST['assetID'];
-	$dateAcquired = $_POST['dateAcquired'];
-	$dateExpired = $_POST['dateExpired'];
-	$supplierID = $_POST['supplierID'];
-	
-	
-	$sql = "INSERT INTO warranty ( assetID, dateAquired, dateExpired, supplier) VALUES ('{$assetID}', '{$dateAcquired}', '{$dateExpired}' , '{$supplierID}')";
-
-	echo $sql;
-
-	$result = mysqli_query($dbc, $sql);
-
-	
-?>
