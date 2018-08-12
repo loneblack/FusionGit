@@ -1,7 +1,3 @@
-<?php
-session_start();
-require_once("mysqlconnect.php");
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,11 +48,16 @@ require_once("mysqlconnect.php");
 
                     <img src="resource/logo.png" />
                 </a>
+
             </div>
 
             <div class="left-div">
                 <div class="user-settings-wrapper">
                     <ul class="nav">
+
+                       
+
+
                     </ul>
                 </div>
             </div>
@@ -75,9 +76,10 @@ require_once("mysqlconnect.php");
 								<ul>
 								<li> <a href="assetRequest.php">Asset Request</a> </li>
 								<li> <a href="testingRequest.php">Testing Request</a> </li>
-								  </ul>
+								</ul>
 							</li>
-              <li><a href="#">Agents</a></li>
+                            <li><a href="#">Agents</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -104,41 +106,13 @@ require_once("mysqlconnect.php");
 				  <th>Assignee</th>
 				  <th>Creator</th>
 				  <th>Priority</th>
+				  <th>Category</th>
 				  <th>Due</th>
 				  <th>Updated</th>
 				  <th>Status</th>
 				</tr>
 				</thead>
-				  <tbody>
-            <?php
-            $query = "SELECT t.ticketID, (convert(aes_decrypt(au.firstName, 'Fusion') using utf8)) AS 'afirstName' ,(convert(aes_decrypt(au.lastName, 'Fusion')using utf8)) AS 'alastName',
-                      (convert(aes_decrypt(cu.firstName, 'Fusion') using utf8)) AS 'cfirstName' ,(convert(aes_decrypt(cu.lastName, 'Fusion')using utf8)) AS 'clastName',
-                      lastUpdateDate, dateCreated, dateClosed, dueDate, priority,summary, t.description, s.status FROM thesis.ticket t
-                      JOIN ref_ticketstatus s
-                        ON t.status = s.ticketID
-                      JOIN user au
-                        ON t.assigneeUserID = au.UserID
-                      JOIN user cu
-                        ON t.creatorUserID = cu.UserID;";
-                          
-            $result = mysqli_query($dbc, $query);
-            
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-            {
-              
-              echo "<tr>
-                  <td>{$row['ticketID']}</td>
-                  <td>{$row['summary']}</td>
-                  <td>{$row['afirstName']} {$row['alastName']}</td>
-                  <td>{$row['cfirstName']} {$row['clastName']}</td>
-                  <td>{$row['priority']}</td>
-                  <td>{$row['dueDate']}</td>
-                  <td>{$row['lastUpdateDate']}</td>
-                  <td>{$row['status']}</td>
-                  </tr>";
-            }
-          ?>
-          </tbody>
+				<tbody>
 			  </table>
 			</div>
 			<button class="btn btn-default spec-next-state-btn js-next-ticket-state" data-ember-action="1584">
