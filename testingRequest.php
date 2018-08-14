@@ -163,9 +163,9 @@ require_once("mysqlconnect.php");
             <div class="control-group">
               <label>Priority</label>
                 <select id="priority" name="priority" >
-                  <option value="1">High</option>
-                  <option value="2" selected="selected">Medium</option>
-                  <option value="3">Low</option>
+                  <option value="High">High</option>
+                  <option value="Medium" selected="selected">Medium</option>
+                  <option value="Low">Low</option>
                 </select>
             </div>
             <!-- Priority  -->

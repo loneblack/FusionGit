@@ -4,6 +4,7 @@ require_once("mysqlconnect.php");
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -111,6 +112,8 @@ require_once("mysqlconnect.php");
 				</thead>
 				  <tbody>
             <?php
+            $count = 1;
+
             $query = "SELECT t.ticketID, (convert(aes_decrypt(au.firstName, 'Fusion') using utf8)) AS 'afirstName' ,(convert(aes_decrypt(au.lastName, 'Fusion')using utf8)) AS 'alastName',
                       (convert(aes_decrypt(cu.firstName, 'Fusion') using utf8)) AS 'cfirstName' ,(convert(aes_decrypt(cu.lastName, 'Fusion')using utf8)) AS 'clastName',
                       lastUpdateDate, dateCreated, dateClosed, dueDate, priority,summary, t.description, s.status FROM thesis.ticket t
@@ -126,7 +129,7 @@ require_once("mysqlconnect.php");
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
             {
               
-              echo "<tr>
+              echo "<tr data-details='t{$count}' class='tickets'>
                   <td>{$row['ticketID']}</td>
                   <td>{$row['summary']}</td>
                   <td>{$row['afirstName']} {$row['alastName']}</td>
@@ -136,14 +139,13 @@ require_once("mysqlconnect.php");
                   <td>{$row['lastUpdateDate']}</td>
                   <td>{$row['status']}</td>
                   </tr>";
+
+                  $count++;
             }
           ?>
           </tbody>
 			  </table>
 			</div>
-			<button class="btn btn-default spec-next-state-btn js-next-ticket-state" data-ember-action="1584">
-                  Close
-                </button>
 			<!-- /.box-body -->
 		  </div>
 		  <!-- /.box -->
@@ -173,6 +175,14 @@ require_once("mysqlconnect.php");
       'autoWidth'   : true
     })
   })
+
+  $(document).ready(function () {
+    $('tr.tickets').click(function() {
+        var id = $(this).data('details');
+        $('table.hidden').hide();
+        $('#'+id).show();
+    });
+});    
 </script>
 </body>
 </html>
