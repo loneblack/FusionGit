@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once("mysqlconnect.php");
+//$userID = $_SESSION['userID'];
+$userID = 2;
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +13,8 @@ require_once("mysqlconnect.php");
   <title>Fusion IT Asset Management System</title>
     <!-- BOOTSTRAP CORE STYLE  -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="layout/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="layout/font-awesome.min.css">
   <!-- DataTables -->
@@ -101,28 +104,30 @@ require_once("mysqlconnect.php");
 				<tr>
 				  <th>ID</th>
 				  <th>Sumary</th>
-				  <th>Assignee</th>
 				  <th>Creator</th>
 				  <th>Priority</th>
 				  <th>Due</th>
 				  <th>Updated</th>
 				  <th>Status</th>
-          <th></th>
 				</tr>
 				</thead>
 				  <tbody>
             <?php
             $count = 1;
 
-            $query = "SELECT t.ticketID, (convert(aes_decrypt(au.firstName, 'Fusion') using utf8)) AS 'afirstName' ,(convert(aes_decrypt(au.lastName, 'Fusion')using utf8)) AS 'alastName',
-                      (convert(aes_decrypt(cu.firstName, 'Fusion') using utf8)) AS 'cfirstName' ,(convert(aes_decrypt(cu.lastName, 'Fusion')using utf8)) AS 'clastName',
+            $query = "SELECT t.ticketID, au.UserID,
+                      (convert(aes_decrypt(au.firstName, 'Fusion') using utf8)) AS 'afirstName' ,
+                      (convert(aes_decrypt(au.lastName, 'Fusion')using utf8)) AS 'alastName',
+                      (convert(aes_decrypt(cu.firstName, 'Fusion') using utf8)) AS 'cfirstName',
+                      (convert(aes_decrypt(cu.lastName, 'Fusion')using utf8)) AS 'clastName',
                       lastUpdateDate, dateCreated, dateClosed, dueDate, priority,summary, t.description, s.status FROM thesis.ticket t
                       JOIN ref_ticketstatus s
                         ON t.status = s.ticketID
                       LEFT JOIN user au
                         ON t.assigneeUserID = au.UserID
                       JOIN user cu
-                        ON t.creatorUserID = cu.UserID;";
+                        ON t.creatorUserID = cu.UserID
+                      WHERE au.UserID = {$userID};";
                           
             $result = mysqli_query($dbc, $query);
             
@@ -132,13 +137,11 @@ require_once("mysqlconnect.php");
               echo "<tr data-details='t{$count}' class='tickets'>
                   <td>{$row['ticketID']}</td>
                   <td>{$row['summary']}</td>
-                  <td>{$row['afirstName']} {$row['alastName']}</td>
                   <td>{$row['cfirstName']} {$row['clastName']}</td>
                   <td>{$row['priority']}</td>
                   <td>{$row['dueDate']}</td>
                   <td>{$row['lastUpdateDate']}</td>
                   <td>{$row['status']}</td>
-                  <td><button class='viewTicket'>View Ticket</button></td>
                   </tr>";
 
                   $count++;
@@ -153,25 +156,8 @@ require_once("mysqlconnect.php");
 						</div>
 					<!-- /.col -->
 					
-  <!-- Modal -->
-  <div id="viewTicketModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-        </div>
-        <div class="modal-body" id='modal-body'>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <!-- /.Modal -->
+      
+	  
 
 <!-- jQuery 3 -->
 <script src="layout/jquery.min.js"></script>
@@ -192,22 +178,7 @@ require_once("mysqlconnect.php");
       'info'        : true,
       'autoWidth'   : true
     })
-  })
-
-  $(".viewTicket").click(function() {
-    var ticketID = $(this).closest('tr').children('td:first').text();// Retrieves the text within <td>
-
-  $.ajax({
-        type:"POST",
-        url:"getTicketDetails.php",
-        data: {ticketID:ticketID},
-        success: function(data){
-          $("#modal-body").html(data);
-          $("#viewTicketModal").modal();
-               }
-        })
-
-});
+  })    
 </script>
 </body>
 </html>

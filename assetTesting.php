@@ -361,8 +361,8 @@
 					
 					<!-- /.col -->
 					<div class="col-sm-12">
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Select</button>
 					  <!-- Trigger the modal with a button -->
+						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Select</button>
 
 					</div>
 					</form>
