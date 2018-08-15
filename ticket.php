@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("mysqlconnect.php");
+$_SESSION['previousPage'] = "ticket.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -100,7 +101,7 @@ require_once("mysqlconnect.php");
 				<thead>
 				<tr>
 				  <th>ID</th>
-				  <th>Sumary</th>
+				  <th>Summary</th>
 				  <th>Assignee</th>
 				  <th>Creator</th>
 				  <th>Priority</th>
@@ -155,18 +156,23 @@ require_once("mysqlconnect.php");
 					
   <!-- Modal -->
   <div id="viewTicketModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
 
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ticket Details</h4>
         </div>
+        <form action="ticketDetailsDB.php">
         <div class="modal-body" id='modal-body'>
           
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-default">Save</button>
         </div>
+      </form>
       </div>
 
     </div>
@@ -199,7 +205,7 @@ require_once("mysqlconnect.php");
 
   $.ajax({
         type:"POST",
-        url:"getTicketDetails.php",
+        url:"ticketDetails.php",
         data: {ticketID:ticketID},
         success: function(data){
           $("#modal-body").html(data);
