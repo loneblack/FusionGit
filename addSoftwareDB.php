@@ -12,7 +12,7 @@
 	$department = $_POST['department'];
 	$supplier = $_POST['supplier'];
 	$totalAmount = $_POST['amount'];
-	$siNo = $_POST['siNumber'];
+	$salesInvoice = $_POST['salesInvoice'];
 	$requestID = $_POST['request'];
 	$poNumber = $_POST['poNumber'];
 	$contractStart = $_POST['contractStart'];

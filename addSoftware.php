@@ -145,6 +145,15 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 					<br>					
 					<!-- Description -->
 					
+					<!-- Specification -->
+					<div> 
+						<b><font size="1" color="#332929">Item Specification</font></b>
+						<br>
+						<textarea class=""name="itemSpefication" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
+					</div>
+					<br>					
+					<!-- Specificaiton -->
+					
 					<!-- Property Code -->
 					<div> 
 						<b><font size="1" color="#332929">Property Code</font></b>
@@ -200,15 +209,6 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 					<br>					
 					<!-- Department -->
 					
-					<!-- SerialNo -->
-					<div> 
-						<b><font size="1" color="#332929">Serial No </font></b>
-						<br>
-						<input type="text" name="SerialNo" placeholder="Serial No" style="border-radius:5px; width:252px">
-					</div>
-					<br>					
-					<!-- SerialNo -->
-					
 					<!-- Supplier -->
 					<div>
 						<b><font size="1" color="#332929">Supplier </font></b>
@@ -239,9 +239,9 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 					
 					<!-- SI No -->
 					<div> 
-						<b><font size="1" color="#332929">SI Number</font></b>
+						<b><font size="1" color="#332929">Sales Invoice Number</font></b>
 						<br>
-						<input type="text"  name="siNumber" placeholder="SI Number" style="border-radius:5px; width:252px">
+						<input type="text"  name="salesInvoice" placeholder="Sales Invoice Number" style="border-radius:5px; width:252px">
 					</div>
 					<br>					
 					<!-- SI No -->
@@ -255,23 +255,50 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 					<br>					
 					<!-- PO No -->
 					
-					<!-- Contract Duration -->
+					<!-- Delivery Receipt -->
 					<div> 
-						<b><font size="1" color="#332929">Contract Duration</font></b>
+						<b><font size="1" color="#332929">Delivery Receipt</font></b>
 						<br>
-						<input type="text"  name="contractDuration" style="border-radius:5px; width:252px" />
+						<input type="text"  name="deliveryReceipt" placeholder="Delivery Receipt" style="border-radius:5px; width:252px">
 					</div>
 					<br>					
-					<!-- Contract Duration -->
+					<!-- Delivery Receipt -->
 					
-					<!-- Software Start & End -->
+					<!-- Contract Start -->
 					<div> 
-						<b><font size="1" color="#332929">Software Start & End Dates</font></b>
+						<b><font size="1" color="#332929">Contract Start</font></b>
 						<br>
-						<input type="text"  name="softwareStartEnd" style="border-radius:5px; width:252px" />
+						<input type="date"  name="contractStart" style="border-radius:5px; width:252px" />
 					</div>
 					<br>					
-					<!-- Software Start & End -->
+					<!-- Contract Start -->
+					
+					<!-- Contract End -->
+					<div>
+						<b><font size="1" color="#332929">Contract End</font></b>
+						<br>
+						<input type="date" name="contractEnd" style="border-radius:5px; width:252px" />
+					</div>
+					<br>
+					<!-- Contract End -->
+					
+					<!-- Software Start -->
+					<div> 
+						<b><font size="1" color="#332929">Software Start Date</font></b>
+						<br>
+						<input type="date"  name="softwareStart" style="border-radius:5px; width:252px" />
+					</div>
+					<br>					
+					<!-- Software Start -->
+					
+					<!-- Software End -->
+					<div> 
+						<b><font size="1" color="#332929">Software End Date</font></b>
+						<br>
+						<input type="date"  name="softwareEnd" style="border-radius:5px; width:252px" />
+					</div>
+					<br>					
+					<!-- Software End -->
 					
 					<!-- RR No. -->
 					<div> 

@@ -232,35 +232,18 @@
 					<div> <!-- Department -->
 						<b><font size="1" color="#332929">Department</font></b>
 						<br>
-						<select name="department" style="border-radius:5px; width:252px">
-							<option value="">Select department</option>
+						<select name="department" id="department" style="border-radius:5px; width:252px">
+							<option value="0">Select department</option>
 							<?php
 								$query="select * from department ORDER BY name;";
 								$result=mysqli_query($dbc,$query);
 								
 								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['departmentID']}'>{$row['name']}</option>";
+								echo "<option value='{$row['DepartmentID']}'>{$row['name']}</option>";
 								}
 							?>
 						</select>
 					</div> <!-- Department -->
-					<br>
-					
-					<div> <!-- Requested -->
-						<b><font size="1" color="#332929">Received and Verified By</font></b>
-						<br>
-						<select name="user" style="border-radius:5px; width:252px">
-							<option value="">Select user</option>
-							<?php
-								$query="select * from user ORDER BY firstName;";
-								$result=mysqli_query($dbc,$query);
-								
-								while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-								echo "<option value='{$row['UserID']}'>{$row['firstName']} - {$row['lastName']}</option>";
-								}
-							?>
-						</select>
-					</div> <!-- Requested -->
 					<br>
 					
 					<!-- Description -->
@@ -293,13 +276,13 @@
 					 <!-- Brand -->
 					 <br>
 					  
-					<!-- Item Specification -->
+					<!-- Specs -->
 					<div> 
 						<b><font size="1" color="#332929">Item Specification</font></b>
 						<br>
-						<textarea class=""name="itemSpeficiation" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
+						<textarea name="itemSpecification" id="itemSpecification" rows="3" style="width:255px; border-radius:5px"cols="35"></textarea>
 					</div>
-					<!-- Item Specification -->
+					<!-- specs -->
 					<br>
 					
 					<!-- Warranty -->
@@ -324,7 +307,7 @@
 					<div> <!-- Serial Number --> 
 						<b><font size="1" color="#332929">Serial Number *</font></b>
 						<br>
-						<input type="text" name="SerialNumber" placeholder="SerialNumber" required style="border-radius:5px; width:252px">
+						<input type="text" name="SerialNumber" placeholder="SerialNumber"  style="border-radius:5px; width:252px">
 					</div> <!-- Serial Number -->
 					<br>
 					
@@ -366,7 +349,7 @@
 		<form method="POST" action="addBrandDB.php">
 			<div>
 				<label>Name</label>
-				<input type="text" onkeydown="btnCheck1();" id="newBrand" placeholder="Name" required>
+				<input type="text" onkeydown="btnCheck1();" id="newBrand" placeholder="Name" >
 			</div>
 			
 		</form>
@@ -395,7 +378,7 @@
 		<form method="POST" action="addAssetClassDB.php">
 			<div>
 				<label>New Asset Type</label>
-				<input type="text" onkeydown="btnCheck();" id="newAssetClass" name="newAssetClass" placeholder="New Asset Class" required>
+				<input type="text" onkeydown="btnCheck();" id="newAssetClass" name="newAssetClass" placeholder="New Asset Class" >
 			</div>
 		</form>
 	</div>
