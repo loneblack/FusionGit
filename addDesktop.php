@@ -107,7 +107,7 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form id="addSoftware"method="POST" action="addSoftwareDB.php">
+				<form id="addDesktop"method="POST" action="addDesktopDB.php">
 					<h2 align="center">Add Desktop</h2>
 				
 					<!-- Property Code -->
@@ -116,7 +116,7 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 						<br>
 						<input type="text" name="propertyCode" placeholder="Property Code" style="border-radius:5px; width:252px">
 					</div>
-					<br>					
+					
 					<!-- Property Code -->
 					
 					<!-- PO No -->
@@ -125,16 +125,16 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 						<br>
 						<input type="text"  name="poNumber" placeholder="PO Number" style="border-radius:5px; width:252px">
 					</div>
-					<br>					
+					
 					<!-- PO No -->
 					
 					<!-- Date Delivered -->
 					<div> 
-						<b><font size="1" color="#332929">Date Delivered *</font></b>
+						<b><font size="1" color="#332929">Date Delivered </font></b>
 						<br>
-						<input type="date" name="dateDelivered" placeholder="Date Delivered" required style="border-radius:5px; width:252px">
+						<input type="date" name="dateDelivered" placeholder="Date Delivered" style="border-radius:5px; width:252px">
 					</div>
-					<br>					
+										
 					<!-- Date Delivered -->
 					
 					<!-- Computer Component -->
@@ -147,15 +147,19 @@ $_SESSION['previousPage'] = "addAsset.php";?>
 					<div> 
 						<b><font size="1" color="#332929">Unit Cost</font></b>
 						<br>
-						<input type="number" min="0" name="unitCost" placeholder="0.00" step="0.01" style="border-radius:5px; width:252px">
+						<input type="number" min="0" max="2147483647" name="unitCost" placeholder="0.00" step="0.01" style="border-radius:5px; width:252px">
 					</div>					
 					<!-- Unit Cost -->
 				</div>
+				
+				
+				<div class="hiddentext" style="display:none">
 				<hr>
 					<h4>Computer Components</h4>
+				</div>
 					
 					
-					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
+					<button align="center" type="input" class="btn btn-default" style="border-radius:5px">Submit</button>
 					</form>
 			</div>
 		</div>
