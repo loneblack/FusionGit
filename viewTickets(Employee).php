@@ -72,15 +72,7 @@ $userID = 2;
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="helpdesk-home.html">Dashboard</a></li>
-                            <li><a href="ticket.php">Tickets</a></li>
-							<li><a href="#">Request</a>
-								<ul>
-								<li> <a href="assetRequest.php">Asset Request</a> </li>
-								<li> <a href="testingRequest.php">Testing Request</a> </li>
-								  </ul>
-							</li>
-              <li><a href="#">Agents</a></li>
+                            <li><a class="menu-top-active" href="viewTickets(Employee).php">Dashboard</a></li>
                         </ul>
                     </div>
                 </div>
