@@ -86,6 +86,122 @@ require_once("mysqlconnect.php");
             </div>
         </div>
     </section>
+	
+	<!-- Modal -->
+	<div id="Modal" name ="Modal"class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">Create a new Ticket</h4>
+	      </div>
+	      <div class="modal-body">
+
+        <form action="testingRequestDB.php" method="post">         
+            <!-- Summary  -->
+            <div class="control-group">
+              <label>Summary</label>
+              <div class="controls">
+                <input id="summary"  name="summary" size=75" type="text">
+              </div>
+            </div>
+            <!-- Summary  -->
+            <br>
+            <!-- Description  -->
+            <div class="control-group">
+              <label>Description</label>
+              <div class="controls">
+                  <textarea id="description" name="description" style="resize: none; height: 100px; width: 560px;"></textarea>
+              </div>
+            </div>
+            <!-- Description  -->
+            <br>
+            <!-- Assigned to  -->
+            <div class="control-group">
+              <label>Assigned to</label>
+              <div class="controls">
+                <select id="assigned_to" name="assigned_to">
+                	<option value=0>Unassigned</option>
+                	<?php
+                    $query="SELECT userID, userType, (CONVERT(aes_decrypt(username, 'Fusion') using utf8)) AS 'userName',(convert(aes_decrypt(firstName, 'Fusion') using utf8)) AS 'firstName' ,(convert(aes_decrypt(lastName, 'Fusion')using utf8)) AS 'lastName' FROM user;";
+                    $result=mysqli_query($dbc,$query);
+                    
+                    while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                    echo "<option value='{$row['userID']}'>{$row['firstName']} {$row['lastName']}</option>";
+                    }
+                  ?>
+                </select>
+              </div>
+            </div>
+            <!-- Assigned to  -->
+            <br>
+            <!-- Due Date  -->
+            <div class="control-group">
+              <label >Due Date</label>
+              <div class="controls">
+                  <input type="date" id="due_date" name ="due_date">
+              </div>
+            </div>
+            <!-- Due Date  -->
+            <br>
+            <!-- Due Time  -->
+            <div class="control-group">
+              <label>Due Time</label>
+              <div class="controls">
+                <input type="time" id="duetime" name="duetime">
+              </div>
+             </div>
+            <!-- Due Time  -->
+            <br>
+            <!-- Priority  -->
+            <div class="control-group">
+              <label>Priority</label>
+                <select id="priority" name="priority" >
+                  <option value="High">High</option>
+                  <option value="Medium" selected="selected">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+            </div>
+            <!-- Priority  -->
+            <br>
+           
+			<div class="control-group">
+			<label>Add testing Requests</label>
+			<select name="testingID" style="border-radius:5px; height:25px; width:153px">
+				<option>Select Request</option>
+				<?php
+				$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
+						join employee E 
+						on AST.PersonRequestedID = E.employeeID
+						join FloorAndRoom f
+						on AST.FloorAndRoomID = f.FloorAndRoomID
+						join offices o
+						on AST.officeID = o.officeID
+						join building b
+						on  f.BuildingID = b.BuildingID
+						WHERE statusID = 10;";
+					$result=mysqli_query($dbc,$query);
+					
+					while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+					echo "<option value='{$row['testingID']}'>{$row['rpsmsrf']} {$row['Building']} {$row['floorRoom']} {$row['remarks']}</option>";
+					}
+				?> 
+			</select>
+			</div>
+
+          <div class="modal-footer">
+            <button type="submit" type="submit">Save</button>
+            <button >Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  <!-- Modal content-->
+  </div>
+</div>
+<!-- Modal-->
     <!-- Main content -->
 	<body>	  
     <section class="content">
@@ -93,7 +209,7 @@ require_once("mysqlconnect.php");
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
-			  <h3 class="box-title">For Disposal</h3>
+			  <h3 class="box-title">Asset request</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
@@ -125,6 +241,9 @@ require_once("mysqlconnect.php");
 									<td>{$row['floorRoom']}</td>
 									<td>{$row['Building']}</td>
 									<td>{$row['dateNeeded']}</td>
+									<td><button type='button' style='display:inline;' class='btn btn-secondary' data-toggle='modal' data-target='#Modal'><font size='1'>Create Ticket</font></button></td>
+				
+			
 									</tr>";
 						}
 					?>
