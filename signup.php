@@ -118,6 +118,7 @@
 							<option value="0">Select User Type</option>
 							<option value="1">Asset Manager</option>
 							<option value="2">Helpdesk</option>
+							<option value="2">Engineer</option>
 						</select>
 					</div>
 					<br>
