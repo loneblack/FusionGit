@@ -71,7 +71,7 @@ $userID = 2;
             <div class="row">
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
-                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                        <ul id="menu-top" class="nav navbar-nav navbar-left">
                             <li><a class="menu-top-active" href="viewTickets(Employee).php">Dashboard</a></li>
                         </ul>
                     </div>
