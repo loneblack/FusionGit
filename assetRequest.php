@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once("mysqlconnect.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +14,6 @@
   <link rel="stylesheet" href="layout/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="layout/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="layout/dataTables.bootstrap.min.css">
   <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
@@ -22,7 +24,7 @@
 
 </head>
 
-	<body>
+
     <header>
         <div class="container">
             <div class="row">
@@ -50,23 +52,18 @@
 
                     <img src="resource/logo.png" />
                 </a>
-
             </div>
 
             <div class="left-div">
                 <div class="user-settings-wrapper">
                     <ul class="nav">
-
-                       
-
-
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <!-- LOGO HEADER END-->
-    <section class="menu-section">
+     <section class="menu-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -96,40 +93,45 @@
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
-			  <h3 class="box-title">Asset Request</h3>
+			  <h3 class="box-title">For Disposal</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-			  <table id="example2" class="table table-bordered table-striped"  style="font-size:12px">
-				<thead>
-				<tr>
-				  <th>Name</th>
-				  <th>Date</th>
-				  <th>Form</th>
-				  <th>Comments</th>
-				  <th>Status</th>
-				</tr>
-				<tr>
-				  <td>LaptopPropertyCode</td>
-				  <td>SerialNumberLaptop</td>
-				  <td>10.2.3.4.5.6</td>
-				  <td>10.2.3.4.5.6</td>
-				  <td>
-					<select>
-					 <option>Open</option>
-					 <option>Pending</option>
-					 <option>Resolved</option>
-					 <option>Closed</option>
-					</select>
-				  </td>
-				</thead>
-				<tbody>
-			  </table>
-			</div>
-			<button class="btn btn-default spec-next-state-btn js-next-ticket-state" data-ember-action="1584">
-                  Close
-                </button>
-			<!-- /.box-body -->
+						  <table id="example2" class="table table-bordered table-striped">
+							<thead>
+								<tr>
+								  <th>Description</th>
+								  <th>Date</th>
+								  <th>Floor and Room</th>
+								  <th>Building</th>
+								  <th>Date Needed</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+						$query = "	SELECT requestID, description, date, F.floorRoom, (b.name)as'Building', dateNeeded FROM thesis.request r 
+									join FloorAndRoom f
+									on r.FloorAndRoomID = f.FloorAndRoomID
+									join building b
+									on  f.BuildingID = b.BuildingID;";
+													
+						$result = mysqli_query($dbc, $query);
+						
+						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+						{	
+							echo "	<tr>
+									<td>{$row['description']}</td>
+									<td>{$row['date']}</td>
+									<td>{$row['floorRoom']}</td>
+									<td>{$row['Building']}</td>
+									<td>{$row['dateNeeded']}</td>
+									</tr>";
+						}
+					?>
+							</tbody>
+						
+						  </table>
+						</div>
 		  </div>
 		  <!-- /.box -->
 						</div>
@@ -143,13 +145,8 @@
 <!-- Bootstrap 3.3.7 -->
 <script src="layout/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
+<script src="layout/jquery.dataTables.min.js"></script>
+<script src="layout/dataTables.bootstrap.min.js"></script>
 
 <script>
   $(function () {
