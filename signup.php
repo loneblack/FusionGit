@@ -116,9 +116,8 @@
 						<br>
 						<select name="userType" style="border-radius:5px; width:150px">
 							<option value="0">Select User Type</option>
-							<option value="1">Administrator</option>
-							<option value="2">Asset Manager</option>
-							<option value="3">Helpdesk</option>
+							<option value="1">Asset Manager</option>
+							<option value="2">Helpdesk</option>
 						</select>
 					</div>
 					<br>
