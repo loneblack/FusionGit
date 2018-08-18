@@ -69,15 +69,31 @@ require_once("mysqlconnect.php");
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a class="menu-top-active" href="helpdesk-home.html">Dashboard</a></li>
-                            <li><a href="ticket.php">Tickets</a></li>
-							<li><a href="#">Request</a>
+                            <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
+                            <li><a href="#">Adding</a>
 								<ul>
-								<li> <a href="assetRequest.php">Asset Request</a> </li>
-								<li> <a href="testingRequest.php">Testing Request</a> </li>
-								  </ul>
+								<li> <a href="addAsset.php">Add Asset</a> </li>
+								<li> <a href="addDesktop.php">Add Desktop</a> </li>
+								<li> <a href="addEmployee.php">Add Employee</a> </li>
+								<li> <a href="addLicense.php">Add License</a> </li>
+								<li> <a href="addSoftware.php">Add Software</a> </li>
+								<li> <a href="addWarranty.php">Add Warranty</a> </li>
+								</ul>
 							</li>
-              <li><a href="#">Agents</a></li>
+							<li><a href="#">Assigning</a>
+								<ul>
+								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
+								<li> <a href="assignAssetToPerson.php">Assign Asset</a> </li>
+								</ul>
+							</li>
+                            <li><a href="#">Data Tables</a>
+								<ul>
+								<li> <a href="assetTesting.php">Asset Testing Table</a> </li>
+								</ul>
+							</li>
+                            <li><a href="#">Forms</a></li>
+                             <li><a href="login.html">Login Page</a></li>
+
                         </ul>
                     </div>
                 </div>
@@ -92,55 +108,51 @@ require_once("mysqlconnect.php");
 	    <div class="col-sm-5">
 		  <div class="box box-primary" style="width : 1000px; padding-left: 100px" align="center">
 			<div class="box-header">
-			  <h3 class="box-title">Unassigned Tickets</h3>
+			  <h3 class="box-title">Moving</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
-			  <table id="example2" class="table table-bordered table-striped" style="font-size:12px">
-				<thead>
-				<tr>
-				  <th>ID</th>
-				  <th>Sumary</th>
-				  <th>Assignee</th>
-				  <th>Creator</th>
-				  <th>Priority</th>
-				  <th>Due</th>
-				  <th>Updated</th>
-				  <th>Status</th>
-				</tr>
-				</thead>
-				  <tbody>
-            <?php
-            $query = "SELECT t.ticketID, (convert(aes_decrypt(au.firstName, 'Fusion') using utf8)) AS 'afirstName' ,(convert(aes_decrypt(au.lastName, 'Fusion')using utf8)) AS 'alastName',
-                      (convert(aes_decrypt(cu.firstName, 'Fusion') using utf8)) AS 'cfirstName' ,(convert(aes_decrypt(cu.lastName, 'Fusion')using utf8)) AS 'clastName',
-                      lastUpdateDate, dateCreated, dateClosed, dueDate, priority,summary, t.description, s.status FROM thesis.ticket t
-                      JOIN ref_ticketstatus s
-                        ON t.status = s.ticketID
-                      LEFT JOIN user au
-                        ON t.assigneeUserID = au.UserID
-                      JOIN user cu
-                        ON t.creatorUserID = cu.UserID WHERE t.status = 1;";
-                          
-            $result = mysqli_query($dbc, $query);
-            
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-            {
-              
-              echo "<tr>
-                  <td>{$row['ticketID']}</td>
-                  <td>{$row['summary']}</td>
-                  <td>{$row['afirstName']} {$row['alastName']}</td>
-                  <td>{$row['cfirstName']} {$row['clastName']}</td>
-                  <td>{$row['priority']}</td>
-                  <td>{$row['dueDate']}</td>
-                  <td>{$row['lastUpdateDate']}</td>
-                  <td>{$row['status']}</td>
-                  </tr>";
-            }
-          ?>
-          </tbody>
-			  </table>
-			</div>
+						  <table id="example2" class="table table-bordered table-striped">
+							<thead>
+							<tr>
+							  <th>Status</th>
+							  <th>Property Code</th>
+							  <th>Serial Number</th>
+							  <th>MAC Address</th>
+							  <th>Brand</th>
+							  <th>Asset Type</th>
+							  <th>Item Specification</th>
+							</tr>
+							</thead>
+							<tbody>
+								<?php
+									$query = "SELECT s.description,assetID, a.assetTypeID, propertyCode, serialNo, macAddress, itemSpecification, (b.name)as 'brand',(ac.name) as 'assetclass' FROM thesis.asset a
+												JOIN ref_status s
+												  ON a.status = s.statusID
+												join assettype at on a.assetTypeID = at.assetTypeID
+												join ref_brand b on at.brand = b.brandId 
+												join ref_assetclass ac on at.assetClass = ac.assetClassID
+												where a.status = 3;";
+																
+									$result = mysqli_query($dbc, $query);
+									
+									while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+									{
+										echo "<tr>
+												<td>{$row['description']}</td>
+												<td>{$row['propertyCode']}</td>
+												<td>{$row['serialNo']}</td>
+												<td>{$row['macAddress']}</td>
+												<td>{$row['brand']}</td>
+												<td>{$row['assetclass']}</td>
+												<td>{$row['itemSpecification']}</td>
+											  </tr>";
+									}
+								?>
+							</tbody>
+						
+						  </table>
+						</div>
 		  </div>
 		  <!-- /.box -->
 						</div>
