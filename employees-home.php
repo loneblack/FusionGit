@@ -101,7 +101,7 @@ require_once("mysqlconnect.php");
 								</ul>
 							</li>
                             <li><a href="#">Forms</a></li>
-                             <li><a href="login.html">Login Page</a></li>
+                             <li><a href="notHome.html">Logout</a></li>
 
                         </ul>
                     </div>

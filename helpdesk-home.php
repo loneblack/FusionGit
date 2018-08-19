@@ -98,6 +98,7 @@ require_once("mysqlconnect.php");
 								</ul>
 							</li>
                             <li><a href="#">Agents</a></li>
+							<li><a href="notHome.html">Logout</a></li>
 
                         </ul>
                     </div>
