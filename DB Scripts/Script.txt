@@ -1310,6 +1310,51 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
+-- -----------------------------------------------------
+-- Table `thesis`.`Borrow`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `thesis`.`Borrow` ;
+
+CREATE TABLE IF NOT EXISTS `thesis`.`Borrow` (
+  `borrowID` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL,
+  `IDNum` VARCHAR(45) NULL,
+  `Organization` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `contactNum` VARCHAR(45) NULL,
+  `startDate` DATE NULL,
+  `endDate` DATE NULL,
+  `purpose` VARCHAR(45) NULL,
+  `unit` VARCHAR(45) NULL,
+  `laptop` VARCHAR(45) NULL,
+  `vga` VARCHAR(45) NULL,
+  `extension` VARCHAR(45) NULL,
+  `numUnits` VARCHAR(45) NULL,
+  `officeID` INT(11) NULL,
+  `DepartmentID` INT(11) NULL,
+  `statusID` INT(11) NOT NULL,
+  PRIMARY KEY (`borrowID`),
+  INDEX `fk_Borrow_offices1_idx` (`officeID` ASC),
+  INDEX `fk_Borrow_department1_idx` (`DepartmentID` ASC),
+  INDEX `fk_Borrow_ref_status1_idx` (`statusID` ASC),
+  CONSTRAINT `fk_Borrow_offices1`
+    FOREIGN KEY (`officeID`)
+    REFERENCES `thesis`.`offices` (`officeID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Borrow_department1`
+    FOREIGN KEY (`DepartmentID`)
+    REFERENCES `thesis`.`department` (`DepartmentID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Borrow_ref_status1`
+    FOREIGN KEY (`statusID`)
+    REFERENCES `thesis`.`ref_status` (`statusID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

@@ -100,7 +100,7 @@ $_SESSION['previousPage']="requestService.php";?>
 		<div style="padding-top:20px; padding-bottom: 20px;">
 			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:400px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form method="POST" action="requestServiceDB.php">
+				<form method="POST" action="requestAssetDB.php">
 					<h2 align="center">Your Request</h2>
 
 						<div> <!--Name-->
@@ -118,7 +118,7 @@ $_SESSION['previousPage']="requestService.php";?>
 						<div class="input-group"> <!-- Select Affiliation -->
 							<b><font size="1" color="#332929">Select Affiliation *</font></b>
 							<br>
-							<select class="form-control" name="serviceType" id="serviceType" onchange="showOthers(this);" style="border-radius:5px">
+							<select class="form-control" name="Affiliation" id="Affiliation" onchange="showOthers(this);" style="border-radius:5px">
 								<option value='1'>Office</option>
 								<option value='2'>Department</option>
 								<option value='3'>School Organization</option>
@@ -200,26 +200,24 @@ $_SESSION['previousPage']="requestService.php";?>
 						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
 						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
-						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
+						<input type="number" name="extension" id="extension" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s Extension Cord</font></b>
 						</div><!--Contact Number-->
 
 						<div> <!--Contact Number-->
-						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
-						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
-						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
+						<input type="number" name="projector" id="projector" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s LCD Projector</font></b>
+						<input type="number" name="vga" id="vga" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> pc/s VGA Cable</font></b>
 						</div><!--Contact Number-->
 
 						<div> <!--Contact Number-->
-						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
+						<input type="number" name="number" id="number" min = 0 style="width: 30px;" value = 0>
 						<b><font size="1" color="#332929"> unit/s</font></b>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
-						<b><font size="1" color="#332929"> unit/s</font></b>
+						<input type="text" name="unit" id="unit" style="width: 200px;" >
 						</div><!--Contact Number-->
 						<br>
+
 					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
 					</form>
 			</div>
