@@ -18,6 +18,7 @@
 		    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
 
 			<script src="layout/jquery.min.js"></script>
+			<script src="layout/bootstrap.min.js"></script>
 			
 	</head>
 <!-- NAVBAR START-->
@@ -66,7 +67,7 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                            <ul id="menu-top" class="nav navbar-nav navbar-right">
-                           <<li><a class="menu-top-active" href="employees-home.php">Dashboard</a></li>
+                           <<li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
                             <li><a href="#">Adding</a>
 								<ul>
 								<li> <a href="addAsset.php">Add Asset</a> </li>
@@ -360,8 +361,8 @@
 					
 					<!-- /.col -->
 					<div class="col-sm-12">
-					  <!-- Trigger the modal with a button -->
 						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Select</button>
+					  <!-- Trigger the modal with a button -->
 
 					</div>
 					</form>
