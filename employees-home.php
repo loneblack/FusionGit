@@ -286,7 +286,7 @@ require_once("mysqlconnect.php");
                         <div class="panel-heading">
                            Assets Inventory
 						   <br>
-						   <a href = "AllAssetTable.php"<button>View All Asset</button></a>
+						   <a href = "Inventory.php"<button>View All Asset</button></a>
                         </div>
 						
                         <div class="panel-body">
