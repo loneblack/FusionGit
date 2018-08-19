@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>TITLE</title>
+		<title>Asset Testing</title>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 			<link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
@@ -18,6 +18,9 @@
 		    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
 
 			<script src="layout/jquery.min.js"></script>
+			<script src="layout/bootstrap.min.js"></script>
+			
+			<link rel="icon" type="image/png" href="resource/dlsulogo.png" />
 			
 	</head>
 <!-- NAVBAR START-->
@@ -145,7 +148,7 @@
 			<div class="input-group"><!-- Remarks -->
 				<b><font size="1" color="#332929">RPSM/SRF Number</font></b>
 				<br>
-				<input type ="number" id = "rpsmsrf" name ="rpsmsrf" style="width: 550px;" min=0;></textarea>
+				<input type ="number" id = "rpsmsrf" name ="rpsmsrf" style="width:550px; border-radius:5px" min=0;></textarea>
 			</div>	<!-- Remarks -->
 
 			<!-- Office -->
@@ -360,8 +363,8 @@
 					
 					<!-- /.col -->
 					<div class="col-sm-12">
+						<button style="border-radius:5px" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Select</button>
 					  <!-- Trigger the modal with a button -->
-						<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Select</button>
 
 					</div>
 					</form>
