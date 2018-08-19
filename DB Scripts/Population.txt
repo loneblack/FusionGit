@@ -130,6 +130,33 @@ INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('5', 'Esc
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('6', 'Waiting for Parts');
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('7', 'Closed');
 
+-- ref_serviceType
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('1', 'Access regulation / permission');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('2', 'Activation / Deactivation of MyLasalle account');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('3', 'Add / Remove email address in mailing list');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('4', 'Computer lab management');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('5', 'Computer Set-up');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('6', 'Creation/Deletion of mailing list');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('7', 'Data extraction / Report generation / Printing');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('8', 'Data / Infomation Update');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('9', 'Forms / Charts design');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('10', 'IT asset management');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('11', 'Network Management');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('12', 'Photoshoot / Virtual tour');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('13', 'Print publishing');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('14', 'Program access request');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('15', 'Request for replacement unit');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('16', 'Security management');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('17', 'Server management');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('18', 'Service / Backup unit provisions');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('19', 'Stand by support Engineer');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('20', 'System development / Revision');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('21', 'Transfer and installation of application software');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('22', 'Web graphics publishing');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('23', 'Web site creation');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('24', 'Web site updating');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('25', 'Others');
+
 
 
 -- department

@@ -1,6 +1,6 @@
 <?php require_once("mysqlconnect.php");
 session_start();
-$_SESSION['previousPage']="request.php";?>
+$_SESSION['previousPage']="requestService.php";?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -122,7 +122,7 @@ $_SESSION['previousPage']="request.php";?>
 						<div id="others" style="display: none;"> <!--Others (If Service Type not applicable)-->
 						<b><font size="1" color="#332929">Indicate Others (If Service Type not applicable) *</font></b>
 						<br>
-						<input name="other" id="other">
+						<input name="other" id="other" style="width: 350px;">
 						</div><!--Others (If Service Type not applicable)-->
 					
 						<div> <!--Description-->

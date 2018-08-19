@@ -1,56 +1,39 @@
 <?php require_once("mysqlconnect.php");
 session_start();
-$_SESSION['previousPage']="request.php";?>
+$_SESSION['previousPage']="requestService.php";?>
+<!DOCTYPE html>
 <html>
 	<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
-    <title>Request</title>
-    <!-- BOOTSTRAP CORE STYLE  -->
-    <link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
-    <!-- FONT AWESOME ICONS  -->
-    <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
-    <!-- CUSTOM STYLE  -->
-    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
-     <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+		<title>TITLE</title>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+			<link href="layout/AssetsCssBootstrap.css" rel="stylesheet" />
+		    <!-- FONT AWESOME ICONS  -->
+		    <link href="layout/AssetsCssFont-awesome.css" rel="stylesheet" />
+		    <!-- CUSTOM STYLE  -->
+		    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
 
-<script src="http://www.designbootstrap.com/track/ga.js" ></script>
-<script src="layout/jquery.min.js"></script>
-	<script src="layout/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-	<script type="text/javascript" src="layout/moment.min.js"></script>
-	<script type="text/javascript" src="layout/daterangepicker.min.js"></script>
-
-
-</head>
-	
-	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">						
-		<header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <strong>Email: </strong>info@yourdomain.com
-                    &nbsp;&nbsp;
-                    <strong>Support: </strong>+90-897-678-44
-					&nbsp;&nbsp;
-					<strong>Logout </strong>
-                </div>
-
-            </div>
-        </div>
-    </header>
-    <!-- HEADER END-->
-    <div class="navbar navbar-inverse set-radius-zero">
+			<script src="layout/jquery.min.js"></script>
+			
+	</head>
+<!-- NAVBAR START-->
+	<!-- HEADER START-->
+	<header>
+	    <div class="container">
+	        <div class="row">
+	            <div class="col-md-12">
+	                <strong>Email: </strong>fushion@dlsu.edu.com
+	                &nbsp;&nbsp;
+	                <strong>Support: </strong>+90-897-678-44
+	                &nbsp;&nbsp;
+	                <strong>Logout </strong>
+	            </div>
+	        </div>
+	    </div>
+	</header>     
+	<!-- HEADER END-->
+    <!-- LOGO HEADER START-->
+        <div class="navbar navbar-inverse set-radius-zero">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -62,99 +45,180 @@ $_SESSION['previousPage']="request.php";?>
 
                     <img src="resource/logo.png" />
                 </a>
-
             </div>
-
             <div class="left-div">
                 <div class="user-settings-wrapper">
                     <ul class="nav">
-
-
-
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-	<!-- LOGO HEADER END-->
-    <section class="menu-section">
+    <!-- LOGO HEADER END-->
+    <!-- NAVBAR CONTENT START-->
+     <section class="menu-section">
         <div class="container">
             <div class="row">
-              <div class="col-md-12">
+                <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
-                        <ul id="menu-top" class="nav navbar-nav navbar-left">
-                            <li><a class="menu-top-active" href="notHome.html">Home</a></li>
-							<li><a href="request.php">Request</a></li>
+                           <ul id="menu-top" class="nav navbar-nav navbar-right">
+                           <<li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
+                            <li><a href="#">Adding</a>
+								<ul>
+								<li> <a href="addAsset.php">Add Asset</a> </li>
+								<li> <a href="addDesktop.php">Add Desktop</a> </li>
+								<li> <a href="addEmployee.php">Add Employee</a> </li>
+								<li> <a href="addLicense.php">Add License</a> </li>
+								<li> <a href="addSoftware.php">Add Software</a> </li>
+								<li> <a href="addWarranty.php">Add Warranty</a> </li>
+								</ul>
+							</li>
+							<li><a href="#">Assigning</a>
+								<ul>
+								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
+								<li> <a href="assignAssetToPerson.php">Assign Asset</a> </li>
+								</ul>
+							</li>
+                            <li><a href="#">Data Tables</a>
+								<ul>
+								<li> <a href="assetTesting.php">Asset Testing Table</a> </li>
+								</ul>
+							</li>
+                            <li><a href="#">Forms</a></li>
+                             <li><a href="login.html">Login Page</a></li>
+
                         </ul>
-						<ul class="nav navbar-nav navbar-right">
-						<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
-						<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>Register</a></li>
-						</ul>
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
-    <!-- MENU SECTION END-->
+    <!-- NAVBAR CONTENT END-->
+<!-- NAVBAR END-->
+<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">
 		<div style="padding-top:20px; padding-bottom: 20px;">
-			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:350px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
+			<div align="center" margin="auto" class="container" style="background-color:#73CD6F; width:400px; padding-bottom:8px; padding-top:10px; border-radius: 25px; border: solid white">
 				<div class="input-group">
-				<form method="POST" action="requestDB.php">
+				<form method="POST" action="requestServiceDB.php">
 					<h2 align="center">Your Request</h2>
-					
-						<div> <!--Description-->
-						<b><font size="1" color="#332929">Description *</font></b>
+
+						<div> <!--Name-->
+						<b><font size="1" color="#332929"> Name *</font></b>
 						<br>
-						<textarea name="definiton" rows="5" cols="30"></textarea>
-						</div>
-							<!--Description-->
-							
-						<div> <!--Date-->
-						<b><font size="1" color="#332929">Date *</font></b>
+						<input name="name" id="name" style="width: 350px;">
+						</div><!--Name-->
+
+						<div> <!--ID Number-->
+						<b><font size="1" color="#332929"> ID Number *</font></b>
 						<br>
-						<input type="date" name="date">
-						</div>
-							<!--Date-->
-					
-							<div> 
-							
-						<div class="input-group"> <!-- Building -->
-							<b><font size="1" color="#332929">Building *</font></b>
+						<input type="number" name="idNumber" id="idNumber" style="width: 350px;">
+						</div><!--ID Number-->
+
+						<div class="input-group"> <!-- Select Affiliation -->
+							<b><font size="1" color="#332929">Select Affiliation *</font></b>
 							<br>
-							<select class="form-control" name="buildingID" id="buildingID" onChange="getRooms(this.value)"style="border-radius:5px">
+							<select class="form-control" name="serviceType" id="serviceType" onchange="showOthers(this);" style="border-radius:5px">
+								<option value='1'>Office</option>
+								<option value='2'>Department</option>
+								<option value='3'>School Organization</option>
+							</select>
+						</div>	<!-- Select Affiliation -->
+
+
+						<div id="Office" style=""> <!--lable-->
+						<b><font size="1" color="#332929">Office *</font></b>
+							<br>
+							<select name="officeID" id ="officeID" style="border-radius:5px; width: 350px; height: 35px;">
 								<option value=''>Select</option>
 								<?php
-									$query="select * from building ORDER BY name;";
+									$query="select * from Offices ORDER BY name;";
 									$result=mysqli_query($dbc,$query);
 									
 									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-									echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
+									echo "<option value='{$row['officeID']}'>{$row['Name']}</option>";
 									}
 								?>
 							</select>
-						</div>	<!-- Building -->
-						
-						<div class="input-group;" style="white-space: nowrap; padding-top: 10px";>	<!-- Floor and Room-->
-							<b><font size="1" color="#332929">Floor & Room *</font></b>
+						</div><!--lable-->
+
+						<div id="Department" style="display: none;"> <!--lable-->
+						<b><font size="1" color="#332929">Department *</font></b>
 							<br>
-							
-							<select name="FloorAndRoomID" id ="FloorAndRoomID" class="form-control" style="border-radius:5px; width: 200px;">
+							<select name="departmentID" id ="departmentID" style="border-radius:5px; width: 350px; height: 35px;">
 								<option value=''>Select</option>
+								<?php
+									$query="select * from Department ORDER BY name;";
+									$result=mysqli_query($dbc,$query);
+									
+									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+									echo "<option value='{$row['DepartmentID']}'>{$row['name']}</option>";
+									}
+								?>
 							</select>
-							
-							<!-- Modal trigger -->
-							<button type="button" style="display:inline" class="btn btn-secondary" data-toggle="modal" data-target="#myModal"><font size="1">Add New</font></button>
-						</div><!-- Floor and Room-->
+						</div><!--lable-->
+
+						<div id="SchoolOrg" style="display: none;"> <!--School Organization-->
+						<b><font size="1" color="#332929">School Organization Name</font></b>
 						<br>
+						<input name="orgName" id="orgName" style="width: 350px;">
+						</div><!--School Organization-->
 					
-							
-						<div> <!--Date Needed-->
-						<b><font size="1" color="#332929">Date Needed *</font></b>
+						<div> <!--DLSU EMAIL ADDRESS-->
+						<b><font size="1" color="#332929"> DLSU Email Address *</font></b>
 						<br>
-						<input type="date" name="date">
-						</div>
-							<!--Date Needed-->
+						<input type="email" name="email" id="email" style="width: 350px;">
+						</div><!--DLSU EMAIL ADDRESS-->
+
+						<div> <!--Contact Number-->
+						<b><font size="1" color="#332929"> Contact Number *</font></b>
+						<br>
+						<input type="number" name="contactNo" id="contactNo" style="width: 350px;">
+						</div><!--Contact Number-->
+							
+						<div> <!--Start Date-->
+						<b><font size="1" color="#332929">Start Date *</font></b>
+						<br>
+						<input type="date" name="startDate">
+						</div><!--Date -->
+
+						<div> <!--End Date-->
+						<b><font size="1" color="#332929">End Date *</font></b>
+						<br>
+						<input type="date" name="endDate">
+						</div><!--End Date-->
+
+						<div> <!--Description-->
+						<b><font size="1" color="#332929">Purpose of using the Equipment *</font></b>
+						<br>
+						<textarea name="details" rows="2" cols="45"></textarea>
+						</div><!--Description-->
+
+						Equipment to be borrowed
+
+						<div> <!--Contact Number-->
+						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
+						</div><!--Contact Number-->
+
+						<div> <!--Contact Number-->
+						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s Laptop</font></b>
+						</div><!--Contact Number-->
+
+						<div> <!--Contact Number-->
+						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s</font></b>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="number" name="laptop" id="laptop" min = 0 style="width: 30px;" value = 0>
+						<b><font size="1" color="#332929"> unit/s</font></b>
+						</div><!--Contact Number-->
 						<br>
 					<button align="center" type="input" class="btn btn-outline-secondary">Submit</button>
 					</form>
@@ -162,92 +226,25 @@ $_SESSION['previousPage']="request.php";?>
 		</div>
 	</body>
 	
-	<!-- Modal -->
-	<div id="myModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title">Add New Floor And Room</h4>
-	      </div>
-	      <div class="modal-body">
-	        
-
-		<form method="POST" action="addFloorAndRoomDB(users).php">
-			<div>
-				<label>Building</label>
-				<select name="buildingID">
-					<?php
-						$query="select * from building ORDER BY name;";
-						$result=mysqli_query($dbc,$query);
-						
-						while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
-						echo "<option value='{$row['BuildingID']}'>{$row['name']}</option>";
-						}
-					?>
-				</select>
-			</div>
-			<div>
-				<label>Floor and Room</label>
-				<input type="text" name="floorRoom" placeholder="floorRoom" required>
-			</div>
-			<button type="submit">Submit</button>
-		</form>
-
-
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-	
 </html>
 
 <script>
+	  function showOthers(that) {
+        if (that.value == "1") {
+            document.getElementById("Office").style.display = "block";
+            document.getElementById("Department").style.display = "none";
+            document.getElementById("SchoolOrg").style.display = "none";
+        }
+        if (that.value == "2") {
+            document.getElementById("Department").style.display = "block";
+            document.getElementById("Office").style.display = "none";
+            document.getElementById("SchoolOrg").style.display = "none";
+        } 
+        if (that.value == "3") {
+            document.getElementById("SchoolOrg").style.display = "block";
+            document.getElementById("Office").style.display = "none";
+            document.getElementById("Department").style.display = "none";
+        } 
 
-function getRooms(val){
-    $.ajax({
-        type:"POST",
-        url:"getRooms.php",
-        data: 'buildingID='+val,
-        success: function(data){
-            $("#FloorAndRoomID").html(data);
-       				 }
-    		});
-	}
-
-function btnCheck() {
-	var txt = document.getElementById('newAssetClass').value;
-	
-	if (txt.length == 0) {
-		document.getElementById('acModalSubmit').disabled = true;
-	}
-	else {
-		document.getElementById('acModalSubmit').disabled = false;
-	}
-}
-
-function disableBtn(){
-	document.getElementById('acModalSubmit').disabled=true;
-}
-
-function btnCheck1(){
-	var txt = document.getElementById('newBrand').value;
-	
-	if (txt.length == 0) {
-		document.getElementById('brandSubmit').disabled = true;
-	}
-	else {
-		document.getElementById('brandSubmit').disabled = false;
-	}
-}
-
-function disableBtn1(){
-	document.getElementById('brandSubmit').disabled=true;
-}
+    }
 </script>
