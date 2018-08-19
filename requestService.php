@@ -61,33 +61,20 @@ $_SESSION['previousPage']="requestService.php";?>
             <div class="row">
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
-                           <ul id="menu-top" class="nav navbar-nav navbar-right">
-                           <<li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
-                            <li><a href="#">Adding</a>
+                        <ul id="menu-top" class="nav navbar-nav navbar-left">
+                            <li><a class="menu-top-active" href="notHome.html">Home</a></li>
+							<li><a href="request.php">Request</a>
 								<ul>
-								<li> <a href="addAsset.php">Add Asset</a> </li>
-								<li> <a href="addDesktop.php">Add Desktop</a> </li>
-								<li> <a href="addEmployee.php">Add Employee</a> </li>
-								<li> <a href="addLicense.php">Add License</a> </li>
-								<li> <a href="addSoftware.php">Add Software</a> </li>
-								<li> <a href="addWarranty.php">Add Warranty</a> </li>
+									<li> <a href="requestAsset.php">Asset Request</a> </li>
+									<li> <a href="requestService.php">Service Request</a> </li>
 								</ul>
+							
 							</li>
-							<li><a href="#">Assigning</a>
-								<ul>
-								<li> <a href="assignRoomToDepartment.php">Assign Room</a> </li>
-								<li> <a href="assignAssetToPerson.php">Assign Asset</a> </li>
-								</ul>
-							</li>
-                            <li><a href="#">Data Tables</a>
-								<ul>
-								<li> <a href="assetTesting.php">Asset Testing Table</a> </li>
-								</ul>
-							</li>
-                            <li><a href="#">Forms</a></li>
-                             <li><a href="login.html">Login Page</a></li>
-
                         </ul>
+						<ul class="nav navbar-nav navbar-right">
+						<li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+						<li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+						</ul>
                     </div>
                 </div>
 
