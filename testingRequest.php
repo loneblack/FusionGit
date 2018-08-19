@@ -196,10 +196,10 @@ require_once("mysqlconnect.php");
 			</div>
 
           <div class="modal-footer">
-            <button type="submit" type="submit">Save</button>
-            <button >Cancel</button>
-          </div>
+            <button type="submit" class="btn btn-default" type="submit">Save</button>        
         </form>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+         </div>
       </div>
     </div>
   <!-- Modal content-->

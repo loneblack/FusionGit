@@ -655,7 +655,7 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assettesting` (
   `departmentOwnsRoomID` INT(11) NULL DEFAULT NULL,
   `officeID` INT(11) NULL DEFAULT NULL,
   `remarks` LONGTEXT NULL DEFAULT NULL,
-  `SRFRPSM` VARCHAR(45) NULL DEFAULT NULL,
+  `rpsmsrf` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`testingID`),
   INDEX `fk_AssetTesting_User1_idx` (`PersonRequestedID` ASC),
   INDEX `fk_AssetTesting_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
