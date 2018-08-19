@@ -70,7 +70,7 @@ $_SESSION['previousPage'] = "addAsset.php";?>
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                           <li><a class="menu-top-active" href="employees-home.html">Dashboard</a></li>
+                           <li><a class="menu-top-active" href="employees-home.php">Dashboard</a></li>
                             <li><a href="#">Adding</a>
 								<ul>
 								<li> <a href="addAsset.php">Add Asset</a> </li>
