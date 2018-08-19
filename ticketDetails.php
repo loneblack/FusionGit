@@ -11,7 +11,8 @@
     			(convert(aes_decrypt(au.lastName, 'Fusion')using utf8)) AS 'alastName',
             	(convert(aes_decrypt(cu.firstName, 'Fusion') using utf8)) AS 'cfirstName',
             	(convert(aes_decrypt(cu.lastName, 'Fusion')using utf8)) AS 'clastName',
-              lastUpdateDate, dateCreated, dateClosed, dueDate, priority,summary, t.description, s.status, assigneeUserID
+              lastUpdateDate, dateCreated, dateClosed, dueDate, priority,summary, t.description, s.status, assigneeUserID,
+              (t.status) AS 'statusID'
               FROM thesis.ticket t
               JOIN ref_ticketstatus s
                 ON t.status = s.ticketID
@@ -36,6 +37,7 @@
 		$status = $row['status'];
 		$dateCreated = $row['dateCreated'];
 		$description = $row['description'];
+		$statusID = $row['statusID'];
         if($row['assigneeUserID']==NULL){
         	$assigneeUserID = 0;
         }
@@ -105,7 +107,7 @@
 	<br>
 	<table>
 		<tr>
-			<th width="5%">Priority</th><th width="5%">Due Date</th><th width="5%">Assignee</th>
+			<th width="5%">Priority</th><th width="5%">Due Date</th><th width="5%">Assignee</th><th width="5%">Status</th>
 		</tr>
 		<tr>
 			<td>
@@ -131,11 +133,26 @@
               ?>
             </select>
 			</td>
+			<td>
+			<select id="statusID" name="statusID">
+            	<?php
+                $query="SELECT * FROM thesis.ref_ticketstatus;";
+                $result=mysqli_query($dbc,$query);
+
+                while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                echo "<option value='{$row['ticketID']}'";
+                if($row['ticketID']==$statusID)echo " selected='selected' ";
+                echo ">{$row['status']}</option>";
+                }
+              ?>
+            </select>
+			</td>
 		</tr>
 	</table>
 	<script type="text/javascript">
 		jQuery('#priority').load('session_write.php?priority');
 		jQuery('#date').load('session_write.php?date');
 		jQuery('#assigned_to').load('session_write.php?assigned_to');
+		jQuery('#statusID').load('session_write.php?statusID');
 	</script>
 	

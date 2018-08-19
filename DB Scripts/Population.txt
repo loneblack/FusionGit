@@ -117,6 +117,8 @@ INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('10', 'Pen
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('11', 'Ongoing');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('12', 'Completed');
 INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('13', 'Ticketed');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('14', 'For Refurbish');
+INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('15', 'Refurbishing');
 
 
 -- ref_ticketstatus

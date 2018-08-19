@@ -18,7 +18,6 @@
 		    <link href="layout/AssetsCssStyle.css" rel="stylesheet" />
 
 			<script src="layout/jquery.min.js"></script>
-			<script src="layout/bootstrap.min.js"></script>
 			
 	</head>
 <!-- NAVBAR START-->

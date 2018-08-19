@@ -34,7 +34,7 @@ $_SESSION['previousPage']="request.php";?>
 
 </head>
 	
-	<body>						
+	<body background="resource/green.jpg" style="background-attachment:fixed; background-repeat:no-repeat;">						
 		<header>
         <div class="container">
             <div class="row">
