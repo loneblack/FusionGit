@@ -103,6 +103,19 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
+-- Table `thesis`.`ref_status`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `thesis`.`ref_status` ;
+
+CREATE TABLE IF NOT EXISTS `thesis`.`ref_status` (
+  `statusID` INT(11) NOT NULL,
+  `description` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`statusID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
 -- Table `thesis`.`service`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `thesis`.`service` ;
@@ -117,10 +130,12 @@ CREATE TABLE IF NOT EXISTS `thesis`.`service` (
   `dateReceived` DATE NULL DEFAULT NULL,
   `serviceType` INT(11) NULL DEFAULT NULL,
   `others` LONGTEXT NULL DEFAULT NULL,
+  `status` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Service_User1_idx` (`UserID` ASC),
   INDEX `fk_service_ref_serviceType1_idx` (`serviceType` ASC),
   INDEX `fk_service_employee1_idx` (`employeeID` ASC),
+  INDEX `fk_service_ref_status1_idx` (`status` ASC),
   CONSTRAINT `fk_Service_User1`
     FOREIGN KEY (`UserID`)
     REFERENCES `thesis`.`user` (`UserID`)
@@ -134,6 +149,11 @@ CREATE TABLE IF NOT EXISTS `thesis`.`service` (
   CONSTRAINT `fk_service_ref_serviceType1`
     FOREIGN KEY (`serviceType`)
     REFERENCES `thesis`.`ref_servicetype` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_service_ref_status1`
+    FOREIGN KEY (`status`)
+    REFERENCES `thesis`.`ref_status` (`statusID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -245,19 +265,6 @@ CREATE TABLE IF NOT EXISTS `thesis`.`approval` (
     REFERENCES `thesis`.`request` (`requestID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `thesis`.`ref_status`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `thesis`.`ref_status` ;
-
-CREATE TABLE IF NOT EXISTS `thesis`.`ref_status` (
-  `statusID` INT(11) NOT NULL,
-  `description` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`statusID`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -709,11 +716,14 @@ CREATE TABLE IF NOT EXISTS `thesis`.`ticket` (
   `summary` VARCHAR(45) NULL DEFAULT NULL,
   `description` VARCHAR(45) NULL DEFAULT NULL,
   `testingID` INT(11) NULL DEFAULT NULL,
+  `serviceType` INT(11) NULL,
+  `others` LONGTEXT NULL,
   PRIMARY KEY (`ticketID`),
   INDEX `fk_Ticket_ref_TicketStatus1_idx` (`status` ASC),
   INDEX `fk_Ticket_User1_idx` (`creatorUserID` ASC),
   INDEX `fk_Ticket_User2_idx` (`assigneeUserID` ASC),
   INDEX `fk_ticket_assettesting1_idx` (`testingID` ASC),
+  INDEX `fk_ticket_ref_servicetype1_idx` (`serviceType` ASC),
   CONSTRAINT `fk_Ticket_User1`
     FOREIGN KEY (`creatorUserID`)
     REFERENCES `thesis`.`user` (`UserID`)
@@ -732,6 +742,11 @@ CREATE TABLE IF NOT EXISTS `thesis`.`ticket` (
   CONSTRAINT `fk_ticket_assettesting1`
     FOREIGN KEY (`testingID`)
     REFERENCES `thesis`.`assettesting` (`testingID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ticket_ref_servicetype1`
+    FOREIGN KEY (`serviceType`)
+    REFERENCES `thesis`.`ref_servicetype` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -903,6 +918,52 @@ CREATE TABLE IF NOT EXISTS `thesis`.`billing` (
   CONSTRAINT `fk_Billing_Request1`
     FOREIGN KEY (`requestID`)
     REFERENCES `thesis`.`request` (`requestID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `thesis`.`borrow`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `thesis`.`borrow` ;
+
+CREATE TABLE IF NOT EXISTS `thesis`.`borrow` (
+  `borrowID` INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL DEFAULT NULL,
+  `IDNum` VARCHAR(45) NULL DEFAULT NULL,
+  `Organization` VARCHAR(45) NULL DEFAULT NULL,
+  `email` VARCHAR(45) NULL DEFAULT NULL,
+  `contactNum` VARCHAR(45) NULL DEFAULT NULL,
+  `startDate` DATE NULL DEFAULT NULL,
+  `endDate` DATE NULL DEFAULT NULL,
+  `purpose` VARCHAR(45) NULL DEFAULT NULL,
+  `unit` VARCHAR(45) NULL DEFAULT NULL,
+  `laptop` VARCHAR(45) NULL DEFAULT NULL,
+  `vga` VARCHAR(45) NULL DEFAULT NULL,
+  `extension` VARCHAR(45) NULL DEFAULT NULL,
+  `numUnits` VARCHAR(45) NULL DEFAULT NULL,
+  `officeID` INT(11) NULL DEFAULT NULL,
+  `DepartmentID` INT(11) NULL DEFAULT NULL,
+  `statusID` INT(11) NOT NULL,
+  PRIMARY KEY (`borrowID`),
+  INDEX `fk_Borrow_offices1_idx` (`officeID` ASC),
+  INDEX `fk_Borrow_department1_idx` (`DepartmentID` ASC),
+  INDEX `fk_Borrow_ref_status1_idx` (`statusID` ASC),
+  CONSTRAINT `fk_Borrow_department1`
+    FOREIGN KEY (`DepartmentID`)
+    REFERENCES `thesis`.`department` (`DepartmentID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Borrow_offices1`
+    FOREIGN KEY (`officeID`)
+    REFERENCES `thesis`.`offices` (`officeID`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Borrow_ref_status1`
+    FOREIGN KEY (`statusID`)
+    REFERENCES `thesis`.`ref_status` (`statusID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -1308,51 +1369,6 @@ CREATE TABLE IF NOT EXISTS `thesis`.`warranty` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `thesis`.`Borrow`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `thesis`.`Borrow` ;
-
-CREATE TABLE IF NOT EXISTS `thesis`.`Borrow` (
-  `borrowID` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NULL,
-  `IDNum` VARCHAR(45) NULL,
-  `Organization` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `contactNum` VARCHAR(45) NULL,
-  `startDate` DATE NULL,
-  `endDate` DATE NULL,
-  `purpose` VARCHAR(45) NULL,
-  `unit` VARCHAR(45) NULL,
-  `laptop` VARCHAR(45) NULL,
-  `vga` VARCHAR(45) NULL,
-  `extension` VARCHAR(45) NULL,
-  `numUnits` VARCHAR(45) NULL,
-  `officeID` INT(11) NULL,
-  `DepartmentID` INT(11) NULL,
-  `statusID` INT(11) NOT NULL,
-  PRIMARY KEY (`borrowID`),
-  INDEX `fk_Borrow_offices1_idx` (`officeID` ASC),
-  INDEX `fk_Borrow_department1_idx` (`DepartmentID` ASC),
-  INDEX `fk_Borrow_ref_status1_idx` (`statusID` ASC),
-  CONSTRAINT `fk_Borrow_offices1`
-    FOREIGN KEY (`officeID`)
-    REFERENCES `thesis`.`offices` (`officeID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Borrow_department1`
-    FOREIGN KEY (`DepartmentID`)
-    REFERENCES `thesis`.`department` (`DepartmentID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Borrow_ref_status1`
-    FOREIGN KEY (`statusID`)
-    REFERENCES `thesis`.`ref_status` (`statusID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

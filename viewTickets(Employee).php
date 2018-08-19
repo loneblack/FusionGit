@@ -1,8 +1,9 @@
 <?php
 session_start();
 require_once("mysqlconnect.php");
+$_SESSION['previousPage'] = "viewTickets(Employee).php";
 //$userID = $_SESSION['userID'];
-$userID = 2;
+$userID = 1;
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,6 @@ $userID = 2;
   <title>Fusion IT Asset Management System</title>
     <!-- BOOTSTRAP CORE STYLE  -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="layout/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="layout/font-awesome.min.css">
   <!-- DataTables -->
@@ -101,6 +100,7 @@ $userID = 2;
 				  <th>Due</th>
 				  <th>Updated</th>
 				  <th>Status</th>
+          <th width="5%"></th>
 				</tr>
 				</thead>
 				  <tbody>
@@ -119,7 +119,7 @@ $userID = 2;
                         ON t.assigneeUserID = au.UserID
                       JOIN user cu
                         ON t.creatorUserID = cu.UserID
-                      WHERE au.UserID = {$userID};";
+                      WHERE au.UserID = {$userID} AND t.status != 7;";
                           
             $result = mysqli_query($dbc, $query);
             
@@ -134,6 +134,7 @@ $userID = 2;
                   <td>{$row['dueDate']}</td>
                   <td>{$row['lastUpdateDate']}</td>
                   <td>{$row['status']}</td>
+                  <td><button class='viewTicket'>View Ticket</button></td>
                   </tr>";
 
                   $count++;
@@ -148,7 +149,30 @@ $userID = 2;
 						</div>
 					<!-- /.col -->
 					
-      
+       <!-- Modal -->
+  <div id="viewTicketModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ticket Details</h4>
+        </div>
+        <form action="ticketDetailsDB(Employee).php">
+        <div class="modal-body" id='modal-body'>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-default">Save</button>
+        </div>
+      </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- /.Modal -->
 	  
 
 <!-- jQuery 3 -->
@@ -170,7 +194,21 @@ $userID = 2;
       'info'        : true,
       'autoWidth'   : true
     })
-  })    
+  })
+   $(".viewTicket").click(function() {
+    var ticketID = $(this).closest('tr').children('td:first').text();// Retrieves the text within <td>
+
+  $.ajax({
+        type:"POST",
+        url:"ticketDetails(Employee).php",
+        data: {ticketID:ticketID},
+        success: function(data){
+          $("#modal-body").html(data);
+          $("#viewTicketModal").modal();
+               }
+        })
+
+});
 </script>
 </body>
 </html>

@@ -24,7 +24,7 @@
 	# Insert to ticket table
 	if($assigned_to == 0)//if there is no assigned person
 	{
-		$query = "INSERT INTO `thesis`.`ticket` (`status`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`, `testingID`) VALUES ('1', '{$userID}', '{$date}', '{$date}', '{$due_date} {$duetime}', '{$priority}', '{$summary}', '{$description}', '{$testingID}');";
+		$query = "INSERT INTO `thesis`.`ticket` (`status`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`, `testingID`, `serviceType`) VALUES ('1', '{$userID}', '{$date}', '{$date}', '{$due_date} {$duetime}', '{$priority}', '{$summary}', '{$description}', '{$testingID}', '26');";
 
 		if (!mysqli_query($dbc,$query))
 		  {
@@ -33,7 +33,7 @@
 	}
 	else//there is an assigned person
 	{
-		$query = "INSERT INTO `thesis`.`ticket` (`status`, `assigneeUserID`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`, `testingID`) VALUES ('2', '{$assigned_to}', '{$userID}', '{$date}', '{$date}', '{$due_date} {$duetime}', '{$priority}', '{$summary}', '{$description}', '{$testingID}');";
+		$query = "INSERT INTO `thesis`.`ticket` (`status`, `assigneeUserID`, `creatorUserID`, `lastUpdateDate`, `dateCreated`, `dueDate`, `priority`, `summary`, `description`, `testingID`, `serviceType`) VALUES ('2', '{$assigned_to}', '{$userID}', '{$date}', '{$date}', '{$due_date} {$duetime}', '{$priority}', '{$summary}', '{$description}', '{$testingID}', '26');";
 
 		if (!mysqli_query($dbc,$query))
 		  {

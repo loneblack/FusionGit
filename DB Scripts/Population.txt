@@ -124,7 +124,7 @@ INSERT INTO `thesis`.`ref_status` (`statusID`, `description`) VALUES ('15', 'Ref
 -- ref_ticketstatus
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('1', 'Open');
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('2', 'Assigned');
-INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('3', 'In Testing');
+INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('3', 'In Progress');
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('4', 'Transferred');
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('5', 'Escalated');
 INSERT INTO `thesis`.`ref_ticketstatus` (`ticketID`, `status`) VALUES ('6', 'Waiting for Parts');
@@ -156,6 +156,7 @@ INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('22', 'Web 
 INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('23', 'Web site creation');
 INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('24', 'Web site updating');
 INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('25', 'Others');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('26', 'Asset Testing');
 
 
 
@@ -313,7 +314,44 @@ INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('111', 'Vice Preside
 INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('112', 'Vice Chancellor for Research and Innovation (VCRI)');
 INSERT INTO `thesis`.`offices` (`officeID`, `Name`) VALUES ('113', 'Vice Chancellor for STC');
 
+-- Insertion to floorRoom ---------------------------------------------------------------------------------------
+-- Andrew Building
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('3', 'AGH1706 Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('3', 'AGH1904 Computer Laboratory');
 
+-- Yuchengco Building
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('7', 'YH602 Computer Laboratory');
+
+-- Gokongwei Building
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH301 Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH302A Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH302B Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH304A Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH304B Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH306A Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH306B Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('11', 'GH404 Computer Laboratory');
+
+-- Makati Extension Campus
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('13', 'MEC Computer Laboratory');
+
+-- Scienc and Technology Research Center(STRC)
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('16', 'STRC 314 Computer Laboratory');
+
+-- St. Joseph Hall
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('17', 'SJ212 Computer Laboratory');
+
+-- St. Miguel Hall
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('19', 'M303 Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('19', 'M404 Computer Laboratory');
+
+-- Velasco Hall
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('21', 'VH103 Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('21', 'VH301 Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('21', 'VH310 Computer Laboratory');
+INSERT INTO `thesis`.`floorandroom` (`BuildingID`, `floorRoom`) VALUES ('21', 'VH153 Computer Laboratory');
+
+-- End of Flooroom Insertion -------------------------------------------------------------------------------------
 
 -- brand
 INSERT INTO `thesis`.`ref_brand` (`brandID`, `name`) VALUES ('1', 'Acer');
@@ -385,3 +423,6 @@ INSERT INTO `thesis`.`assetassignment` (`assetID`, `startDate`, `endDate`, `pers
 
 -- asseet audit for asset assignment
 INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`, `assetAssignmentID`) VALUES ('2', '1', '2018-08-02', '1', '1');
+
+
+

@@ -21,9 +21,12 @@
 		$sql = "INSERT INTO `thesis`.`service` (`serviceType`, `details`, `dateNeed`, `endDate`, `employeeID`, `UserID`, `other`, `status`) VALUES ('{$serviceType}', '{$details}', '{$dateNeeded}', '{$endDate}', '{$employeeID}', '{$UserID}', '{$other}', '10');";
 	}
 
-	header('Location: '.$header);
 
-	$result = mysqli_query($dbc, $sql);
+	if (!mysqli_query($dbc,$sql))
+		  {
+		  echo("Error description: " . mysqli_error($dbc));
+		  }
 
+	//header('Location: '.$header);
 	
 ?>
