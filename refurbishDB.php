@@ -13,7 +13,7 @@ $date = date('Y-m-d H:i:s');
 $testingID;
 //Insert to asset testing
 $query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`, `rpsmsrf`)
-									VALUES ('14', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}', '{$rpsmsrf}');";
+									VALUES ('15', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}', '{$rpsmsrf}');";
 $_SESSION['submitMessage'] = $query1;
 $result1=mysqli_query($dbc,$query1);
 //get testing id inserted from above code
@@ -29,10 +29,10 @@ for($i = 0; $i<count($assets);$i++)
 		$query3 = "INSERT INTO `thesis`.`assettesting_details` (`assettesting_testingID`, `asset_assetID`) VALUES ('{$testingID}', '{$assets[$i]}');";
 		$result3 = mysqli_query($dbc, $query3);
 		//Change asset status to for testing
-		$query4 = "UPDATE `thesis`.`asset` SET `status`='14' WHERE `assetID`='{$assets[$i]}';";
+		$query4 = "UPDATE `thesis`.`asset` SET `status`='15' WHERE `assetID`='{$assets[$i]}';";
 		$result4 = mysqli_query($dbc, $query4);
 		//Insert to Audit table
-		$query5 = "INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('14', '{$userID}', '{$date}', '{$assets[$i]}');";
+		$query5 = "INSERT INTO `thesis`.`assetaudit` (`status`, `UserID`, `date`, `assetID`) VALUES ('15', '{$userID}', '{$date}', '{$assets[$i]}');";
 		$result5 = mysqli_query($dbc, $query5);
 	}
 $_SESSION['submitMessage']  = "Form Submitted";

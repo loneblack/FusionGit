@@ -330,7 +330,7 @@
 												join assettype at on a.assetTypeID = at.assetTypeID
 												join ref_brand b on at.brand = b.brandId 
 												join ref_assetclass ac on at.assetClass = ac.assetClassID
-												where a.status = 1;";
+												where a.status = 14;";
 																
 									$result = mysqli_query($dbc, $query);
 									
