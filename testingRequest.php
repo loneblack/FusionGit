@@ -176,7 +176,8 @@ require_once("mysqlconnect.php");
 			<select name="testingID" style="border-radius:5px; height:25px; width:153px">
 				<option>Select Request</option>
 				<?php
-				$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
+				$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf, AST.statusID, s.description 
+						FROM thesis.assettesting AST 
 						join employee E 
 						on AST.PersonRequestedID = E.employeeID
 						join FloorAndRoom f
@@ -185,7 +186,10 @@ require_once("mysqlconnect.php");
 						on AST.officeID = o.officeID
 						join building b
 						on  f.BuildingID = b.BuildingID
-						WHERE statusID = 10;";
+                        join ref_status s
+                        on s.statusID = AST.statusID
+						WHERE AST.statusID = 10
+                        OR AST.statusID = 14;";
 					$result=mysqli_query($dbc,$query);
 					
 					while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -232,19 +236,25 @@ require_once("mysqlconnect.php");
 					  <th>Building</th>
 					  <th>Room Number</th>
 					  <th>Remarks</th>
+					   <th>status</th>
 					</tr>
 				</thead>
 				<tbody>				
 					<?php
-						$query = "	SELECT testingID, statusID,(E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf FROM thesis.assettesting AST 
-									join employee E 
-									on AST.PersonRequestedID = E.employeeID
-									join FloorAndRoom f
-									on AST.FloorAndRoomID = f.FloorAndRoomID
-									join offices o
-									on AST.officeID = o.officeID
-									join building b
-									on  f.BuildingID = b.BuildingID WHERE statusID = 10;";
+						$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf, AST.statusID, s.description 
+								FROM thesis.assettesting AST 
+								join employee E 
+								on AST.PersonRequestedID = E.employeeID
+								join FloorAndRoom f
+								on AST.FloorAndRoomID = f.FloorAndRoomID
+								join offices o
+								on AST.officeID = o.officeID
+								join building b
+								on  f.BuildingID = b.BuildingID
+		                        join ref_status s
+		                        on s.statusID = AST.statusID
+								WHERE AST.statusID = 10
+		                        OR AST.statusID = 14;";
 													
 						$result = mysqli_query($dbc, $query);
 						
@@ -262,6 +272,7 @@ require_once("mysqlconnect.php");
 									<td>{$row['Building']}</td>
 									<td>{$row['floorRoom']}</td>
 									<td>{$row['remarks']}</td>
+									<td>{$row['description']}</td>
 									</tr>";
 							$arrayticket;
 								
