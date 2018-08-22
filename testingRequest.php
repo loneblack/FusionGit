@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once("mysqlconnect.php");
+$_SESSION['previousPage'] = 'testingRequest.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -91,6 +93,35 @@ require_once("mysqlconnect.php");
     <!-- NAVBAR CONTENT END-->
 <!-- NAVBAR END-->
 
+
+		<?php
+	if (isset($_SESSION['submitMessage'])){
+		
+	?>
+		<!-- Modal -->
+	<div id="submitModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	      </div>
+	      <div class="modal-body">
+	      		<?php echo $_SESSION['submitMessage']; ?>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Okay</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div><?php 
+	echo "<script> $('#submitModal').modal('show') </script>";
+		unset($_SESSION['submitMessage']);
+
+		} ?>
+
+
 <!-- Modal -->
 	<div id="Modal" name ="Modal"class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -108,7 +139,7 @@ require_once("mysqlconnect.php");
             <div class="control-group">
               <label>Summary</label>
               <div class="controls">
-                <input id="summary"  name="summary" size=75" type="text">
+                <input id="summary"  name="summary" size=75" type="text" required>
               </div>
             </div>
             <!-- Summary  -->
@@ -117,7 +148,7 @@ require_once("mysqlconnect.php");
             <div class="control-group">
               <label>Description</label>
               <div class="controls">
-                  <textarea id="description" name="description" style="resize: none; height: 100px; width: 560px;"></textarea>
+                  <textarea id="description" name="description" style="resize: none; height: 100px; width: 560px;" required></textarea>
               </div>
             </div>
             <!-- Description  -->
@@ -145,7 +176,7 @@ require_once("mysqlconnect.php");
             <div class="control-group">
               <label >Due Date</label>
               <div class="controls">
-                  <input type="date" id="due_date" name ="due_date">
+                  <input type="date" id="due_date" name ="due_date" required>
               </div>
             </div>
             <!-- Due Date  -->
@@ -154,7 +185,7 @@ require_once("mysqlconnect.php");
             <div class="control-group">
               <label>Due Time</label>
               <div class="controls">
-                <input type="time" id="duetime" name="duetime">
+                <input type="time" id="duetime" name="duetime" required>
               </div>
              </div>
             <!-- Due Time  -->
@@ -172,9 +203,9 @@ require_once("mysqlconnect.php");
             <br>
            
 			<div class="control-group">
-			<label>Add testing Requests</label>
-			<select name="testingID" style="border-radius:5px; height:25px; width:153px">
-				<option>Select Request</option>
+			<label>Add testing Request</label>
+			<select required name="testingID" style="border-radius:5px; height:25px; width:153px" >
+				<option value="">None</option>
 				<?php
 				$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf, AST.statusID, s.description 
 						FROM thesis.assettesting AST 
@@ -236,12 +267,13 @@ require_once("mysqlconnect.php");
 					  <th>Building</th>
 					  <th>Room Number</th>
 					  <th>Remarks</th>
+					   <th>Service Type</th>
 					   <th>status</th>
 					</tr>
 				</thead>
 				<tbody>				
 					<?php
-						$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf, AST.statusID, s.description 
+						$query = "SELECT testingID, (E.name)AS'employeeName', F.floorRoom, (o.name)AS 'Office', (b.name)as'Building', remarks, rpsmsrf, AST.statusID, s.description, st.serviceType 
 								FROM thesis.assettesting AST 
 								join employee E 
 								on AST.PersonRequestedID = E.employeeID
@@ -253,6 +285,8 @@ require_once("mysqlconnect.php");
 								on  f.BuildingID = b.BuildingID
 		                        join ref_status s
 		                        on s.statusID = AST.statusID
+		                        join ref_servicetype st
+		                        on AST.serviceType = st.id
 								WHERE AST.statusID = 10
 		                        OR AST.statusID = 14;";
 													
@@ -272,6 +306,7 @@ require_once("mysqlconnect.php");
 									<td>{$row['Building']}</td>
 									<td>{$row['floorRoom']}</td>
 									<td>{$row['remarks']}</td>
+									<td>{$row['serviceType']}</td>
 									<td>{$row['description']}</td>
 									</tr>";
 							$arrayticket;

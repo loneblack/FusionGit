@@ -14,8 +14,8 @@ $date = date('Y-m-d H:i:s');
 $testingID;
 
 //Insert to asset testing
-$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`, `rpsmsrf`)
-									VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}', '{$rpsmsrf}');";
+$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`, `rpsmsrf`, `serviceType`)
+									VALUES ('10', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}', '{$rpsmsrf}', '26');";
 $_SESSION['submitMessage'] = $query1;
 
 $result1=mysqli_query($dbc,$query1);

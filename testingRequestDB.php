@@ -75,4 +75,9 @@
 
 	$query6 = "UPDATE `thesis`.`assettesting` SET `statusID`='13' WHERE `testingID`='{$testingID}';";
 	$result6 = mysqli_query($dbc, $query6);
+
+
+	$header =  $_SESSION['previousPage'];
+	$_SESSION['message'] ='Asset testing request submitted';
+	header('Location: '.$header);
 ?>

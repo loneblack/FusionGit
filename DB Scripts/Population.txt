@@ -157,6 +157,7 @@ INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('23', 'Web 
 INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('24', 'Web site updating');
 INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('25', 'Others');
 INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('26', 'Asset Testing');
+INSERT INTO `thesis`.`ref_servicetype` (`id`, `serviceType`) VALUES ('27', 'Refurbishing');
 
 
 

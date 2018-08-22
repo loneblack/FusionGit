@@ -1,7 +1,7 @@
 <?php
 	require_once("mysqlconnect.php");
 	session_start();
-	$_SESSION['previousPage'] = "assetTesting.php"; 
+	$_SESSION['previousPage'] = "refurbish.php"; 
 ?>
 
 

@@ -91,12 +91,12 @@ $_SESSION['previousPage']="requestService.php";?>
 					<h2 align="center">Your Request</h2>
 
 						<div class="input-group"> <!-- Service Type -->
-							<b><font size="1" color="#332929">Service Type *</font></b>
+							<b><font size="1" color="#332929"> Select Service Type *</font></b>
 							<br>
-							<select class="form-control" name="serviceType" id="serviceType" onchange="showOthers(this);" style="border-radius:5px">
-								<option value=''>Select</option>
+							<select class="form-control" name="serviceType" id="serviceType" onchange="showOthers(this);" style="border-radius:5px" required>
+								<option value="">None</option>
 								<?php
-									$query="SELECT * FROM thesis.ref_servicetype;";
+									$query="SELECT * FROM thesis.ref_servicetype LIMIT 25;";
 									$result=mysqli_query($dbc,$query);
 									
 									while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -107,27 +107,27 @@ $_SESSION['previousPage']="requestService.php";?>
 						</div>	<!-- Service Type -->
 
 						<div id="others" style="display: none;"> <!--Others (If Service Type not applicable)-->
-						<b><font size="1" color="#332929">Indicate Others (If Service Type not applicable) *</font></b>
+						<b><font size="1" color="#332929">Indicate Others (If Service Type not applicable)</font></b>
 						<br>
-						<input name="other" id="other" style="width: 350px;">
+						<input name="other" id="other" style="width: 350px;" required>
 						</div><!--Others (If Service Type not applicable)-->
 					
 						<div> <!--Description-->
-						<b><font size="1" color="#332929">Details of Request *</font></b>
+						<b><font size="1" color="#332929">Details of Request</font></b>
 						<br>
-						<textarea name="details" rows="5" cols="45"></textarea>
+						<textarea name="details" rows="5" cols="45" required></textarea>
 						</div><!--Description-->
 							
 						<div> <!--Date Needed-->
-						<b><font size="1" color="#332929">Date Needed *</font></b>
+						<b><font size="1" color="#332929">Date Needed</font></b>
 						<br>
-						<input type="date" name="dateNeeded">
+						<input type="date" name="dateNeeded" required>
 						</div><!--Date Needed-->
 
 						<div> <!--End Date-->
-						<b><font size="1" color="#332929">End Date *</font></b>
+						<b><font size="1" color="#332929">End Date</font></b>
 						<br>
-						<input type="date" name="endDate">
+						<input type="date" name="endDate" required>
 						</div><!--End Date-->
 
 						<br>

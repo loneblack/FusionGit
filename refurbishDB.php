@@ -12,8 +12,8 @@ date_default_timezone_set("Asia/Singapore");
 $date = date('Y-m-d H:i:s');
 $testingID;
 //Insert to asset testing
-$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`, `rpsmsrf`)
-									VALUES ('14', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}', '{$rpsmsrf}');";
+$query1="INSERT INTO `thesis`.`assettesting` (`statusID`, `PersonRequestedID`, `FloorAndRoomID`, `officeID`, `remarks`, `rpsmsrf`, `serviceType`)
+									VALUES ('14', '{$userID}', '{$FloorAndRoomID}', '{$officeID}', '{$remarks}', '{$rpsmsrf}', '27');";
 $_SESSION['submitMessage'] = $query1;
 $result1=mysqli_query($dbc,$query1);
 //get testing id inserted from above code

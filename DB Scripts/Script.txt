@@ -663,12 +663,14 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assettesting` (
   `officeID` INT(11) NULL DEFAULT NULL,
   `remarks` LONGTEXT NULL DEFAULT NULL,
   `rpsmsrf` VARCHAR(45) NULL DEFAULT NULL,
+  `serviceType` INT(11) NOT NULL,
   PRIMARY KEY (`testingID`),
   INDEX `fk_AssetTesting_User1_idx` (`PersonRequestedID` ASC),
   INDEX `fk_AssetTesting_FloorAndRoom1_idx` (`FloorAndRoomID` ASC),
   INDEX `fk_AssetTesting_DepartmentOwnsRoom1_idx` (`departmentOwnsRoomID` ASC),
   INDEX `fk_assettesting_ref_status1_idx` (`statusID` ASC),
   INDEX `fk_assettesting_offices1_idx` (`officeID` ASC),
+  INDEX `fk_assettesting_ref_servicetype1_idx` (`serviceType` ASC),
   CONSTRAINT `fk_AssetTesting_DepartmentOwnsRoom1`
     FOREIGN KEY (`departmentOwnsRoomID`)
     REFERENCES `thesis`.`departmentownsroom` (`departmentOwnsRoomID`)
@@ -693,6 +695,11 @@ CREATE TABLE IF NOT EXISTS `thesis`.`assettesting` (
     FOREIGN KEY (`statusID`)
     REFERENCES `thesis`.`ref_status` (`statusID`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_assettesting_ref_servicetype1`
+    FOREIGN KEY (`serviceType`)
+    REFERENCES `thesis`.`ref_servicetype` (`id`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -716,8 +723,8 @@ CREATE TABLE IF NOT EXISTS `thesis`.`ticket` (
   `summary` VARCHAR(45) NULL DEFAULT NULL,
   `description` VARCHAR(45) NULL DEFAULT NULL,
   `testingID` INT(11) NULL DEFAULT NULL,
-  `serviceType` INT(11) NULL,
-  `others` LONGTEXT NULL,
+  `serviceType` INT(11) NULL DEFAULT NULL,
+  `others` LONGTEXT NULL DEFAULT NULL,
   PRIMARY KEY (`ticketID`),
   INDEX `fk_Ticket_ref_TicketStatus1_idx` (`status` ASC),
   INDEX `fk_Ticket_User1_idx` (`creatorUserID` ASC),
