@@ -117,7 +117,7 @@ require_once("mysqlconnect.php");
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="page-head-line">Dashboard</h4>
-
+					
                 </div>
 
             </div>
@@ -287,6 +287,11 @@ require_once("mysqlconnect.php");
                            Assets Inventory
 						   <br>
 						   <a href = "Inventory.php"<button>View All Asset</button></a>
+						   
+						   <div class="float-right">
+						   <a href = cart.php><img src = "resource/images/cart.png" height=40 float-right ></a>
+						   
+						   </div><br>
                         </div>
 						
                         <div class="panel-body">
